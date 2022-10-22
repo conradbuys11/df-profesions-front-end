@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './Professions.css';
 import ProfessionButton from './ProfessionButton.js';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 const Professions = props => {
 
+    let buttonKey = 0;
     const iconURL = "https://wow.zamimg.com/images/wow/icons/large/ui_profession_";
     const craftingProfessions = [
         {name: "Alchemy", icon: `${iconURL}alchemy.jpg`},
@@ -26,9 +29,10 @@ const Professions = props => {
     ];
 
     const makeProfessionButtons = arr => {
-        arr.map(prof => {
+        return arr.map(prof => {
             // console.log(`Name: ${prof.name}. Icon: ${prof.icon}`)
-            return <ProfessionButton name={prof.name} icon={prof.icon} />
+            buttonKey += 1;
+            return (<ProfessionButton key={buttonKey} name={prof.name} icon={prof.icon} />);
         })
     }
 
@@ -37,13 +41,23 @@ const Professions = props => {
     const secondaryButtons = makeProfessionButtons(secondaryProfessions);
 
     return(
-        <div>
-            <ProfessionButton name={"Alchemy"}  icon={craftingProfessions[0].icon}/>
-            {craftingButtons}
-            <br />
-            {gatheringButtons}
-            <br />
-            {secondaryButtons}
+        <div className='Professions'>
+            <Container>
+                <h2>Crafting Professions:</h2>
+                <Row>
+                    {craftingButtons}
+                </Row>
+
+                <h2>Gathering Professions:</h2>
+                <Row>
+                    {gatheringButtons}
+                </Row>
+                
+                <h2>Secondary Professions:</h2>
+                <Row>
+                    {secondaryButtons}
+                </Row>
+            </Container>
         </div>
     )
 }

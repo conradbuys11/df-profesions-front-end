@@ -3,7 +3,7 @@ import './Basics.css';
 
 const Basics = props => {
     return(
-        <div>
+        <div className='Basics'>
             <h1>How have professions changed in Dragonflight?</h1>
             <ol>
                 {/* TO-DO: allow minimizing/expanding of each main list item */}
