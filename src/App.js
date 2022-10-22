@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import Test from './components/Test.js'
 import Homepage from './components/Homepage.js'
 import './App.css';
