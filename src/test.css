@@ -1,0 +1,17 @@
+/* 
+    dark palatte: purple & gold
+    #2A0944, #3B1854, #A12568, #FEC260
+*/
+
+body{
+    background-color: #2A0944;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: #3b1854;
+}
+
+button{
+    background-color: #a12568;
+    color: #fec260;
+}
