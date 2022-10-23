@@ -1,7 +1,7 @@
 import {React} from "react";
 import { useParams } from "react-router-dom";
 import ItemPage from "./ItemPage";
-import RecipePage from "./RecipePage";
+import TrainerRecipes from "./TrainerRecipes";
 import './ProfessionPage.css';
 
 /*
@@ -16,6 +16,10 @@ probably more stuff like materials but let's stick with the basics rn
 will probably want to break this into multiple pages/components
 ie a Trainer Recipes section/component, a Renown Recipes section/component, Specialization Recipes, PvP Recipes, Other Recipes
 that way we can easily break up the sections & have space between them
+
+do i also want to allow folks to sort/filter by certain criteria?
+the answer is yes i just need to plan it out
+ie only trainer recipes, only renown recipes, sort by category, etc.
 */
 
 const ProfessionPage = props => {
@@ -59,6 +63,9 @@ const ProfessionPage = props => {
         <div className="Profession-Page">
             <img src={iconURL} alt={`${name} icon`}/>
             <h1 className="big-heading">Dragonflight {capitalizeWord(name)}</h1>
+            <h4>Under Construction - Temp Page</h4>
+            <br /> <br />
+            <TrainerRecipes />
         </div>
     )
 }
