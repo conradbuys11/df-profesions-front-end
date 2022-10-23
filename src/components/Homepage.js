@@ -1,4 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
+import ProfessionPage from './ProfessionPage';
+// import '../test.css';
 
 const Homepage = props => {
 
@@ -8,10 +11,10 @@ const Homepage = props => {
 
     return(
         <div>
+            <h1>Welcome to Conrad's DF Profession Page - Under Construction</h1>
             <h2>Pick Your Poison!</h2>
-            <h4>(these buttons don't actually do anything yet)</h4>
-            <button onClick={handleClick}>Learn About DF Professions, Profession Knowledge, & Profession Stats</button>
-            <button onClick={handleClick}>List of Professions w/ their recipes</button>
+            <p><Link to="/basics">Learn About DF Professions, Profession Knowledge, & Profession Stats</Link></p>
+            <p><Link to="/professions">List of Professions w/ their recipes</Link></p>
         </div>
     )
 }
