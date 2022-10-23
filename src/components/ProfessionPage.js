@@ -1,5 +1,6 @@
 import {React} from "react";
 import ItemPage from "./ItemPage";
+import { useParams } from "react-router-dom";
 
 const ProfessionPage = props => {
     const iconURL = 'https://wow.zamimg.com/images/wow/icons/large/'

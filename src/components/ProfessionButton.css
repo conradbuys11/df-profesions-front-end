@@ -1,9 +1,21 @@
 .Profession-Button{
     text-align: center;
     border: solid;
-    margin: 0.1rem auto;
+    margin: 0.3rem 1rem;
+    transition: transform 0.25s;
 }
 
-h5{
-    margin: 0.75rem 0;
+/* need to adjust the margins when the page is xs - the buttons are too big */
+
+.Profession-Button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.prof-button-icon{
+    margin: 0.3rem auto auto auto;
+}
+
+.prof-button-name{
+    margin: auto auto 0.3rem auto;
 }
