@@ -11,7 +11,6 @@ const Homepage = props => {
 
     return(
         <div>
-            <Header />
             <div className='Homepage'>
                 <h1>Welcome to Conrad's DF Profession Page - Under Construction</h1>
                 <h2>Pick Your Poison!</h2>
