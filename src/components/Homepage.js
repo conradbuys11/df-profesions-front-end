@@ -1,21 +1,22 @@
 import { React } from 'react';
-import { Link } from 'react-router-dom';
-import Header from './Header';
+// import { Link } from 'react-router-dom';
+import HomepageWelcome from './HomepageWelcome';
+import HomepageWhereToStart from './HomepageWhereToStart';
 import './Homepage.css';
 
 const Homepage = props => {
 
-    const handleClick = e => {
-        console.log("Button clicked.");
-    }
-
     return(
         <div>
             <div className='Homepage'>
-                <h1>Welcome to Conrad's DF Profession Page - Under Construction</h1>
-                <h2>Pick Your Poison!</h2>
-                <p><Link to="/basics">Learn About DF Professions, Profession Knowledge, & Profession Stats</Link></p>
-                <p><Link to="/professions">List of Professions w/ their recipes</Link></p>
+                {/* 
+                BIG, BIG, BIG TO-DO
+                I NEED BETTER IMAGES FOR BOTH HOMEPAGEWELCOME AND HOMEPAGEWHERETOSTART
+                MORE SQUARE-LIKE: CURRENT IMAGES ARE VERY WIDE, BUT NOT TALL AT ALL
+                */}
+
+                <HomepageWelcome />
+                <HomepageWhereToStart />
             </div>
         </div>
     )

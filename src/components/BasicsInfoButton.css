@@ -1,0 +1,15 @@
+.Basics-Info-Button{
+    padding: 2rem 0 0 0;
+}
+
+button.accordion-button{
+    background-color: #4663ac;
+    font-weight: 700;
+    font-size: 1.875rem;
+      /* ^ 30px */
+}
+
+button.accordion-button:not(.collapsed){
+    background-color: #4663ac;
+    color: inherit;
+}
