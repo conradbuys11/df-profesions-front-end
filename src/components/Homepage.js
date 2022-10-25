@@ -1,6 +1,7 @@
 import { React } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import HomepageWelcome from './HomepageWelcome';
+import HomepageWhereToStart from './HomepageWhereToStart';
 import './Homepage.css';
 
 const Homepage = props => {
@@ -8,9 +9,14 @@ const Homepage = props => {
     return(
         <div>
             <div className='Homepage'>
+                {/* 
+                BIG, BIG, BIG TO-DO
+                I NEED BETTER IMAGES FOR BOTH HOMEPAGEWELCOME AND HOMEPAGEWHERETOSTART
+                MORE SQUARE-LIKE: CURRENT IMAGES ARE VERY WIDE, BUT NOT TALL AT ALL
+                */}
+
                 <HomepageWelcome />
-                <p><Link to="/basics">Learn About DF Professions, Profession Knowledge, & Profession Stats</Link></p>
-                <p><Link to="/professions">List of Professions w/ their recipes</Link></p>
+                <HomepageWhereToStart />
             </div>
         </div>
     )

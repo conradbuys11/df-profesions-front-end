@@ -1,3 +1,12 @@
 #Homepage-Where-To-Start{
-    
+    background-color: #C1D8F0;
+}
+
+/* TODO: give the imgs a class name and replace this img selector with that class name */
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35.625rem;
+    /* ^ 570px */
 }

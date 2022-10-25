@@ -59,11 +59,13 @@ h1,h2{
 .text-lrg-bold {
   font-weight: 700;
   font-size: 1.5rem;
+    /* ^ 24px */
 }
 
 .text-lrg-ital {
   font-weight: 400;
   font-size: 1.5rem;
+    /* ^ 24px */
   font-style: italic;
 }
 
@@ -76,11 +78,13 @@ h1,h2{
 .text-med-bold {
   font-weight: 700;
   font-size: 1.25rem;
+    /* ^ 20px */
 }
 
 .text-med-ital {
   font-weight: 400;
   font-size: 1.25rem;
+    /* ^ 20px */
   font-style: italic;
 }
 
