@@ -32,6 +32,65 @@ h1,h2{
   color: #61dafb;
 }
 
+.header-xl {
+  font-weight: 900;
+  font-size: 2.375rem;
+  /* ^ 38px */
+}
+
+.header-lrg {
+  font-weight: 900;
+  font-size: 2.125rem;
+  /* ^ 34px */
+}
+
+.header-med {
+  font-weight: 700;
+  font-size: 1.875rem;
+  /* ^ 30px */
+}
+
+.text-lrg {
+  font-weight: 400;
+  font-size: 1.5rem;
+  /* ^ 24px */
+}
+
+.text-lrg-bold {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.text-lrg-ital {
+  font-weight: 400;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.text-med {
+  font-weight: 400;
+  font-size: 1.25rem;
+  /* ^ 20px */
+}
+
+.text-med-bold {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.text-med-ital {
+  font-weight: 400;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.text-small-ital {
+  font-weight: 400;
+  font-size: 1rem;
+  /* ^ 16px */
+  font-style: italic;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

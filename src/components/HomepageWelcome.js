@@ -7,16 +7,16 @@ import miningArt from '../img/WoW_Professions_Mining_004.png';
 
 const HomepageWelcome = props => {
     return(
-        <div className="Homepage-Welcome homepage-component">
-            <h1 className="big-header">Welcome to Conrad's WoW: Dragonflight Profession Page</h1>
+        <div id="Homepage-Welcome" className="homepage-component">
+            <h1 className="header-xl">Welcome to Conrad's WoW: Dragonflight Profession Page</h1>
             <Container fluid>
                 <Row>
                     <Col lg={5} md={12}>
                         <div className="welcome-paragraph">
-                            <p className="paragraph-text">Professions are changing a LOT in 10.0, and navigating all the changes can be daunting. 
+                            <p className="text-med">Professions are changing a LOT in 10.0, and navigating all the changes can be daunting. 
                             I've created this website to help familiarize some of these changes in a pleasing & simple way.</p>
-                            <p className="paragraph-text">This website is still very much a WIP, but should be all set up by 10.0's launch on November 28th!</p>
-                            <p className="credit-text">(big thanks to wowhead for the item & profession icons!)</p>
+                            <p className="text-med">This website is still very much a WIP, but should be all set up by 10.0's launch on November 28th!</p>
+                            <p className="text-med-ital">(big thanks to wowhead for the item & profession icons!)</p>
                         </div>
                     </Col>
 
