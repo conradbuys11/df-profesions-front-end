@@ -1,3 +1,13 @@
+/* .Basics{
+
+} */
+
+
+/* might be a better idea to make basics-component & homepage-component one unified thing in App.css */
+.basics-component{
+    padding: 0 8%;
+}
+
 .highlight{
     font-weight: bold;
 }
