@@ -1,3 +1,9 @@
 #Basics-Info{
-    
+    background-color: #c1d8f0;
+}
+
+/* space between selectors = nested inside (ie, .accordion element inside of a #Basics-Info element) */
+#Basics-Info .accordion{
+    --bs-accordion-bg: inherit;
+    --bs-accordion-border-width: 0;
 }

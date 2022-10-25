@@ -7,34 +7,25 @@ const BasicsInfo = props => {
     return(
         <div id="Basics-Info" className="basics-component">
             <Accordion>
-                <BasicsInfoButton eventKey="0" header="Equipment" body={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
-                <Accordion.Item eventKey="1">
-                    <Accordion.Header>Stats</Accordion.Header>
-                    <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </Accordion.Body>
-                </Accordion.Item>
+                <BasicsInfoButton eventKey="0" header="Equipment" body={
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                } />
 
-                <Accordion.Item eventKey="2">
-                    <Accordion.Header>Difficulty</Accordion.Header>
-                    <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </Accordion.Body>
-                </Accordion.Item>
+                <BasicsInfoButton eventKey="1" header="Stats" body={
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                } />
 
-                <Accordion.Item eventKey="3">
-                    <Accordion.Header>Specializations</Accordion.Header>
-                    <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </Accordion.Body>
-                </Accordion.Item>
+                <BasicsInfoButton eventKey="2" header ="Difficulty" body={
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                } />
 
-                <Accordion.Item eventKey="4">
-                    <Accordion.Header>Finishing Reagents</Accordion.Header>
-                    <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </Accordion.Body>
-                </Accordion.Item>
+                <BasicsInfoButton eventKey="3" header="Specializations" body={
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                } />
+
+                <BasicsInfoButton eventKey="4" header="Specializations" body={
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                } />
             </Accordion>
         </div>
     )

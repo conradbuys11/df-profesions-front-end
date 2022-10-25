@@ -13,6 +13,11 @@ color scheme:
     #4663AC
     #D2DEEB
 
+    color[0]: header & footer?
+    color[1]: first, third, etc. sections
+    color[2]: second, fourth, etc. sections
+    color[3]: headers...?
+    color[4]: ?
 
 ### THE REST OF THE CREATE REACT APP README STUFF:
 

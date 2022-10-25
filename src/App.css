@@ -35,12 +35,14 @@ h1,h2{
 .header-xl {
   font-weight: 900;
   font-size: 2.375rem;
+  color: #4663ac;
   /* ^ 38px */
 }
 
 .header-lrg {
   font-weight: 900;
   font-size: 2.125rem;
+  color: #4663ac;
   /* ^ 34px */
 }
 

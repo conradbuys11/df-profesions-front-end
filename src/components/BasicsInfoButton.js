@@ -8,10 +8,10 @@ const BasicsInfoButton = props => {
     return(
         <div className="Basics-Info-Button">
             <Accordion.Item eventKey={props.eventKey}>
-                    <Accordion.Header>{props.header}</Accordion.Header>
-                    <Accordion.Body>
+                <Accordion.Header>{props.header}</Accordion.Header>
+                <Accordion.Body>
                     {props.body}
-                    </Accordion.Body>
+                </Accordion.Body>
             </Accordion.Item>
         </div>
     )

@@ -19,7 +19,7 @@ const Header = props => {
                         <Nav>
                             <LinkContainer to="/basics"><Nav.Link className="header-page">Basics</Nav.Link></LinkContainer>
                             <LinkContainer to="/professions"><Nav.Link className="header-page">Profession List</Nav.Link></LinkContainer>
-                            <LinkContainer to="/"><Nav.Link className="header-page">Contact</Nav.Link></LinkContainer>                           
+                            <LinkContainer to="/"><Nav.Link className="header-page">Contact (NYI)</Nav.Link></LinkContainer>                           
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
