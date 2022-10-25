@@ -9,7 +9,7 @@ const BasicsInfoButton = props => {
         <div className="Basics-Info-Button">
             <Accordion.Item eventKey={props.eventKey}>
                 <Accordion.Header>{props.header}</Accordion.Header>
-                <Accordion.Body>
+                <Accordion.Body className="text-med">
                     {props.body}
                 </Accordion.Body>
             </Accordion.Item>

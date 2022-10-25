@@ -10,7 +10,7 @@ import './Header.css';
 const Header = props => {
     return(
         <div className="Header">
-            <Navbar>
+            <Navbar sticky="top">
                 <Container>
                     <LinkContainer to="/"><Navbar.Brand id="header-logo">DF Professions</Navbar.Brand></LinkContainer>
                             {/* <input placeholder="Search (NYI)" /> */}
