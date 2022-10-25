@@ -1,0 +1,26 @@
+.Homepage-Welcome{
+    background-color: #e1f1fd;
+}
+
+.big-header{
+    font-weight: 900;
+    font-size: 2.625rem;
+}
+
+.key-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40.78625rem;
+}
+
+.paragraph-text{
+    font-size: 1.5rem;
+}
+
+.credit-text{
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+/* Breakpoints */

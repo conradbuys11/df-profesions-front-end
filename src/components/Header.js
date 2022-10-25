@@ -3,6 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Nav from 'react-bootstrap/esm/Nav';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import NavDropdown from 'react-bootstrap/esm/NavDropdown';
+import { LinkContainer } from 'react-router-bootstrap';
 import './Header.css';
 
 
@@ -11,14 +12,14 @@ const Header = props => {
         <div className="Header">
             <Navbar>
                 <Container>
-                    <Navbar.Brand id="header-logo" href="/">DF Professions</Navbar.Brand>
+                    <LinkContainer to="/"><Navbar.Brand id="header-logo">DF Professions</Navbar.Brand></LinkContainer>
                             {/* <input placeholder="Search (NYI)" /> */}
                     <Navbar.Toggle aria-controls="navbar-pages"/>
                     <Navbar.Collapse id="navbar-pages" className="justify-content-end">
                         <Nav>
-                            <Nav.Link className="header-page" href="/basics">Basics</Nav.Link>
-                            <Nav.Link className="header-page" href="/professions">Profession List</Nav.Link>
-                            <Nav.Link className="header-page" href="/">Contact</Nav.Link>
+                            <LinkContainer to="/basics"><Nav.Link className="header-page">Basics</Nav.Link></LinkContainer>
+                            <LinkContainer to="/professions"><Nav.Link className="header-page">Profession List</Nav.Link></LinkContainer>
+                            <LinkContainer to="/"><Nav.Link className="header-page">Contact</Nav.Link></LinkContainer>                           
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
