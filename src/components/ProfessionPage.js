@@ -62,7 +62,7 @@ const ProfessionPage = props => {
     return(
         <div className="Profession-Page">
             <img src={iconURL} alt={`${name} icon`}/>
-            <h1 className="big-heading">Dragonflight {capitalizeWord(name)}</h1>
+            <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
             <h4>Under Construction - Temp Page</h4>
             <br /> <br />
             <TrainerRecipes />

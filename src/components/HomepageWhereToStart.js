@@ -14,7 +14,7 @@ const HomepageWhereToStart = props => {
             <Container>
                 <Row>
                     <Col lg={6} md={12}>
-                        <img src={specTree} alt="specialization tree"/>
+                        <img className="homepage-image-section-two" src={specTree} alt="specialization tree"/>
                     </Col>
 
                     <Col lg={6} med={12}>
@@ -35,7 +35,7 @@ const HomepageWhereToStart = props => {
                     </Col>
 
                     <Col lg={6} md={12}>
-                        <img src={recipeList} alt="recipe list"/>
+                        <img className="homepage-image-section-two" src={recipeList} alt="recipe list"/>
                     </Col>
                 </Row>
             </Container>

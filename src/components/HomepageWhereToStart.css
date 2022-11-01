@@ -3,7 +3,7 @@
 }
 
 /* TODO: give the imgs a class name and replace this img selector with that class name */
-img{
+.homepage-image-section-two{
     display: block;
     margin-left: auto;
     margin-right: auto;

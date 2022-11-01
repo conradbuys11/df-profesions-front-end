@@ -16,22 +16,29 @@ const BasicsInfo = props => {
                 </>
                 } />
 
-                <BasicsInfoButton eventKey="1" header="Equipment">
-                    Each profession can wield one Tool (ie a fishing rod) and two Accessories (ie a helm & chestpiece.) These equipment items are like normal gear pieces - they have stats & item level. Higher item level profession equipment will give more stats.
-
-                </BasicsInfoButton>
+                <BasicsInfoButton eventKey="1" header="Equipment" body={
+                    <>
+                        Each profession can wield one Tool (ie a fishing rod) and two Accessories (ie a helm & chestpiece.) These equipment items are like normal gear pieces - they have stats & item level. Higher item level profession equipment will give more stats.
+                    </>
+                } />
 
 
                 <BasicsInfoButton eventKey="2" header ="Difficulty" body={
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    <>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </>
                 } />
 
                 <BasicsInfoButton eventKey="3" header="Specializations" body={
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    <>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </>
                 } />
 
                 <BasicsInfoButton eventKey="4" header="Finishing Reagents" body={
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    <>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </>
                 } />
             </Accordion>
         </div>
