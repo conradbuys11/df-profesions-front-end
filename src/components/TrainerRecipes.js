@@ -1,10 +1,21 @@
-import {React} from "react";
+import {React, useEffect, useState} from "react";
 import './TrainerRecipes.css';
 import Table from 'react-bootstrap/Table';
 
 const TrainerRecipes = props => {
 
+    //props: profession (object), URL
     // should really make a component for like, small item card. like an item with its icon, hover over to get a bit more info, click for full info.
+
+    const [recipes, setRecipes] = useState({});
+
+    useEffect(() => {
+        if(props.profession){
+            fetch(`${props.URL}/recipes/by_profession/${props.profession.id}`)
+            .then(res => res.json())
+            .then(data => setRecipes(data));
+        }
+    });
 
     const getIconURL = fileName => {
         let url = `https://wow.zamimg.com/images/wow/icons/medium/${fileName}.jpg`

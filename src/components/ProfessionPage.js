@@ -1,4 +1,4 @@
-import {React} from "react";
+import {React, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import ItemPage from "./ItemPage";
 import TrainerRecipes from "./TrainerRecipes";
@@ -25,6 +25,19 @@ ie only trainer recipes, only renown recipes, sort by category, etc.
 const ProfessionPage = props => {
 
     const { name } = useParams();
+    const URL = 'http://localhost:3001';
+    const [profession, setProfession] = useState({});
+
+    useEffect(() => {
+        fetch(`${URL}/professions/by_name/${capitalizeWord(name)}`)
+        .then(res => res.json())
+        .then(data => {
+            setProfession(data);
+        })
+    })
+
+
+
     let backupID = 0;
 
     const getBackupID = () => {
@@ -40,32 +53,13 @@ const ProfessionPage = props => {
     //temp function while we're not calling on DB
     const iconURL = `https://wow.zamimg.com/images/wow/icons/large/ui_profession_${name}.jpg`;
 
-    const displayRecipe = recipe => {
-        return(
-            <div></div>
-        )
-    }
-
-    const displayItem = item => {
-        return(
-            /* 
-            AM I SHOWING ITEMS? OR RECIPES?
-
-            do i really need to be giving it these props? it's just gonna get the info from the DB on load anyway
-            might want to make a separate thing for an "item card" - ie, has the basic info (name, stacks, etc.)
-            which needs props, and loads the item page (ie ALL the info) on click
-            */
-            <ItemPage id={item.id ? item.id : getBackupID()} name={item.name} icon={item.icon} />
-        )
-    }
-
     return(
         <div className="Profession-Page">
             <img src={iconURL} alt={`${name} icon`}/>
             <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
             <h4>Under Construction - Temp Page</h4>
             <br /> <br />
-            <TrainerRecipes />
+            <TrainerRecipes profession={profession} URL={URL}/>
         </div>
     )
 }
