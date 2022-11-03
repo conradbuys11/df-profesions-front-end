@@ -6,6 +6,7 @@ button.accordion-button{
     background-color: #4663ac;
     font-weight: 700;
     font-size: 1.875rem;
+    width: auto;
       /* ^ 30px */
 }
 

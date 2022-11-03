@@ -16,7 +16,7 @@ const ItemPage = props => {
         const makeIconURL = fileName => {
             //combining the icon url, ie wow.zaming etc
             //with the actual filename, ie inv_10_alchemy_bottle_shape1_violet.jpg
-            return `${iconURL}${fileName}`
+            return `${iconURL}${fileName}.jpg`
         }
 
     return(
