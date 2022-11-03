@@ -26,15 +26,15 @@ const ProfessionPage = props => {
 
     const { name } = useParams();
     const URL = 'http://localhost:3001';
-    const [profession, setProfession] = useState({});
+    // const [profession, setProfession] = useState({});
 
-    useEffect(() => {
-        fetch(`${URL}/professions/by_name/${capitalizeWord(name)}`)
-        .then(res => res.json())
-        .then(data => {
-            setProfession(data);
-        })
-    })
+    // useEffect(() => {
+    //     fetch(`${URL}/professions/by_name/${capitalizeWord(name)}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setProfession(data);
+    //     })
+    // })
 
 
 
@@ -59,7 +59,7 @@ const ProfessionPage = props => {
             <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
             <h4>Under Construction - Temp Page</h4>
             <br /> <br />
-            <TrainerRecipes profession={profession} URL={URL}/>
+            <TrainerRecipes URL={URL}/>
         </div>
     )
 }
