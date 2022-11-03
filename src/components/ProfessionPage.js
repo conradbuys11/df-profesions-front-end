@@ -1,5 +1,6 @@
 import {React, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
+import { keyToWords } from '../Common'
 import ItemPage from "./ItemPage";
 import TrainerRecipes from "./TrainerRecipes";
 import './ProfessionPage.css';
@@ -26,15 +27,121 @@ const ProfessionPage = props => {
 
     const { name } = useParams();
     const URL = 'http://localhost:3001';
-    // const [profession, setProfession] = useState({});
+    const [profession, setProfession] = useState({});
+    const [recipes, setRecipes] = useState([]);
+    let recipeKey = 0;
 
-    // useEffect(() => {
-    //     fetch(`${URL}/professions/by_name/${capitalizeWord(name)}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setProfession(data);
-    //     })
-    // })
+    useEffect(() => {
+        let fetching = true;
+        fetch(`${URL}/professions/by_name/${capitalizeWord(name)}`)
+        .then(res => res.json())
+        .then(data => {
+            if(fetching){
+                setProfession(data);
+                fetch(`${URL}/recipes/by_profession/${data.id}`)
+                .then(r => r.json())
+                .then(d => {
+                    if(fetching){
+                        setRecipes(d);
+                    }
+                })
+            }
+        })
+
+        return () => {
+            fetching = false;
+        }
+    }, [name]);
+
+    const makeRow = (recipe, firstColumn) => {
+        /* 
+        "firstColumn" makes this reusable - ie, trainer recipes have the level needed for their first column,
+        but renown recipes will have the rep & level, and specializations have specialization & level.
+        */
+        return(
+            <tr>
+                <td>{firstColumn}</td>
+                <td>{recipe.item.icon ? recipe.item.icon : "(ICON)"} {recipe.name}</td>
+                <td>{recipe.category}</td>
+                <td>
+                    <table>
+                        <tbody>
+                            {makeMaterialTable(recipe.materials)}
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tbody>
+                            {makeFinishingReagentTable(recipe.finishingReagents)}            
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        )
+    }
+
+    const makeMaterialTable = materials => {
+        let rows = [];
+        try{
+            for(let material in materials){
+                recipeKey += 1;
+                rows.push(
+                    <tr key={recipeKey}>
+                        {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
+                        first is quantity, then the icon, then the name */}
+                        <td>{material.quantity}x {material.item.icon ? material.item.icon : "(ICON"} {material.item.name}</td>
+                    </tr>
+                )
+            }
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    const makeFinishingReagentTable = fReagents => {
+        let rows = [];
+        try{
+            for(let fReagent in fReagents){
+                recipeKey += 1;
+                rows.push(
+                    <tr key={recipeKey}>
+                        {/* if we have any finishing reagents, we use our gross helper method to convert the key/value pair to words 
+                        otherwise, we completely ignore putting data in 
+                        might want to put the check BEFORE the push? */}
+                        <td>{fReagent.reagentType}{Object.keys(fReagent.requiredSpecializationLevel).length > 0 ? ` (via ${fReagentSpecLevelToWords(fReagent.requiredSpecializationLevel)})` : ""}</td>
+                    </tr>
+                )
+            }
+        } catch(error){
+            console.log(error)
+        }
+    }
+
+    const fReagentSpecLevelToWords = obj => {
+        let length = Object.keys(obj).length
+        let text = ""
+        if(length === 1){
+            return keyToWords(Object.keys(obj)[0])
+        }
+        else if(length > 1){
+            for(let i = 0; i < length; i++){
+                let keyName = keyToWords(Object.keys(obj)[i]);
+                //valueNum is a really disgusting way of saying, get value of the key at position i
+                let valueNum = Object.getOwnPropertyDescriptor(obj, keyName).value;
+
+                //if this is the last specialization/level, hit em with the "or this"
+                if(i + 1 === length){
+                    text += `or ${keyName} ${valueNum}`;
+                }
+                else{
+                    text += `${keyName} ${valueNum}, `;
+                }
+                //example might be "Burning 10, Wafting 10, or Sophic 10"
+            }
+            return text;
+        }
+    }
 
 
 
@@ -59,7 +166,7 @@ const ProfessionPage = props => {
             <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
             <h4>Under Construction - Temp Page</h4>
             <br /> <br />
-            <TrainerRecipes URL={URL}/>
+            <TrainerRecipes profession={profession} URL={URL}/>
         </div>
     )
 }

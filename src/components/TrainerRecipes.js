@@ -7,7 +7,7 @@ const TrainerRecipes = props => {
     //props: profession (object), URL
     // should really make a component for like, small item card. like an item with its icon, hover over to get a bit more info, click for full info.
 
-    // const [recipes, setRecipes] = useState({});
+    const [recipes, setRecipes] = useState([]);
 
     // useEffect(() => {
     //     if(props.profession){
@@ -18,6 +18,34 @@ const TrainerRecipes = props => {
     // });
 
     let key = 0;
+
+    // useEffect(() => {
+    //     console.log(props.recipes);
+    //     console.log("running effect");
+    //     if(props.recipes.length !== 0){
+    //         setRecipes(props.recipes.filter(recipe => {
+    //             console.log(recipe.requiredProfessionLevel);
+    //             return recipe.requiredProfessionLevel !== null
+    //         }))
+    //     }
+    // },[props.recipes])
+
+    useEffect(() => {
+        let fetching = true;
+        if(props.URL && props.profession.id){
+            fetch(`${props.URL}/recipes/by_profession/${props.profession.id}/only_trainer_recipes`)
+            .then(res => res.json())
+            .then(data => {
+                if(fetching){
+                    setRecipes(data);
+                }
+            })
+        }
+
+        return () => {
+            fetching = false;
+        }
+    }, [props.URL, props.profession]);
 
     const getIconURL = fileName => {
         let url = `https://wow.zamimg.com/images/wow/icons/medium/${fileName}.jpg`
