@@ -1,6 +1,6 @@
 import {React, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import { keyToWords } from '../Common'
+import { keyToWords, largeIconToMedium } from '../Common'
 import ItemPage from "./ItemPage";
 import TrainerRecipes from "./TrainerRecipes";
 import './ProfessionPage.css';
@@ -58,10 +58,11 @@ const ProfessionPage = props => {
         "firstColumn" makes this reusable - ie, trainer recipes have the level needed for their first column,
         but renown recipes will have the rep & level, and specializations have specialization & level.
         */
+
         return(
             <tr>
                 <td>{firstColumn}</td>
-                <td>{recipe.item.icon ? recipe.item.icon : "(ICON)"} {recipe.name}</td>
+                <td>{recipe.item.icon ? <img src={largeIconToMedium(recipe.item.icon)} alt="" /> : "(ICON)"} {recipe.name}</td>
                 <td>{recipe.category}</td>
                 <td>
                     <table>
@@ -84,16 +85,17 @@ const ProfessionPage = props => {
     const makeMaterialTable = materials => {
         let rows = [];
         try{
-            for(let material in materials){
+            materials.forEach(material => {
                 recipeKey += 1;
                 rows.push(
                     <tr key={recipeKey}>
                         {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
-                        <td>{material.quantity}x {material.item.icon ? material.item.icon : "(ICON"} {material.item.name}</td>
+                        <td>{material.quantity}x {material.item.icon ? <img src={largeIconToMedium(material.item.icon)} alt=""/> : "(ICON)"} {material.item.name}</td>
                     </tr>
                 )
-            }
+            })
+            return rows;
         } catch(error){
             console.log(error);
         }
@@ -102,7 +104,7 @@ const ProfessionPage = props => {
     const makeFinishingReagentTable = fReagents => {
         let rows = [];
         try{
-            for(let fReagent in fReagents){
+            fReagents.forEach(fReagent => {
                 recipeKey += 1;
                 rows.push(
                     <tr key={recipeKey}>
@@ -112,7 +114,8 @@ const ProfessionPage = props => {
                         <td>{fReagent.reagentType}{Object.keys(fReagent.requiredSpecializationLevel).length > 0 ? ` (via ${fReagentSpecLevelToWords(fReagent.requiredSpecializationLevel)})` : ""}</td>
                     </tr>
                 )
-            }
+            })
+            return rows;
         } catch(error){
             console.log(error)
         }
@@ -126,9 +129,11 @@ const ProfessionPage = props => {
         }
         else if(length > 1){
             for(let i = 0; i < length; i++){
-                let keyName = keyToWords(Object.keys(obj)[i]);
+                let rawName = Object.keys(obj)[i];
+                let keyName = keyToWords(rawName);
                 //valueNum is a really disgusting way of saying, get value of the key at position i
-                let valueNum = Object.getOwnPropertyDescriptor(obj, keyName).value;
+                console.log(Object.getOwnPropertyDescriptor(obj, rawName));
+                let valueNum = Object.getOwnPropertyDescriptor(obj, rawName).value;
 
                 //if this is the last specialization/level, hit em with the "or this"
                 if(i + 1 === length){
@@ -166,7 +171,7 @@ const ProfessionPage = props => {
             <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
             <h4>Under Construction - Temp Page</h4>
             <br /> <br />
-            <TrainerRecipes profession={profession} URL={URL}/>
+            <TrainerRecipes profession={profession} URL={URL} makeRow={makeRow}/>
         </div>
     )
 }
