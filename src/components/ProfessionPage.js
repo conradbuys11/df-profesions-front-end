@@ -65,18 +65,14 @@ const ProfessionPage = props => {
                 <td>{recipe.item.icon ? <img src={largeIconToMedium(recipe.item.icon)} alt="" /> : "(ICON)"} {recipe.name}</td>
                 <td>{recipe.category}</td>
                 <td>
-                    <table>
-                        <tbody>
-                            {makeMaterialTable(recipe.materials)}
-                        </tbody>
-                    </table>
+                    <ul>
+                        {makeMaterialTable(recipe.materials)}
+                    </ul>
                 </td>
                 <td>
-                    <table>
-                        <tbody>
-                            {makeFinishingReagentTable(recipe.finishingReagents)}            
-                        </tbody>
-                    </table>
+                    <ul>
+                        {makeFinishingReagentTable(recipe.finishingReagents)}            
+                    </ul>
                 </td>
             </tr>
         )
@@ -88,11 +84,11 @@ const ProfessionPage = props => {
             materials.forEach(material => {
                 recipeKey += 1;
                 rows.push(
-                    <tr key={recipeKey}>
+                    <li key={`mt-${recipeKey}`} className="prof-list-item">
                         {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
-                        <td>{material.quantity}x {material.item.icon ? <img src={largeIconToMedium(material.item.icon)} alt=""/> : "(ICON)"} {material.item.name}</td>
-                    </tr>
+                        {material.quantity}x {material.item.icon ? <img src={largeIconToMedium(material.item.icon)} alt=""/> : "(ICON)"} {material.item.name}
+                    </li>
                 )
             })
             return rows;
@@ -107,12 +103,12 @@ const ProfessionPage = props => {
             fReagents.forEach(fReagent => {
                 recipeKey += 1;
                 rows.push(
-                    <tr key={recipeKey}>
+                    <li key={`fr-${recipeKey}`} className="prof-list-item">
                         {/* if we have any finishing reagents, we use our gross helper method to convert the key/value pair to words 
                         otherwise, we completely ignore putting data in 
                         might want to put the check BEFORE the push? */}
-                        <td>{fReagent.reagentType}{Object.keys(fReagent.requiredSpecializationLevel).length > 0 ? ` (via ${fReagentSpecLevelToWords(fReagent.requiredSpecializationLevel)})` : ""}</td>
-                    </tr>
+                        {fReagent.reagentType}{Object.keys(fReagent.requiredSpecializationLevel).length > 0 ? ` (via ${fReagentSpecLevelToWords(fReagent.requiredSpecializationLevel)})` : ""}
+                    </li>
                 )
             })
             return rows;
