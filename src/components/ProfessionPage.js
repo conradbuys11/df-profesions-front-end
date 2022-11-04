@@ -4,6 +4,7 @@ import { keyToWords, largeIconToMedium } from '../Common'
 import SpecializationRecipes from "./SpecializationRecipes";
 import TrainerRecipes from "./TrainerRecipes";
 import './ProfessionPage.css';
+import Accordion from 'react-bootstrap/Accordion';
 
 /*
 the info that professions have in the DB:
@@ -87,7 +88,7 @@ const ProfessionPage = props => {
                     <li key={`mt-${recipeKey}`} className="prof-list-item">
                         {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
-                        {material.quantity}x {material.item.icon ? <img src={largeIconToMedium(material.item.icon)} alt=""/> : "(ICON)"} {material.item.name}
+                        {material.item.icon ? <img src={largeIconToMedium(material.item.icon)} alt=""/> : "(ICON)"} {material.quantity}x {material.item.name}
                     </li>
                 )
             })
@@ -167,7 +168,10 @@ const ProfessionPage = props => {
             <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
             <h4>Under Construction - Temp Page</h4>
             <br /> <br />
-            <TrainerRecipes profession={profession} URL={URL} makeRow={makeRow}/>
+            <Accordion alwaysOpen="true" flush>
+                <TrainerRecipes eventKey={0} profession={profession} URL={URL} makeRow={makeRow}/>
+                <SpecializationRecipes eventKey={1} profession={profession} URL={URL} makeRow={makeRow} />
+            </Accordion>
         </div>
     )
 }

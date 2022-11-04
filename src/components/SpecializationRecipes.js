@@ -1,17 +1,14 @@
-import {React, useState} from "react";
+import {React} from "react";
 import './SpecializationRecipes.css';
+import RecipeTable from "./RecipeTable";
 
 const SpecializationRecipes = props => {
 
     //props: profession (object), URL, makeRow (method, takes recipe & level learned)
-    //mmm i should probably make a "recipestable" component or something. since this repeats a lot of code from TrainerRecipes
-
-    const [recipes, setRecipes] = useState([]);
 
     return(
-        <div className="Specialization-Recipes">
-
-        </div>
+        <RecipeTable eventKey={props.eventKey} profession={props.profession} URL={`${props.URL}/recipes/by_profession/${props.profession.id}/only_specialization_recipes`} 
+        makeRow={props.makeRow} thisClass={"Specialization-Recipes"} recipesFrom={"Specialization Levels"} firstColumnName={"Spec & Level"} keyName={"requiredSpecializationLevel"} />
     )
 }
 

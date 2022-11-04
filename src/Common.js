@@ -13,7 +13,14 @@ const keyToWords = word => {
     // TO-DO: SWITCH STATEMENT FOR SOME SPECIAL CASES
     // ie E Z Thro should be EZ-Thro
     // anything with an apostrophe (it won't have an apostrophe as a key!), ie Artisan's Consortium
-    return words.join(" ");
+    switch(words[0]){
+        case "E":
+            return "EZ-Thro";
+        case "Artisans":
+            return "Artisan's Consortium"
+        default:
+            return words.join(" ");
+    }
 }
 
 const largeIconToMedium = icon => {
