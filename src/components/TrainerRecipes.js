@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from "react";
 import './TrainerRecipes.css';
 import Table from 'react-bootstrap/Table';
+import RecipeTable from "./RecipeTable";
 
 const TrainerRecipes = props => {
 
@@ -28,22 +29,17 @@ const TrainerRecipes = props => {
         }
     }, [props.URL, props.profession]);
 
-    const getIconURL = fileName => {
-        let url = `https://wow.zamimg.com/images/wow/icons/medium/${fileName}.jpg`
-        return url;
-    }
-
-    const makeDummyRecipe = (name, iconName, requiredProfLevel, category, materials, finishingReagents) => {
-        //TO BE USED WHEN NOT USING DB DATA/TESTING
-        return {
-            name: name,
-            iconName: iconName,
-            requiredProfLevel: requiredProfLevel,
-            category: category,
-            materials: materials,
-            finishingReagents: finishingReagents
-        };
-    }
+    // const makeDummyRecipe = (name, iconName, requiredProfLevel, category, materials, finishingReagents) => {
+    //     //TO BE USED WHEN NOT USING DB DATA/TESTING
+    //     return {
+    //         name: name,
+    //         iconName: iconName,
+    //         requiredProfLevel: requiredProfLevel,
+    //         category: category,
+    //         materials: materials,
+    //         finishingReagents: finishingReagents
+    //     };
+    // }
 
     const makeAllRows = () => {
         let rows = [];

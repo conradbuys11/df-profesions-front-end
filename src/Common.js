@@ -10,6 +10,9 @@ const keyToWords = word => {
         //if we iterate through each array, taking that [0] gives the word
         words.push(word[0]);
     }
+    // TO-DO: SWITCH STATEMENT FOR SOME SPECIAL CASES
+    // ie E Z Thro should be EZ-Thro
+    // anything with an apostrophe (it won't have an apostrophe as a key!), ie Artisan's Consortium
     return words.join(" ");
 }
 

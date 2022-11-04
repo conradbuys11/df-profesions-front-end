@@ -1,7 +1,7 @@
 import {React, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import { keyToWords, largeIconToMedium } from '../Common'
-import ItemPage from "./ItemPage";
+import SpecializationRecipes from "./SpecializationRecipes";
 import TrainerRecipes from "./TrainerRecipes";
 import './ProfessionPage.css';
 
