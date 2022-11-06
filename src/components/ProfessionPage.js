@@ -27,7 +27,7 @@ ie only trainer recipes, only renown recipes, sort by category, etc.
 const ProfessionPage = props => {
 
     const { name } = useParams();
-    const URL = 'https://dragonflight-professions.onrender.com';
+    const URL = 'https://dragonflight-professions-api.onrender.com';
     const [profession, setProfession] = useState({});
     const [recipes, setRecipes] = useState([]);
     let recipeKey = 0;
