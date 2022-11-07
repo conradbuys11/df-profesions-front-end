@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import Table from "react-bootstrap/esm/Table";
 import "./RecipeTable.css";
-import { keyToWords } from "../Common";
+import { keyToWords } from "../../Common";
 import Accordion from "react-bootstrap/Accordion";
 
 const RecipeTable = (props) => {

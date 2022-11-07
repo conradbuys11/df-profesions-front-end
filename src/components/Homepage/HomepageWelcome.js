@@ -3,7 +3,7 @@ import './HomepageWelcome.css';
 import Container from "react-bootstrap/esm/Container";
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import miningArt from '../img/WoW_Professions_Mining_004.png';
+import miningArt from '../../img/WoW_Professions_Mining_004.png';
 
 const HomepageWelcome = props => {
     return(

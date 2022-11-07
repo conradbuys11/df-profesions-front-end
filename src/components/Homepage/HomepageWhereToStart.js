@@ -4,8 +4,8 @@ import Container from "react-bootstrap/esm/Container";
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { Link } from 'react-router-dom';
-import specTree from "../img/screenshots/specialization_tree_1140_520.png"
-import recipeList from "../img/screenshots/recipe_list_1140_520.png"
+import specTree from "../../img/screenshots/specialization_tree_1140_520.png"
+import recipeList from "../../img/screenshots/recipe_list_1140_520.png"
 
 const HomepageWhereToStart = props => {
     return(

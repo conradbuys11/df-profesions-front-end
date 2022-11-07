@@ -1,6 +1,6 @@
 // import Test from './components/Test.js'
 import Homepage from './components/Homepage/Homepage'
-import Basics from './components/Basics';
+import Basics from './components/Basics/Basics';
 import Professions from './components/Professions';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
