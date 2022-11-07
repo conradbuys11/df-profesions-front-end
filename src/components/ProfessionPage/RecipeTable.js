@@ -36,9 +36,9 @@ const RecipeTable = (props) => {
       let nestedKeyName = Object.getOwnPropertyNames(keyValue)[0];
       output += keyToWords(nestedKeyName);
       //put a space, then get the number that's located in our object (the value of nestedKeyName)
-      output += ` ${
+      output += ` (${
         Object.getOwnPropertyDescriptor(keyValue, nestedKeyName).value
-      }`;
+      })`;
       return output;
     }
     return keyValue;
@@ -65,7 +65,6 @@ const RecipeTable = (props) => {
             <th>Name</th>
             <th>Category</th>
             <th>Materials</th>
-            <th>Finishing Reagents</th>
           </tr>
         </thead>
 
