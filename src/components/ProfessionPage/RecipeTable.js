@@ -56,33 +56,41 @@ const RecipeTable = (props) => {
     return rows;
   };
 
-  return (
-      <Accordion.Item eventKey={props.eventKey} className={thisClass}>
-        <Accordion.Header>{props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}</Accordion.Header>
-        <Accordion.Body>
-            <Table striped>
-            <thead>
-                <tr>
-                <th>{props.firstColumnName ? props.firstColumnName : ""}</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Materials</th>
-                <th>Finishing Reagents</th>
-                </tr>
-            </thead>
+  const accordionBody = () => {
+    return (
+      <Table striped>
+        <thead>
+          <tr>
+            <th>{props.firstColumnName ? props.firstColumnName : ""}</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Materials</th>
+            <th>Finishing Reagents</th>
+          </tr>
+        </thead>
 
-            <tbody>
-                {recipes.legnth !== 0 ? (
-                makeAllRows()
-                ) : (
-                <tr>
-                    <td></td>
-                </tr>
-                )}
-            </tbody>
-            </Table>
-        </Accordion.Body>
-      </Accordion.Item>
+        <tbody>
+          {recipes.legnth !== 0 ? (
+            makeAllRows()
+          ) : (
+            <tr>
+              <td></td>
+            </tr>
+          )}
+        </tbody>
+      </Table>
+    );
+  };
+
+  return (
+    <Accordion.Item eventKey={props.eventKey} className={thisClass}>
+      <Accordion.Header>
+        {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
+      </Accordion.Header>
+      <Accordion.Body>
+        {recipes.length > 0 ? accordionBody() : <h2>Loading...</h2>}
+      </Accordion.Body>
+    </Accordion.Item>
   );
 };
 
