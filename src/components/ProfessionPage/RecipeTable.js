@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import Table from "react-bootstrap/esm/Table";
 import "./RecipeTable.css";
-import { keyToWords } from "../../Common";
+import { specOrRenownObjectToWords } from "../../Common";
 import Accordion from "react-bootstrap/Accordion";
 
 const RecipeTable = (props) => {
@@ -32,13 +32,10 @@ const RecipeTable = (props) => {
       let output = "";
       //since specialization/renown is an object with NameOfSpecOrRenown as key, and the number as its value,
       //we need to get the name of that key, then put the number after
-      //getOwnPropertyNames will return an array of the keys in our object - we only have one key in this object
-      let nestedKeyName = Object.getOwnPropertyNames(keyValue)[0];
-      output += keyToWords(nestedKeyName);
-      //put a space, then get the number that's located in our object (the value of nestedKeyName)
-      output += ` (${
-        Object.getOwnPropertyDescriptor(keyValue, nestedKeyName).value
-      })`;
+      //the helper method in Common (specOrRenownObjectToWords) will give us an array
+      //index 0 is our key (formatted as we want), index 1 is the level needed
+      let keyAndValueOfSpecOrRenown = specOrRenownObjectToWords(keyValue);
+      output = `${keyAndValueOfSpecOrRenown[0]} (${keyAndValueOfSpecOrRenown[1]})`;
       return output;
     }
     return keyValue;
@@ -87,7 +84,7 @@ const RecipeTable = (props) => {
         {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
       </Accordion.Header>
       <Accordion.Body>
-        {recipes.length > 0 ? accordionBody() : <h2>Loading...</h2>}
+        { recipes.length > 0 ? accordionBody() : <h2>Loading...</h2>}
       </Accordion.Body>
     </Accordion.Item>
   );

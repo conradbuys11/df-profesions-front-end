@@ -1,45 +1,83 @@
-const test = () => {
-    return "Hello, world!"
-}
+const specOrRenownObjectToWords = (obj) => {
+  // obj is a passed in renown or specialization level requirement
+  // ex: {IskarraTuskarr: 15}
+  // we want to return an array with two indexes: first is the key as a string, second is the level
+  // ie, ["Iskarra Tuskarr", 15]
+  let output = [];
 
-const keyToWords = word => {
-    let regex = word.matchAll(/[A-Z][a-z]*/g);
-    let words = []
-    for(let word of regex){
-        //regex iterator is wack, it's an array of arrays
-        //if we iterate through each array, taking that [0] gives the word
-        words.push(word[0]);
-    }
-    // TO-DO: SWITCH STATEMENT FOR SOME SPECIAL CASES
-    // ie E Z Thro should be EZ-Thro
-    // anything with an apostrophe (it won't have an apostrophe as a key!), ie Artisan's Consortium
-    switch(words[0]){
-        case "E":
-            return "EZ-Thro";
-        case "Artisans":
-            return "Artisan's Consortium"
-        case "Belts":
-            return ktwHelperMethod(words);
-        case "Boots":
-            return ktwHelperMethod(words);
-        default:
-            return words.join(" ");
-    }
-}
+  // getOwnPropertyNames gives us an array of the keys as strings
+  // this obj only has one key, so it will be an array of length 1
+  let keyName = Object.getOwnPropertyNames(obj)[0];
+  output.push(keyToWords(keyName));
 
-const ktwHelperMethod = words => {
-    //if this is BracersLeather or BootsMail, OR BootsLeather or BootsMail
-    //return Bracers (Leather) or Bracers (Mail)
-    if(words.length > 1){
-        return `${words[0]} (${words[1]})`
-    }
-    else{
-        return words[0];
-    }
-}
+  // now we want to push the value that the key is pointing to
+  let valueAtKeyName = Object.getOwnPropertyDescriptor(obj, keyName).value;
+  output.push(valueAtKeyName);
 
-const largeIconToMedium = icon => {
-    return icon.replace(/large/g, "medium");
-}
+  return output;
+};
 
-export { test, keyToWords, largeIconToMedium }
+const keyToWords = (word) => {
+  let regex = word.matchAll(/[A-Z][a-z]*/g);
+  let words = [];
+  for (let word of regex) {
+    //regex iterator is wack, it's an array of arrays
+    //if we iterate through each array, taking that [0] gives the word
+    words.push(word[0]);
+  }
+  // TO-DO: SWITCH STATEMENT FOR SOME SPECIAL CASES
+  // ie E Z Thro should be EZ-Thro
+  // anything with an apostrophe (it won't have an apostrophe as a key!), ie Artisan's Consortium
+  switch (words[0]) {
+    case "E":
+      return "EZ-Thro";
+    case "Artisans":
+      return "Artisan's Consortium";
+    case "Belts":
+      return ktwHelperMethod(words);
+    case "Boots":
+      return ktwHelperMethod(words);
+    default:
+      return words.join(" ");
+  }
+};
+
+const ktwHelperMethod = (words) => {
+  //if this is BracersLeather or BootsMail, OR BootsLeather or BootsMail
+  //return Bracers (Leather) or Bracers (Mail)
+  if (words.length > 1) {
+    return `${words[0]} (${words[1]})`;
+  } else {
+    return words[0];
+  }
+};
+
+const largeIconToMedium = (icon) => {
+  return icon.replace(/large/g, "medium");
+};
+
+const capitalizeWord = (word) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
+const websiteLooksLikeCrapNotice = () => {
+  return (
+    <h2 className="header-med">
+      Please note: The formatting of this page is under construction. Current
+      focus is on getting the info on the page. Formatting is coming later.
+    </h2>
+  );
+};
+
+const isObjectEmpty = (obj) => {
+  return Object.keys(obj).length === 0;
+};
+
+export {
+  specOrRenownObjectToWords,
+  keyToWords,
+  largeIconToMedium,
+  capitalizeWord,
+  websiteLooksLikeCrapNotice,
+  isObjectEmpty,
+};

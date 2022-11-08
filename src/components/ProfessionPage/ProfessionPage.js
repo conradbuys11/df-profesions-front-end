@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { keyToWords, largeIconToMedium } from "../../Common";
+import { useParams, Link } from "react-router-dom";
+import {
+  capitalizeWord,
+  largeIconToMedium,
+  websiteLooksLikeCrapNotice,
+} from "../../Common";
 import SpecializationRecipes from "./SpecializationRecipes";
 import TrainerRecipes from "./TrainerRecipes";
 import RenownRecipes from "./RenownRecipes";
@@ -53,7 +57,7 @@ const ProfessionPage = (props) => {
     return () => {
       fetching = false;
     };
-  }, [name]);
+  }, [name, props.URL]);
 
   const makeRow = (recipe, firstColumn) => {
     /* 
@@ -70,7 +74,7 @@ const ProfessionPage = (props) => {
           ) : (
             "(ICON)"
           )}{" "}
-          {recipe.name}
+          <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
         </td>
         <td>{recipe.category}</td>
         <td>
@@ -104,75 +108,14 @@ const ProfessionPage = (props) => {
     }
   };
 
-  const makeFinishingReagentTable = (fReagents) => {
-    let rows = [];
-    try {
-      fReagents.forEach((fReagent) => {
-        recipeKey += 1;
-        rows.push(
-          <li key={`fr-${recipeKey}`} className="prof-list-item">
-            {/* if we have any finishing reagents, we use our gross helper method to convert the key/value pair to words 
-                        otherwise, we completely ignore putting data in 
-                        might want to put the check BEFORE the push? */}
-            {fReagent.reagentType}
-            {Object.keys(fReagent.requiredSpecializationLevel).length > 0
-              ? ` (via ${fReagentSpecLevelToWords(
-                  fReagent.requiredSpecializationLevel
-                )})`
-              : ""}
-          </li>
-        );
-      });
-      return rows;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fReagentSpecLevelToWords = (obj) => {
-    let length = Object.keys(obj).length;
-    let text = "";
-    if (length === 1) {
-      return keyToWords(Object.keys(obj)[0]);
-    } else if (length > 1) {
-      for (let i = 0; i < length; i++) {
-        let rawName = Object.keys(obj)[i];
-        let keyName = keyToWords(rawName);
-        //valueNum is a really disgusting way of saying, get value of the key at position i
-        let valueNum = Object.getOwnPropertyDescriptor(obj, rawName).value;
-
-        //if this is the last specialization/level, hit em with the "or this"
-        if (i + 1 === length) {
-          text += `or ${keyName} ${valueNum}`;
-        } else {
-          text += `${keyName} ${valueNum}, `;
-        }
-        //example might be "Burning 10, Wafting 10, or Sophic 10"
-      }
-      return text;
-    }
-  };
-
-  let backupID = 0;
-
-  const getBackupID = () => {
-    backupID += 1;
-    return backupID;
-  };
-
-  //this should really go in a separate library of helper functions
-  const capitalizeWord = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
-
   //temp function while we're not calling on DB
-  const iconURL = `https://wow.zamimg.com/images/wow/icons/large/ui_profession_${name}.jpg`;
+  const iconURL = `https://wow.zamimg.com/images/wow/icons/large/ui_profession_${name.toLowerCase()}.jpg`;
 
   return (
     <div className="Profession-Page">
+      {websiteLooksLikeCrapNotice()}
       <img src={iconURL} alt={`${name} icon`} />
       <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
-      <h4>Under Construction - Temp Page</h4>
       <br /> <br />
       <Accordion alwaysOpen="true" flush>
         <TrainerRecipes
