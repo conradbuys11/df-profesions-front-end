@@ -6,6 +6,7 @@ import {
   keyToWords,
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
+  correctFoozlesIconURL,
 } from "../../Common";
 import "./RecipePage.css";
 
@@ -69,7 +70,7 @@ const RecipePage = (props) => {
           {/* one again want data to look like this:
                     3x (icon) Item Name */}
           {material.item.icon ? (
-            <img src={material.item.icon} alt="" />
+            <img src={correctFoozlesIconURL(material.item.icon)} alt="" />
           ) : (
             "(ICON)"
           )}{" "}
@@ -144,6 +145,14 @@ const RecipePage = (props) => {
     ) : (
       <div className="Recipe-Page">
         {websiteLooksLikeCrapNotice()}
+        {recipe.item.icon ? (
+          <img
+            src={correctFoozlesIconURL(recipe.item.icon)}
+            alt="recipe icon"
+          />
+        ) : (
+          <h5 className="temp-center">(ICON)</h5>
+        )}
         <h1 className="header-xl">{recipe.name}</h1>
         <p className="recipe-page-pg">
           Profession:{" "}

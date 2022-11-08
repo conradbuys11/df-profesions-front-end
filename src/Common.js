@@ -73,6 +73,14 @@ const isObjectEmpty = (obj) => {
   return Object.keys(obj).length === 0;
 };
 
+const correctFoozlesIconURL = (iconURL) => {
+  //just fixing my dummy mistake until i re-seed the db
+  return iconURL.replace(
+    /inv_elementalspiritfoozles/g,
+    "inv_10_elementalspiritfoozles"
+  );
+};
+
 export {
   specOrRenownObjectToWords,
   keyToWords,
@@ -80,4 +88,5 @@ export {
   capitalizeWord,
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
+  correctFoozlesIconURL,
 };

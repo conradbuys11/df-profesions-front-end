@@ -4,6 +4,7 @@ import {
   capitalizeWord,
   largeIconToMedium,
   websiteLooksLikeCrapNotice,
+  correctFoozlesIconURL,
 } from "../../Common";
 import SpecializationRecipes from "./SpecializationRecipes";
 import TrainerRecipes from "./TrainerRecipes";
@@ -13,20 +14,15 @@ import "./ProfessionPage.css";
 import Accordion from "react-bootstrap/Accordion";
 
 /*
-the info that professions have in the DB:
-id, name, icon,
-tools (item, has many), first_accessories (item, has many), recipes (has many), specializations (has many)
 
-the info we're gonna need for displaying recipes:
-recipe name, icon, required prof level, required renown & specialization level (incase that's part of that)
-probably more stuff like materials but let's stick with the basics rn
+TODO: add more profession info. descriptions of:
+finishing reagents (first, category. ie, polishing cloth. then, who makes them (ie tailors)? then, all the examples of that reagent, in an accordion maybe?
+tools & accessories (who makes them & maybe a link to the better versions?)
 
-will probably want to break this into multiple pages/components
-ie a Trainer Recipes section/component, a Renown Recipes section/component, Specialization Recipes, PvP Recipes, Other Recipes
-that way we can easily break up the sections & have space between them
+MAYBE TODO: separate other recipes into categories
+ie, PvP Recipes. Raid Drop. Dungeon Drop. World Drop.
 
-do i also want to allow folks to sort/filter by certain criteria?
-the answer is yes i just need to plan it out
+MAYBE TODO: allow folks to sort/filter by certain criteria
 ie only trainer recipes, only renown recipes, sort by category, etc.
 */
 
@@ -70,7 +66,10 @@ const ProfessionPage = (props) => {
         <td>{firstColumn}</td>
         <td>
           {recipe.item.icon ? (
-            <img src={largeIconToMedium(recipe.item.icon)} alt="" />
+            <img
+              src={largeIconToMedium(correctFoozlesIconURL(recipe.item.icon))}
+              alt=""
+            />
           ) : (
             "(ICON)"
           )}{" "}
@@ -94,7 +93,12 @@ const ProfessionPage = (props) => {
             {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
             {material.item.icon ? (
-              <img src={largeIconToMedium(material.item.icon)} alt="" />
+              <img
+                src={largeIconToMedium(
+                  correctFoozlesIconURL(material.item.icon)
+                )}
+                alt=""
+              />
             ) : (
               "(ICON)"
             )}{" "}
