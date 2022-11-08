@@ -70,7 +70,29 @@ const websiteLooksLikeCrapNotice = () => {
 };
 
 const isObjectEmpty = (obj) => {
+  // returns bool of whether this obj is {}
   return Object.keys(obj).length === 0;
+};
+
+const isLastItemInArray = (array, index) => {
+  //returns bool of if this is the last item in the array
+  return array.length + 1 === index;
+};
+
+const statRangeText = (array) => {
+  // for item level & stat numbers on gear, we want to format it in a certain way
+  // so if there are 5 possible item levels for a piece of gear, we want those 5 numbers to look like:
+  // 333/335/338/340/343
+  // that is what this method does, based on an array of numbers given
+
+  let text = "";
+  for (let i = 0; i < array.length; i++) {
+    text += array[i];
+    if (!isLastItemInArray(array, i)) {
+      text += "/";
+    }
+  }
+  return text;
 };
 
 const correctFoozlesIconURL = (iconURL) => {
@@ -89,4 +111,6 @@ export {
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
   correctFoozlesIconURL,
+  isLastItemInArray,
+  statRangeText,
 };
