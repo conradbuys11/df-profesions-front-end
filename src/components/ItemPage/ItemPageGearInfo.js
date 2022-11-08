@@ -8,11 +8,12 @@ const ItemPageGearInfo = (props) => {
   // ie, Cloth Chest
   // otherwise, slot comes before armorWeaponType
   // ie, One Handed Axe
-  const firstLine = item.armorWeaponType.matches(
-    /(Cloth)|(Leather)|(Mail)|(Plate)/g
-  )
-    ? `${item.armorWeaponType} ${item.slot}`
-    : `${item.slot} ${item.armorWeaponType}`;
+  // don't forget, offhands do not have a type. if we don't have a armorWeaponType, just print the slot
+  const firstLine = item.armorWeaponType
+    ? item.armorWeaponType.matches(/(Cloth)|(Leather)|(Mail)|(Plate)/g)
+      ? `${item.armorWeaponType} ${item.slot}`
+      : `${item.slot} ${item.armorWeaponType}`
+    : item.slot;
 
   const itemLevelLine = `Item Level ${statRangeText(item.itemLevel)}`;
 
