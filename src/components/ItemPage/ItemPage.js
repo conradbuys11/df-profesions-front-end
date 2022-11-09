@@ -70,7 +70,11 @@ const ItemPage = (props) => {
     <div className="Item-Page">
       {websiteLooksLikeCrapNotice()}
       {item.icon ? (
-        <img src={correctFoozlesIconURL(item.icon)} alt="item icon" />
+        <img
+          className="img-centered"
+          src={correctFoozlesIconURL(item.icon)}
+          alt="item icon"
+        />
       ) : (
         <h5 className="temp-center">(ICON)</h5>
       )}
@@ -91,7 +95,7 @@ const ItemPage = (props) => {
       )}
 
       {/* gear stuff */}
-      {!item.slot ? <></> : <ItemPageGearInfo />}
+      {!item.slot ? <></> : <ItemPageGearInfo item={item} />}
 
       {/* crafted by, stuff */}
 

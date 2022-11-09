@@ -149,64 +149,68 @@ const RecipePage = (props) => {
           <img
             src={correctFoozlesIconURL(recipe.item.icon)}
             alt="recipe icon"
+            className="img-centered"
           />
         ) : (
           <h5 className="temp-center">(ICON)</h5>
         )}
         <h1 className="header-xl">{recipe.name}</h1>
-        <p className="recipe-page-pg">
-          Profession:{" "}
-          {
-            <Link to={`/professions/${recipe.profession.name.toLowerCase()}`}>
-              {recipe.profession.name}
-            </Link>
-          }
-        </p>
-        <p className="recipe-page-pg">
-          Crafts <Link to={`/items/${recipe.item.id}`}>{recipe.item.name}</Link>{" "}
-          x{recipe.numberCrafted}.
-        </p>
-        {recipe.skillUpAmount > 1 ? (
-          <p>
-            <span>{`Gives ${recipe.skillUpAmount} profession levels on craft! (while orange)`}</span>
+        <div className="recipe-component">
+          <p className="recipe-page-pg">
+            Profession:{" "}
+            {
+              <Link to={`/professions/${recipe.profession.name.toLowerCase()}`}>
+                {recipe.profession.name}
+              </Link>
+            }
           </p>
-        ) : (
-          <></>
-        )}
-        <p>
-          <span>Category:</span> {recipe.category}
-        </p>
-        {recipe.difficulty ? (
-          <p>
-            <span>Difficulty:</span> {recipe.difficulty}
+          <p className="recipe-page-pg">
+            Crafts{" "}
+            <Link to={`/items/${recipe.item.id}`}>{recipe.item.name}</Link> x
+            {recipe.numberCrafted}.
           </p>
-        ) : (
-          <></>
-        )}
-        <p>
-          <span>Required Location:</span>{" "}
-          {recipe.requiredLocation ? recipe.requiredLocation : "N/A"}
-        </p>
-        <p>
-          <span>Obtained From:</span> {displayLearnedFromInfo()}
-        </p>
-        {recipe.notes ? (
+          {recipe.skillUpAmount > 1 ? (
+            <p>
+              <span>{`Gives ${recipe.skillUpAmount} profession levels on craft! (while orange)`}</span>
+            </p>
+          ) : (
+            <></>
+          )}
           <p>
-            <span>(Notes on obtaining: {recipe.notes})</span>
+            <span>Category:</span> {recipe.category}
           </p>
-        ) : (
-          <></>
-        )}
-        <h3>Materials Needed:</h3>
-        <ul>{makeMaterialList(recipe.materials)}</ul>
-        {recipe.finishingReagents.length === 0 ? (
-          <></>
-        ) : (
-          <>
-            <h3>Finishing Reagents:</h3>
-            <ul>{makeFinishingReagentList(recipe.finishingReagents)}</ul>
-          </>
-        )}
+          {recipe.difficulty ? (
+            <p>
+              <span>Difficulty:</span> {recipe.difficulty}
+            </p>
+          ) : (
+            <></>
+          )}
+          <p>
+            <span>Required Location:</span>{" "}
+            {recipe.requiredLocation ? recipe.requiredLocation : "N/A"}
+          </p>
+          <p>
+            <span>Obtained From:</span> {displayLearnedFromInfo()}
+          </p>
+          {recipe.notes ? (
+            <p>
+              <span>(Notes on obtaining: {recipe.notes})</span>
+            </p>
+          ) : (
+            <></>
+          )}
+          <h3>Materials Needed:</h3>
+          <ul>{makeMaterialList(recipe.materials)}</ul>
+          {recipe.finishingReagents.length === 0 ? (
+            <></>
+          ) : (
+            <>
+              <h3>Finishing Reagents:</h3>
+              <ul>{makeFinishingReagentList(recipe.finishingReagents)}</ul>
+            </>
+          )}
+        </div>
       </div>
     )
   );

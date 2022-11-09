@@ -102,7 +102,8 @@ const ProfessionPage = (props) => {
             ) : (
               "(ICON)"
             )}{" "}
-            {material.quantity}x {material.item.name}
+            {material.quantity}x{" "}
+            <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
           </li>
         );
       });

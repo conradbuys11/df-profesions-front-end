@@ -4,6 +4,10 @@ import { statRangeText } from "../../Common";
 const ItemPageGearInfo = (props) => {
   const item = props.item;
 
+  const uniqueEquipped = item.isUniqueEquipped
+    ? `Unique Equipped: ${item.isUniqueEquipped}`
+    : "";
+
   // if this is an armor piece for fighting, we want armorWeaponType to come before slot
   // ie, Cloth Chest
   // otherwise, slot comes before armorWeaponType
@@ -67,6 +71,7 @@ const ItemPageGearInfo = (props) => {
   return (
     <div>
       <h2>Gear Stats:</h2>
+      {uniqueEquipped ? <p>{uniqueEquipped}</p> : <></>}
       <p>
         {firstLine}, {itemLevelLine}
       </p>

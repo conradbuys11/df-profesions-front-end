@@ -25,7 +25,7 @@ function App() {
           path="/professions/:name"
           element={<ProfessionPage URL={URL} />}
         />
-        <Route path="/items/:id" element={<ItemPage />} />
+        <Route path="/items/:id" element={<ItemPage URL={URL} />} />
         <Route path="/recipes/:id" element={<RecipePage URL={URL} />} />
       </Routes>
       <Footer />

@@ -97,6 +97,12 @@ h1,h2{
   font-style: italic;
 }
 
+.img-centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
