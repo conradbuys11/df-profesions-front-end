@@ -44,13 +44,9 @@ const RecipeTable = (props) => {
   const makeAllRows = () => {
     //key name is what our first column is, ie requiredProfessionLevel or requiredSpecializationLevel
     //Object.getOwnPropertyDescriptor.value basically just says hey, get the value of this key (property descriptor) in this object
-    let rows = [];
-    recipes.forEach((recipe) => {
-      rows.push(
-        props.makeRow(recipe, processFirstColumn(recipe, props.keyName))
-      );
+    return recipes.map((recipe) => {
+      return props.makeRow(recipe, processFirstColumn(recipe, props.keyName));
     });
-    return rows;
   };
 
   const accordionBody = () => {
@@ -84,7 +80,7 @@ const RecipeTable = (props) => {
         {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
       </Accordion.Header>
       <Accordion.Body>
-        { recipes.length > 0 ? accordionBody() : <h2>Loading...</h2>}
+        {recipes.length > 0 ? accordionBody() : <h2>Loading...</h2>}
       </Accordion.Body>
     </Accordion.Item>
   );

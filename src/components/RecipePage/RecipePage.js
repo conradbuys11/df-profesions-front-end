@@ -13,6 +13,8 @@ import "./RecipePage.css";
 const RecipePage = (props) => {
   // props: URL
 
+  // TODO: split this into components, there's way too much stuff in here
+
   const { id } = useParams();
   const [recipe, setRecipe] = useState({});
 
@@ -74,7 +76,8 @@ const RecipePage = (props) => {
           ) : (
             "(ICON)"
           )}{" "}
-          {material.quantity}x {material.item.name}
+          {material.quantity}x{" "}
+          <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
         </li>
       );
     });
@@ -154,7 +157,10 @@ const RecipePage = (props) => {
         ) : (
           <h5 className="temp-center">(ICON)</h5>
         )}
-        <h1 className="header-xl">{recipe.name}</h1>
+        <h1 className="header-xl">Recipe: {recipe.name}</h1>
+        <h2 className="header-med">
+          <Link to={`/items/${recipe.item.id}`}>Item Page</Link>
+        </h2>
         <div className="recipe-component">
           <p className="recipe-page-pg">
             Profession:{" "}

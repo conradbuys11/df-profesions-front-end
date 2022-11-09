@@ -79,8 +79,7 @@ const ItemPage = (props) => {
         <h5 className="temp-center">(ICON)</h5>
       )}
       <h1 className="header-xl">{item.name}</h1>
-      <p>{item.bindOn ? `Binds on ${item.bindOn}` : "Does not bind"}</p>
-      <p>{item.description ? item.description : "(DESCRIPTION GOES HERE)"}</p>
+      {item.bindOn ? <p>{`Binds on ${item.bindOn}`}</p> : <></>}
       {item.stacksTo > 1 ? <p>Stacks to {item.stacksTo}</p> : <></>}
       {item.otherType ? <p>{item.otherType}</p> : <></>}
       {item.qualityLevels > 1 ? (
@@ -93,13 +92,27 @@ const ItemPage = (props) => {
       ) : (
         <></>
       )}
+      {item.description ? <p>{item.description}</p> : <></>}
+      {item.notes ? (
+        <p className="text-med-ital">(Conrad's notes: {item.notes})</p>
+      ) : (
+        <></>
+      )}
 
       {/* gear stuff */}
-      {!item.slot ? <></> : <ItemPageGearInfo item={item} />}
+      {item.slot ? (
+        <ItemPageGearInfo item={item} />
+      ) : item.onUse ? (
+        <p>{item.onUse}</p>
+      ) : (
+        <></>
+      )}
 
       {/* crafted by, stuff */}
+      {item.recipes.length > 1 ? <ItemPageCraftedBy item={item} /> : <></>}
 
       {/* used as material for, stuff */}
+      {item.materials.length > 1 ? <ItemPageReagentFor item={item} /> : <></>}
     </div>
   );
 };

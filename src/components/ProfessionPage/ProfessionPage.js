@@ -84,33 +84,24 @@ const ProfessionPage = (props) => {
   };
 
   const makeMaterialTable = (materials) => {
-    let rows = [];
-    try {
-      materials.forEach((material) => {
-        recipeKey += 1;
-        rows.push(
-          <li key={`mt-${recipeKey}`} className="prof-list-item">
-            {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
+    return materials.map((material) => {
+      return (
+        <li key={`mt-${material.id}`} className="prof-list-item">
+          {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
-            {material.item.icon ? (
-              <img
-                src={largeIconToMedium(
-                  correctFoozlesIconURL(material.item.icon)
-                )}
-                alt=""
-              />
-            ) : (
-              "(ICON)"
-            )}{" "}
-            {material.quantity}x{" "}
-            <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
-          </li>
-        );
-      });
-      return rows;
-    } catch (error) {
-      console.log(error);
-    }
+          {material.item.icon ? (
+            <img
+              src={largeIconToMedium(correctFoozlesIconURL(material.item.icon))}
+              alt=""
+            />
+          ) : (
+            "(ICON)"
+          )}{" "}
+          {material.quantity}x{" "}
+          <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
+        </li>
+      );
+    });
   };
 
   //temp function while we're not calling on DB
