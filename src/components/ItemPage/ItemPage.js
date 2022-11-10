@@ -6,6 +6,7 @@ import {
   correctFoozlesIconURL,
   isLastItemInArray,
   statRangeText,
+  displayIconMedium,
 } from "../../Common";
 import { useParams } from "react-router-dom";
 import ItemPageCraftedBy from "./ItemPageCraftedBy";
@@ -70,11 +71,7 @@ const ItemPage = (props) => {
     <div className="Item-Page">
       {websiteLooksLikeCrapNotice()}
       {item.icon ? (
-        <img
-          className="img-centered"
-          src={correctFoozlesIconURL(item.icon)}
-          alt="item icon"
-        />
+        displayIconMedium(item.icon, "img-centered")
       ) : (
         <h5 className="temp-center">(ICON)</h5>
       )}

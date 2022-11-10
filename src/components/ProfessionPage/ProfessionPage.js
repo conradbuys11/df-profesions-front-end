@@ -1,10 +1,10 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   capitalizeWord,
-  largeIconToMedium,
   websiteLooksLikeCrapNotice,
-  correctFoozlesIconURL,
+  displayIconMedium,
+  displayIconLarge,
 } from "../../Common";
 import SpecializationRecipes from "./SpecializationRecipes";
 import TrainerRecipes from "./TrainerRecipes";
@@ -31,7 +31,7 @@ const ProfessionPage = (props) => {
   const { name } = useParams();
   // const URL = 'http://localhost:3001';
   const [profession, setProfession] = useState({});
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState(null);
   const [activeKeys, setActiveKeys] = useState([]);
 
   let recipeKey = 0;
@@ -58,8 +58,6 @@ const ProfessionPage = (props) => {
     };
   }, [name, props.URL]);
 
-  const ToggleAllAccordionItems = (bool) => {};
-
   const makeRow = (recipe, firstColumn) => {
     /* 
         "firstColumn" makes this reusable - ie, trainer recipes have the level needed for their first column,
@@ -70,14 +68,7 @@ const ProfessionPage = (props) => {
       <tr>
         <td>{firstColumn}</td>
         <td>
-          {recipe.item.icon ? (
-            <img
-              src={largeIconToMedium(correctFoozlesIconURL(recipe.item.icon))}
-              alt=""
-            />
-          ) : (
-            "(ICON)"
-          )}{" "}
+          {recipe.item.icon ? displayIconMedium(recipe.item.icon) : "(ICON)"}{" "}
           <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
         </td>
         <td>{recipe.category}</td>
@@ -94,14 +85,9 @@ const ProfessionPage = (props) => {
         <li key={`mt-${material.id}`} className="prof-list-item">
           {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
-          {material.item.icon ? (
-            <img
-              src={largeIconToMedium(correctFoozlesIconURL(material.item.icon))}
-              alt=""
-            />
-          ) : (
-            "(ICON)"
-          )}{" "}
+          {material.item.icon
+            ? displayIconMedium(material.item.icon)
+            : "(ICON)"}{" "}
           {material.quantity}x{" "}
           <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
         </li>
@@ -115,7 +101,7 @@ const ProfessionPage = (props) => {
   return (
     <div className="Profession-Page">
       {websiteLooksLikeCrapNotice()}
-      <img src={iconURL} alt={`${name} icon`} />
+      {displayIconLarge(iconURL)}
       <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
       <br /> <br />
       <Accordion

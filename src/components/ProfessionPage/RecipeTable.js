@@ -12,7 +12,7 @@ const RecipeTable = (props) => {
   //this url is gonna be custom - ie the full thing, not just localhost:3001
 
   let thisClass = props.thisClass;
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState(null);
 
   useEffect(() => {
     let fetching = true;
@@ -30,7 +30,6 @@ const RecipeTable = (props) => {
   const setKeys = () => {
     //if our key is currently in the array of active keys, turn it off
     //otherwise, add it to it
-    console.log(props.activeKeys);
     props.activeKeys.includes(props.eventKey)
       ? props.setActiveKeys(
           props.activeKeys.filter((key) => key !== props.eventKey)
@@ -74,7 +73,7 @@ const RecipeTable = (props) => {
         </thead>
 
         <tbody>
-          {recipes.legnth !== 0 ? (
+          {recipes && recipes.length !== 0 ? (
             makeAllRows()
           ) : (
             <tr>
@@ -83,6 +82,16 @@ const RecipeTable = (props) => {
           )}
         </tbody>
       </Table>
+    );
+  };
+
+  const checkIfEmptyLoadingOrDone = () => {
+    !recipes ? (
+      <h2>Loading...</h2>
+    ) : recipes.length > 0 ? (
+      accordionBody()
+    ) : (
+      <h2>No recipes found.</h2>
     );
   };
 
@@ -96,7 +105,16 @@ const RecipeTable = (props) => {
         {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
       </Accordion.Header>
       <Accordion.Body>
-        {recipes.length > 0 ? accordionBody() : <h2>Loading...</h2>}
+        {/* if recipes is null (its default), we say that we're loading
+        if recipes is an array with stuff in it, we have loaded stuff
+        if recipes is an array with nothing it in, we say there's no info */}
+        {!recipes ? (
+          <h2>Loading...</h2>
+        ) : recipes.length > 0 ? (
+          accordionBody()
+        ) : (
+          <h2>No recipes found.</h2>
+        )}
       </Accordion.Body>
     </Accordion.Item>
   );
