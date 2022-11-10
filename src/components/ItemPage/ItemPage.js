@@ -3,9 +3,6 @@ import "./ItemPage.css";
 import {
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
-  correctFoozlesIconURL,
-  isLastItemInArray,
-  statRangeText,
   displayIconMedium,
 } from "../../Common";
 import { useParams } from "react-router-dom";

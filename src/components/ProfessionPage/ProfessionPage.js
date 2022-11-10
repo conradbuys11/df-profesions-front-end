@@ -13,6 +13,8 @@ import OtherRecipes from "./OtherRecipes";
 import "./ProfessionPage.css";
 import Accordion from "react-bootstrap/Accordion";
 import ProfessionAccordionButton from "./ProfessionAccordionButton";
+import ProfessionDescription from "./ProfessionDescription";
+import RecipesSection from "./RecipesSection";
 
 /*
 
@@ -96,57 +98,18 @@ const ProfessionPage = (props) => {
   };
 
   //temp function while we're not calling on DB
-  const iconURL = `https://wow.zamimg.com/images/wow/icons/large/ui_profession_${name.toLowerCase()}.jpg`;
 
   return (
     <div className="Profession-Page">
       {websiteLooksLikeCrapNotice()}
-      {displayIconLarge(iconURL)}
-      <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
-      <br /> <br />
-      <Accordion
-        alwaysOpen="true"
-        flush
-        defaultActiveKey={[]}
-        activeKey={activeKeys}
-      >
-        <ProfessionAccordionButton
-          activeKeys={activeKeys}
-          setActiveKeys={setActiveKeys}
-        />
-        <TrainerRecipes
-          eventKey={0}
-          profession={profession}
-          URL={props.URL}
-          makeRow={makeRow}
-          activeKeys={activeKeys}
-          setActiveKeys={setActiveKeys}
-        />
-        <SpecializationRecipes
-          eventKey={1}
-          profession={profession}
-          URL={props.URL}
-          makeRow={makeRow}
-          activeKeys={activeKeys}
-          setActiveKeys={setActiveKeys}
-        />
-        <RenownRecipes
-          eventKey={2}
-          profession={profession}
-          URL={props.URL}
-          makeRow={makeRow}
-          activeKeys={activeKeys}
-          setActiveKeys={setActiveKeys}
-        />
-        <OtherRecipes
-          eventKey={3}
-          profession={profession}
-          URL={props.URL}
-          makeRow={makeRow}
-          activeKeys={activeKeys}
-          setActiveKeys={setActiveKeys}
-        />
-      </Accordion>
+      <ProfessionDescription profession={profession} />
+      <RecipesSection
+        profession={profession}
+        activeKeys={activeKeys}
+        setActiveKeys={setActiveKeys}
+        makeRow={makeRow}
+        URL={props.URL}
+      />
     </div>
   );
 };
