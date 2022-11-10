@@ -65,7 +65,7 @@ const ProfessionPage = (props) => {
         */
 
     return (
-      <tr>
+      <tr key={`rc-row-${recipe.id}`}>
         <td>{firstColumn}</td>
         <td>
           {recipe.item.icon ? displayIconMedium(recipe.item.icon) : "(ICON)"}{" "}
