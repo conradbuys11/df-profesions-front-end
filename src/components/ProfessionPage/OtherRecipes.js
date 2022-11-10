@@ -15,6 +15,8 @@ const RenownRecipes = (props) => {
       recipesFrom={"Other Sources"}
       firstColumnName={"Source"}
       keyName={"specialAcquisitionMethod"}
+      activeKeys={props.activeKeys}
+      setActiveKeys={props.setActiveKeys}
     />
   );
 };

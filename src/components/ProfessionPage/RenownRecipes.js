@@ -15,6 +15,8 @@ const RenownRecipes = (props) => {
       recipesFrom={"Reputation/Renown"}
       firstColumnName={"Renown & Rank"}
       keyName={"requiredRenownLevel"}
+      activeKeys={props.activeKeys}
+      setActiveKeys={props.setActiveKeys}
     />
   );
 };

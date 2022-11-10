@@ -6,7 +6,8 @@ import Accordion from "react-bootstrap/Accordion";
 
 const RecipeTable = (props) => {
   //props: eventKey, profession (obj), URL, makeRow (method, takes recipe & level learned),
-  // thisClass, recipesFrom, firstColumnName, keyName
+  // thisClass, recipesFrom, firstColumnName, keyName,
+  // activeKeys, setActiveKeys
 
   //this url is gonna be custom - ie the full thing, not just localhost:3001
 
@@ -25,6 +26,17 @@ const RecipeTable = (props) => {
         });
     }
   }, [props.URL, props.profession]);
+
+  const setKeys = () => {
+    //if our key is currently in the array of active keys, turn it off
+    //otherwise, add it to it
+    console.log(props.activeKeys);
+    props.activeKeys.includes(props.eventKey)
+      ? props.setActiveKeys(
+          props.activeKeys.filter((key) => key !== props.eventKey)
+        )
+      : props.setActiveKeys([...props.activeKeys, props.eventKey]);
+  };
 
   const processFirstColumn = (recipe, keyName) => {
     let keyValue = Object.getOwnPropertyDescriptor(recipe, keyName).value;
@@ -75,7 +87,11 @@ const RecipeTable = (props) => {
   };
 
   return (
-    <Accordion.Item eventKey={props.eventKey} className={thisClass}>
+    <Accordion.Item
+      eventKey={props.eventKey}
+      className={thisClass}
+      onClick={setKeys}
+    >
       <Accordion.Header>
         {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
       </Accordion.Header>

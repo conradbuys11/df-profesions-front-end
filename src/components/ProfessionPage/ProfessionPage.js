@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   capitalizeWord,
@@ -12,6 +12,7 @@ import RenownRecipes from "./RenownRecipes";
 import OtherRecipes from "./OtherRecipes";
 import "./ProfessionPage.css";
 import Accordion from "react-bootstrap/Accordion";
+import ProfessionAccordionButton from "./ProfessionAccordionButton";
 
 /*
 
@@ -31,6 +32,8 @@ const ProfessionPage = (props) => {
   // const URL = 'http://localhost:3001';
   const [profession, setProfession] = useState({});
   const [recipes, setRecipes] = useState([]);
+  const [activeKeys, setActiveKeys] = useState([]);
+
   let recipeKey = 0;
 
   useEffect(() => {
@@ -54,6 +57,8 @@ const ProfessionPage = (props) => {
       fetching = false;
     };
   }, [name, props.URL]);
+
+  const ToggleAllAccordionItems = (bool) => {};
 
   const makeRow = (recipe, firstColumn) => {
     /* 
@@ -113,30 +118,47 @@ const ProfessionPage = (props) => {
       <img src={iconURL} alt={`${name} icon`} />
       <h1 className="header-xl">Dragonflight {capitalizeWord(name)}</h1>
       <br /> <br />
-      <Accordion alwaysOpen="true" flush>
+      <Accordion
+        alwaysOpen="true"
+        flush
+        defaultActiveKey={[]}
+        activeKey={activeKeys}
+      >
+        <ProfessionAccordionButton
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
+        />
         <TrainerRecipes
           eventKey={0}
           profession={profession}
           URL={props.URL}
           makeRow={makeRow}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
         />
         <SpecializationRecipes
           eventKey={1}
           profession={profession}
           URL={props.URL}
           makeRow={makeRow}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
         />
         <RenownRecipes
           eventKey={2}
           profession={profession}
           URL={props.URL}
           makeRow={makeRow}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
         />
         <OtherRecipes
           eventKey={3}
           profession={profession}
           URL={props.URL}
           makeRow={makeRow}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
         />
       </Accordion>
     </div>

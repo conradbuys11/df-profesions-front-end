@@ -16,6 +16,8 @@ const TrainerRecipes = (props) => {
       recipesFrom={"Profession Trainer"}
       firstColumnName={"Level"}
       keyName={"requiredProfessionLevel"}
+      activeKeys={props.activeKeys}
+      setActiveKeys={props.setActiveKeys}
     />
   );
 };

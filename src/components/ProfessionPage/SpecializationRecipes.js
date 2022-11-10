@@ -15,6 +15,8 @@ const SpecializationRecipes = (props) => {
       recipesFrom={"Specialization Levels"}
       firstColumnName={"Spec & Level"}
       keyName={"requiredSpecializationLevel"}
+      activeKeys={props.activeKeys}
+      setActiveKeys={props.setActiveKeys}
     />
   );
 };
