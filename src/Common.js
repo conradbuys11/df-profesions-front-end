@@ -120,12 +120,19 @@ const statRangeText = (array) => {
   // so if there are 5 possible item levels for a piece of gear, we want those 5 numbers to look like:
   // 333/335/338/340/343
   // that is what this method does, based on an array of numbers given
-
   let text = "";
   for (let i = 0; i < array.length; i++) {
-    text += array[i];
-    if (!isLastItemInArray(array, i)) {
-      text += "/";
+    //if this is a socket or tinker socket, it's gonna be NULL,NULL,NULL,NULL,NULL
+    //so we want to exit if that's the case
+    if (!array[i]) {
+      break;
+    } else {
+      text += array[i];
+      //if we are not the last item in the array, and the next item in the array is NOT "",
+      //then we add a /.
+      if (!isLastItemInArray(array, i) && array[i + 1]) {
+        text += "/";
+      }
     }
   }
   return text;

@@ -14,7 +14,7 @@ const ItemPageGearInfo = (props) => {
   // ie, One Handed Axe
   // don't forget, offhands do not have a type. if we don't have a armorWeaponType, just print the slot
   const firstLine = item.armorWeaponType
-    ? item.armorWeaponType.matches(/(Cloth)|(Leather)|(Mail)|(Plate)/g)
+    ? item.armorWeaponType.match(/(Cloth)|(Leather)|(Mail)|(Plate)/g)
       ? `${item.armorWeaponType} ${item.slot}`
       : `${item.slot} ${item.armorWeaponType}`
     : item.slot;
@@ -48,10 +48,8 @@ const ItemPageGearInfo = (props) => {
     return secondaryStatLines;
   };
 
-  const equipText = item.otherInfo.effect ? item.otherInfo.effect : null;
-  const onUseText = item.otherInfo.onUse
-    ? `Use: ${item.otherInfo.onUse}`
-    : null;
+  const equipText = item.effect ? item.effect : null;
+  const onUseText = item.onUse ? `Use: ${item.onUse}` : null;
 
   let secondaryStatLineKey = 0;
 
@@ -77,7 +75,8 @@ const ItemPageGearInfo = (props) => {
       </p>
       <br />
       <p>{mainStatLine}</p>
-      {secondaryStatLines.map((line) => {
+      {console.log(secondaryStatLines)}
+      {secondaryStatLines().map((line) => {
         secondaryStatLineKey += 1;
         return <p key={`sec-stat-${secondaryStatLineKey}`}>{line}</p>;
       })}

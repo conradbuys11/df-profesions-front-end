@@ -71,11 +71,7 @@ const RecipePage = (props) => {
         <li key={`mt-${material.id}`}>
           {/* one again want data to look like this:
                     3x (icon) Item Name */}
-          {material.item.icon ? (
-            displayIconLarge(material.item.icon)
-          ) : (
-            "(ICON)"
-          )}{" "}
+          {material.item.icon ? displayIconLarge(material.item.icon) : "(ICON)"}{" "}
           {material.quantity}x{" "}
           <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
         </li>
@@ -148,8 +144,8 @@ const RecipePage = (props) => {
     ) : (
       <div className="Recipe-Page">
         {websiteLooksLikeCrapNotice()}
-        {recipe.item.icon ? (
-          displayIconLarge(recipe.item.icon, "img-centered")
+        {recipe.icon ? (
+          displayIconLarge(recipe.icon, "img-centered")
         ) : (
           <h5 className="temp-center">(ICON)</h5>
         )}

@@ -3,7 +3,7 @@ import "./ItemPage.css";
 import {
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
-  displayIconMedium,
+  displayIconLarge,
 } from "../../Common";
 import { useParams } from "react-router-dom";
 import ItemPageCraftedBy from "./ItemPageCraftedBy";
@@ -68,7 +68,7 @@ const ItemPage = (props) => {
     <div className="Item-Page">
       {websiteLooksLikeCrapNotice()}
       {item.icon ? (
-        displayIconMedium(item.icon, "img-centered")
+        displayIconLarge(item.icon, "img-centered")
       ) : (
         <h5 className="temp-center">(ICON)</h5>
       )}
@@ -103,10 +103,10 @@ const ItemPage = (props) => {
       )}
 
       {/* crafted by, stuff */}
-      {item.recipes.length > 1 ? <ItemPageCraftedBy item={item} /> : <></>}
+      {item.recipes.length > 0 ? <ItemPageCraftedBy item={item} /> : <></>}
 
       {/* used as material for, stuff */}
-      {item.materials.length > 1 ? <ItemPageReagentFor item={item} /> : <></>}
+      {item.materials.length > 0 ? <ItemPageReagentFor item={item} /> : <></>}
     </div>
   );
 };

@@ -70,7 +70,7 @@ const ProfessionPage = (props) => {
       <tr key={`rc-row-${recipe.id}`}>
         <td>{firstColumn}</td>
         <td>
-          {recipe.item.icon ? displayIconMedium(recipe.item.icon) : "(ICON)"}{" "}
+          {recipe.icon ? displayIconMedium(recipe.icon) : "(ICON)"}{" "}
           <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
         </td>
         <td>{recipe.category}</td>
