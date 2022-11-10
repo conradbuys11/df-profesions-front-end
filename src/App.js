@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import { createContext } from "react";
 
 function App() {
-  const URL = "http://localhost:3001";
+  const URL = "https://dragonflight-professions-api.onrender.com";
 
   return (
     <div className="App">
