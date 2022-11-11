@@ -4,6 +4,7 @@
 
 /* space between selectors = nested inside (ie, .accordion element inside of a #Basics-Info element) */
 #Basics-Info .accordion{
+    /* accordion background is inherited - ie #c1d8fo */
     --bs-accordion-bg: inherit;
     --bs-accordion-border-width: 0;
 }
