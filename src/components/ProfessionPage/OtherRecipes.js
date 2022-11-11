@@ -2,7 +2,7 @@ import { React } from "react";
 import "./OtherRecipes.css";
 import RecipeTable from "./RecipeTable";
 
-const RenownRecipes = (props) => {
+const OtherRecipes = (props) => {
   //props: profession (object), URL, makeRow (method, takes recipe & level learned)
 
   return (
@@ -21,4 +21,4 @@ const RenownRecipes = (props) => {
   );
 };
 
-export default RenownRecipes;
+export default OtherRecipes;

@@ -5,8 +5,9 @@ import {
   isObjectEmpty,
   displayIconLarge,
   qualityToImgClass,
+  checkFetchError,
 } from "../../Common";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ItemPageCraftedBy from "./ItemPageCraftedBy";
 import ItemPageGearInfo from "./ItemPageGearInfo";
 import ItemPageReagentFor from "./ItemPageReagentFor";
@@ -23,21 +24,23 @@ const ItemPage = (props) => {
   //props: URL
   const { id } = useParams();
   const [item, setItem] = useState({});
+  const navigateTo = useNavigate();
 
   useEffect(() => {
     let fetching = true;
     fetch(`${props.URL}/items/${id}`)
-      .then((res) => res.json())
+      .then((res) => checkFetchError(res))
       .then((data) => {
         if (fetching) {
           setItem(data);
         }
-      });
+      })
+      .catch((e) => navigateTo("/oops"));
 
     return () => {
       fetching = false;
     };
-  }, [props.URL, id]);
+  }, [props.URL, id, navigateTo]);
 
   /* 
   info we need to show:

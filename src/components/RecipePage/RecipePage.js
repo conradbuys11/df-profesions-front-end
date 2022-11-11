@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {
   specOrRenownObjectToWords,
@@ -8,6 +8,7 @@ import {
   isObjectEmpty,
   displayIconLarge,
   qualityToImgClass,
+  checkFetchError,
 } from "../../Common";
 import "./RecipePage.css";
 
@@ -18,21 +19,23 @@ const RecipePage = (props) => {
 
   const { id } = useParams();
   const [recipe, setRecipe] = useState({});
+  const navigateTo = useNavigate();
 
   useEffect(() => {
     let fetching = true;
     fetch(`${props.URL}/recipes/${id}`)
-      .then((res) => res.json())
+      .then((res) => checkFetchError(res))
       .then((data) => {
         if (fetching) {
           setRecipe(data);
         }
-      });
+      })
+      .catch((e) => navigateTo("/oops"));
 
     return () => {
       fetching = false;
     };
-  }, [props.URL, id]);
+  }, [props.URL, id, navigateTo]);
 
   // creates the html for where we learn this recipe from (trainer, spec, etc.)
   const displayLearnedFromInfo = () => {

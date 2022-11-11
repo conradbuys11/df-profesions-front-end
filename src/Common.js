@@ -182,7 +182,6 @@ const checkFetchError = (res) => {
   //this replaces us putting "res.json()" in our first .then after a fetch
   //if we get a 400 on a fetch, it's gonna throw an error
   //MAKE SURE TO DO A .CATCH AFTER THE LAST .THEN!!
-  //actually, maybe don't do a .catch? checking to see if react router's error handling does it for us
   if (res.status >= 200 && res.status <= 299) {
     let data = res.json();
     return data;

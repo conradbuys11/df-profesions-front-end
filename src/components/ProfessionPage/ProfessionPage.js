@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   capitalizeWord,
   websiteLooksLikeCrapNotice,
@@ -29,6 +29,7 @@ const ProfessionPage = (props) => {
   // const URL = 'http://localhost:3001';
   const [profession, setProfession] = useState({});
   const [activeKeys, setActiveKeys] = useState([]);
+  const navigateTo = useNavigate();
 
   useEffect(() => {
     let fetching = true;
@@ -38,12 +39,13 @@ const ProfessionPage = (props) => {
         if (fetching) {
           setProfession(data);
         }
-      });
+      })
+      .catch((e) => navigateTo("/oops"));
 
     return () => {
       fetching = false;
     };
-  }, [name, props.URL]);
+  }, [name, props.URL, navigateTo]);
 
   const makeRow = (recipe, firstColumn) => {
     /* 
