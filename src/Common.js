@@ -115,7 +115,7 @@ const isLastItemInArray = (array, index) => {
   return array.length + 1 === index;
 };
 
-const statRangeText = (array) => {
+const fullStatRangeText = (array) => {
   // for item level & stat numbers on gear, we want to format it in a certain way
   // so if there are 5 possible item levels for a piece of gear, we want those 5 numbers to look like:
   // 333/335/338/340/343
@@ -138,12 +138,43 @@ const statRangeText = (array) => {
   return text;
 };
 
+const partialStatRangeText = (array) => {
+  // this is basically above but instead of getting all 5 values, we're just getting the first and last
+  // ie 333-343
+  // we ONLY USE THIS with a set of 3 or 5 numbers
+
+  if (typeof array == "object") {
+    // exit if it's a socket or tinker socket (NULL, NULL, NULL, NULL, NULL)
+    if (!array[0]) {
+      return "";
+    }
+    // text of the first and last elements in array, separated by a dash
+    return `${array[0]}-${array[array.length - 1]}`;
+  }
+  return "ERROR";
+};
+
 const correctFoozlesIconURL = (iconURL) => {
   //just fixing my dummy mistake until i re-seed the db
   return iconURL.replace(
     /inv_elementalspiritfoozles/g,
     "inv_10_elementalspiritfoozles"
   );
+};
+
+const qualityToImgClass = (quality) => {
+  switch (quality) {
+    case "Common":
+      return "item-common";
+    case "Uncommon":
+      return "item-uncommon";
+    case "Rare":
+      return "item-rare";
+    case "Epic":
+      return "item-epic";
+    default:
+      return "";
+  }
 };
 
 export {
@@ -155,7 +186,9 @@ export {
   isObjectEmpty,
   correctFoozlesIconURL,
   isLastItemInArray,
-  statRangeText,
+  fullStatRangeText,
+  partialStatRangeText,
   displayIconLarge,
   displayIconMedium,
+  qualityToImgClass,
 };

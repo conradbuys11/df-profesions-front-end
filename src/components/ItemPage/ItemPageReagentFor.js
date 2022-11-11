@@ -1,7 +1,7 @@
 import "./ItemPageReagentFor.css";
 import Table from "react-bootstrap/esm/Table";
 import { Link } from "react-router-dom";
-import { largeIconToMedium } from "../../Common";
+import { displayIconMedium, qualityToImgClass } from "../../Common";
 
 const ItemPageReagentFor = (props) => {
   // props: item
@@ -16,10 +16,10 @@ const ItemPageReagentFor = (props) => {
         <tr key={`mt-${material.id}`}>
           <td>
             {material.recipe.item.icon ? (
-              <img
-                src={largeIconToMedium(material.recipe.item.icon)}
-                alt="img icon"
-              />
+              displayIconMedium(
+                material.recipe.item.icon,
+                qualityToImgClass(material.recipe.item.quality)
+              )
             ) : (
               <span>(ICON)</span>
             )}{" "}

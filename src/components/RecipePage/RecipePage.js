@@ -7,6 +7,7 @@ import {
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
   displayIconLarge,
+  qualityToImgClass,
 } from "../../Common";
 import "./RecipePage.css";
 
@@ -71,7 +72,12 @@ const RecipePage = (props) => {
         <li key={`mt-${material.id}`}>
           {/* one again want data to look like this:
                     3x (icon) Item Name */}
-          {material.item.icon ? displayIconLarge(material.item.icon) : "(ICON)"}{" "}
+          {material.item.icon
+            ? displayIconLarge(
+                material.item.icon,
+                qualityToImgClass(material.item.quality)
+              )
+            : "(ICON)"}{" "}
           {material.quantity}x{" "}
           <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
         </li>
@@ -145,11 +151,14 @@ const RecipePage = (props) => {
       <div className="Recipe-Page">
         {websiteLooksLikeCrapNotice()}
         {recipe.icon ? (
-          displayIconLarge(recipe.icon, "img-centered")
+          displayIconLarge(
+            recipe.icon,
+            `img-centered ${qualityToImgClass(recipe.item.quality)}`
+          )
         ) : (
           <h5 className="temp-center">(ICON)</h5>
         )}
-        <h1 className="header-xl">Recipe: {recipe.name}</h1>
+        <h1 className="header-xl">{recipe.name}</h1>
         <h2 className="header-med">
           <Link to={`/items/${recipe.item.id}`}>Item Page</Link>
         </h2>

@@ -85,23 +85,9 @@ const RecipeTable = (props) => {
     );
   };
 
-  const checkIfEmptyLoadingOrDone = () => {
-    !recipes ? (
-      <h2>Loading...</h2>
-    ) : recipes.length > 0 ? (
-      accordionBody()
-    ) : (
-      <h2>No recipes found.</h2>
-    );
-  };
-
   return (
-    <Accordion.Item
-      eventKey={props.eventKey}
-      className={thisClass}
-      onClick={setKeys}
-    >
-      <Accordion.Header>
+    <Accordion.Item eventKey={props.eventKey} className={thisClass}>
+      <Accordion.Header onClick={setKeys}>
         {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
       </Accordion.Header>
       <Accordion.Body>

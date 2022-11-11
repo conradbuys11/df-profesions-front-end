@@ -103,6 +103,26 @@ h1,h2{
   margin-right: auto;
 }
 
+.item-common{
+  border: 3px solid #9f9f9f;
+}
+
+.item-uncommon{
+  border: 3px solid #1eff00;
+}
+
+.item-rare{
+  border: 3px solid #0070dd;
+}
+
+.item-epic{
+  border: 3px solid #a335ee;
+}
+
+li{
+  padding-bottom: 0.5rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

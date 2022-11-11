@@ -1,8 +1,10 @@
 import "./ItemPageGearInfo.css";
-import { statRangeText } from "../../Common";
+import { fullStatRangeText, partialStatRangeText } from "../../Common";
 
 const ItemPageGearInfo = (props) => {
   const item = props.item;
+  const armorTypesRegex =
+    /(Cloth)|(Leather)|(Mail)|(Plate)|(Tool)|(Accessory)/g;
 
   const uniqueEquipped = item.isUniqueEquipped
     ? `Unique Equipped: ${item.isUniqueEquipped}`
@@ -14,18 +16,20 @@ const ItemPageGearInfo = (props) => {
   // ie, One Handed Axe
   // don't forget, offhands do not have a type. if we don't have a armorWeaponType, just print the slot
   const firstLine = item.armorWeaponType
-    ? item.armorWeaponType.match(/(Cloth)|(Leather)|(Mail)|(Plate)/g)
-      ? `${item.armorWeaponType} ${item.slot}`
+    ? item.armorWeaponType.match(armorTypesRegex)
+      ? `${item.armorWeaponType}${
+          item.slot ? ` ${item.slot}` : ""
+        }` /* basically, if we don't have a slot, it just says the armor weapon type. otherwise, we have a space then the slot. */
       : `${item.slot} ${item.armorWeaponType}`
     : item.slot;
 
-  const itemLevelLine = `Item Level ${statRangeText(item.itemLevel)}`;
+  const itemLevelLine = `Item Level ${partialStatRangeText(item.itemLevel)}`;
 
   // since primaryStats is an array that looks like this: [["Agility", "Intellect"], [300, 301, 302, 303, 304]]
   // we want to take the second sub-array and format it, then put the stat names (formatted) after
   // ie, 300/301/302/303/304 Agility/Intellect
   const mainStatLine = item.primaryStats
-    ? `${statRangeText(item.primaryStats[1])} ${statRangeText(
+    ? `${partialStatRangeText(item.primaryStats[1])} ${fullStatRangeText(
         item.primaryStats[0]
       )}`
     : null;
@@ -40,7 +44,7 @@ const ItemPageGearInfo = (props) => {
         // so we need to format everything except the first index, then put the stat name (first index) after
         // ie, 300/301/302/303/304 Haste
         secondaryStatLines.push(
-          `${statRangeText(secondary.slice(1))} ${secondary[0]}`
+          `${partialStatRangeText(secondary.slice(1))} ${secondary[0]}`
         );
       });
     }
@@ -73,9 +77,7 @@ const ItemPageGearInfo = (props) => {
       <p>
         {firstLine}, {itemLevelLine}
       </p>
-      <br />
       <p>{mainStatLine}</p>
-      {console.log(secondaryStatLines)}
       {secondaryStatLines().map((line) => {
         secondaryStatLineKey += 1;
         return <p key={`sec-stat-${secondaryStatLineKey}`}>{line}</p>;

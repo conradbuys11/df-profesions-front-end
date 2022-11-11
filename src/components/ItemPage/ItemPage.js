@@ -4,6 +4,7 @@ import {
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
   displayIconLarge,
+  qualityToImgClass,
 } from "../../Common";
 import { useParams } from "react-router-dom";
 import ItemPageCraftedBy from "./ItemPageCraftedBy";
@@ -68,7 +69,10 @@ const ItemPage = (props) => {
     <div className="Item-Page">
       {websiteLooksLikeCrapNotice()}
       {item.icon ? (
-        displayIconLarge(item.icon, "img-centered")
+        displayIconLarge(
+          item.icon,
+          `img-centered ${qualityToImgClass(item.quality)}`
+        )
       ) : (
         <h5 className="temp-center">(ICON)</h5>
       )}
@@ -86,7 +90,7 @@ const ItemPage = (props) => {
       ) : (
         <></>
       )}
-      {item.description ? <p>{item.description}</p> : <></>}
+      {item.description ? <p>{`"${item.description}"`}</p> : <></>}
       {item.notes ? (
         <p className="text-med-ital">(Conrad's notes: {item.notes})</p>
       ) : (
@@ -94,7 +98,7 @@ const ItemPage = (props) => {
       )}
 
       {/* gear stuff */}
-      {item.slot ? (
+      {item.slot || item.armorWeaponType ? (
         <ItemPageGearInfo item={item} />
       ) : item.onUse ? (
         <p>{item.onUse}</p>

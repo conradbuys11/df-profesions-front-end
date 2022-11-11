@@ -9,7 +9,6 @@ import RecipePage from "./components/RecipePage/RecipePage";
 import ItemPage from "./components/ItemPage/ItemPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { createContext } from "react";
 
 function App() {
   const URL = "http://localhost:3001";

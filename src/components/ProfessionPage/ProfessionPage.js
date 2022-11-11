@@ -4,15 +4,9 @@ import {
   capitalizeWord,
   websiteLooksLikeCrapNotice,
   displayIconMedium,
-  displayIconLarge,
+  qualityToImgClass,
 } from "../../Common";
-import SpecializationRecipes from "./SpecializationRecipes";
-import TrainerRecipes from "./TrainerRecipes";
-import RenownRecipes from "./RenownRecipes";
-import OtherRecipes from "./OtherRecipes";
 import "./ProfessionPage.css";
-import Accordion from "react-bootstrap/Accordion";
-import ProfessionAccordionButton from "./ProfessionAccordionButton";
 import ProfessionDescription from "./ProfessionDescription";
 import RecipesSection from "./RecipesSection";
 
@@ -33,7 +27,6 @@ const ProfessionPage = (props) => {
   const { name } = useParams();
   // const URL = 'http://localhost:3001';
   const [profession, setProfession] = useState({});
-  const [recipes, setRecipes] = useState(null);
   const [activeKeys, setActiveKeys] = useState([]);
 
   let recipeKey = 0;
@@ -45,13 +38,6 @@ const ProfessionPage = (props) => {
       .then((data) => {
         if (fetching) {
           setProfession(data);
-          fetch(`${props.URL}/recipes/by_profession/${data.id}`)
-            .then((r) => r.json())
-            .then((d) => {
-              if (fetching) {
-                setRecipes(d);
-              }
-            });
         }
       });
 
@@ -70,7 +56,12 @@ const ProfessionPage = (props) => {
       <tr key={`rc-row-${recipe.id}`}>
         <td>{firstColumn}</td>
         <td>
-          {recipe.icon ? displayIconMedium(recipe.icon) : "(ICON)"}{" "}
+          {recipe.icon
+            ? displayIconMedium(
+                recipe.icon,
+                qualityToImgClass(recipe.item.quality)
+              )
+            : "(ICON)"}{" "}
           <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
         </td>
         <td>{recipe.category}</td>
@@ -88,7 +79,10 @@ const ProfessionPage = (props) => {
           {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
           {material.item.icon
-            ? displayIconMedium(material.item.icon)
+            ? displayIconMedium(
+                material.item.icon,
+                qualityToImgClass(material.item.quality)
+              )
             : "(ICON)"}{" "}
           {material.quantity}x{" "}
           <Link to={`/items/${material.item.id}`}>{material.item.name}</Link>
