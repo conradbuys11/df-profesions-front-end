@@ -1,32 +1,22 @@
 // import Test from './components/Test.js'
 import Homepage from "./components/Homepage/Homepage";
-import Basics from "./components/Basics/Basics";
-import Professions from "./components/Professions";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import ProfessionPage from "./components/ProfessionPage/ProfessionPage";
 import RecipePage from "./components/RecipePage/RecipePage";
 import ItemPage from "./components/ItemPage/ItemPage";
+import NotFoundPage from "./components/NotFoundPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 function App() {
-  const URL = "http://localhost:3001";
+  const currentLocation = useLocation().pathname;
 
   return (
     <div className="App">
       <Header />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/basics" element={<Basics />} />
-        <Route path="/professions" element={<Professions />} />
-        <Route
-          path="/professions/:name"
-          element={<ProfessionPage URL={URL} />}
-        />
-        <Route path="/items/:id" element={<ItemPage URL={URL} />} />
-        <Route path="/recipes/:id" element={<RecipePage URL={URL} />} />
-      </Routes>
+      {/* if we're at the default URL, load up the homepage! otherwise, load up whatever page we're on */}
+      {currentLocation === "/" ? <Homepage /> : <Outlet />}
       <Footer />
     </div>
   );

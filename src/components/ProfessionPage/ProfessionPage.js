@@ -30,14 +30,10 @@ const ProfessionPage = (props) => {
   const [profession, setProfession] = useState({});
   const [activeKeys, setActiveKeys] = useState([]);
 
-  // this useEffect is now being handled by react-router-dom in index.js
-  // the data is now available through useLoaderData!
   useEffect(() => {
     let fetching = true;
     fetch(`${props.URL}/professions/by_name/${capitalizeWord(name)}`)
-      .then((res) => {
-        checkFetchError(res);
-      })
+      .then((res) => checkFetchError(res))
       .then((data) => {
         if (fetching) {
           setProfession(data);
@@ -57,7 +53,6 @@ const ProfessionPage = (props) => {
 
     return (
       <tr key={`rc-row-${recipe.id}`}>
-        {console.log(profession)}
         <td>{firstColumn}</td>
         <td>
           {recipe.icon

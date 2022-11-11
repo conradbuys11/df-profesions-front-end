@@ -1,17 +1,79 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  redirect,
+  Route,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
+import App from "./App";
+import Homepage from "./components/Homepage/Homepage";
+import Basics from "./components/Basics/Basics";
+import Professions from "./components/Professions";
+import ProfessionPage from "./components/ProfessionPage/ProfessionPage";
+import ItemPage from "./components/ItemPage/ItemPage";
+import RecipePage from "./components/RecipePage/RecipePage";
+import NotFoundPage from "./components/NotFoundPage";
+import { capitalizeWord, checkFetchError } from "./Common";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+const URL = "http://localhost:3001";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />} errorElement={<NotFoundPage />}>
+      <Route path="homepage" element={<Homepage />} />
+      <Route path="basics" element={<Basics />} />
+      <Route path="professions" element={<Professions />} />
+      <Route
+        path="professions/:name"
+        element={<ProfessionPage URL={URL} />}
+        errorElement={<NotFoundPage />}
+      />
+      <Route
+        path="items/:id"
+        element={<ItemPage URL={URL} />}
+        // loader={async ({ params }) => {
+        //   fetch(`${URL}/items/${params.id}`)
+        //     .then((res) => checkFetchError(res))
+        //     .then((data) => data)
+        //     .catch((e) => {
+        //       console.log(e);
+        //       return redirect("/oops");
+        //     });
+        // }}
+      />
+      <Route
+        path="recipes/:id"
+        element={
+          <RecipePage
+            URL={URL}
+            // loader={async ({ params }) => {
+            //   fetch(`${URL}/recipes/${params.id}`)
+            //     .then((res) => checkFetchError(res))
+            //     .then((data) => data)
+            //     .catch((e) => {
+            //       console.log(e);
+            //       return redirect("/oops");
+            //     });
+            // }}
+          />
+        }
+      />
+      <Route path="oops" element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
+  )
+);
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

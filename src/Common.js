@@ -185,7 +185,6 @@ const checkFetchError = (res) => {
   //actually, maybe don't do a .catch? checking to see if react router's error handling does it for us
   if (res.status >= 200 && res.status <= 299) {
     let data = res.json();
-    console.log(data);
     return data;
   } else {
     throw Error(res.statusText);
