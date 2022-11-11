@@ -19,7 +19,6 @@ import ProfessionPage from "./components/ProfessionPage/ProfessionPage";
 import ItemPage from "./components/ItemPage/ItemPage";
 import RecipePage from "./components/RecipePage/RecipePage";
 import NotFoundPage from "./components/NotFoundPage";
-import { capitalizeWord, checkFetchError } from "./Common";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const URL = "http://localhost:3001";

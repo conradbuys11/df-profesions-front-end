@@ -2,10 +2,6 @@
 import Homepage from "./components/Homepage/Homepage";
 import "./App.css";
 import { Outlet, useLocation } from "react-router-dom";
-import ProfessionPage from "./components/ProfessionPage/ProfessionPage";
-import RecipePage from "./components/RecipePage/RecipePage";
-import ItemPage from "./components/ItemPage/ItemPage";
-import NotFoundPage from "./components/NotFoundPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
