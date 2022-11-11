@@ -5,7 +5,7 @@ const ProfessionAccordionButton = (props) => {
   const turnAllOff = () => props.setActiveKeys([]);
   const turnAllOn = () => props.setActiveKeys([0, 1, 2, 3]);
 
-  const isEverythingOn = props.activeKeys.length === 4;
+  const isEverythingOn = props.activeKeys.length > 0;
 
   return isEverythingOn ? (
     <Button variant="outline-primary" onClick={turnAllOff}>

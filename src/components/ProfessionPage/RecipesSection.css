@@ -1,3 +1,7 @@
-.Recipes-Section{
+#Recipes-Section{
     background-color: #C1D8F0;
+}
+
+#Recipes-Section .accordion{
+    --bs-accordion-bg: inherit;
 }

@@ -5,6 +5,13 @@
     transition: transform 0.25s;
 }
 
+.Disabled-Profession-Button{
+    text-align: center;
+    border: solid;
+    margin: 0.3rem 1rem;
+    background-color: #4c4c4c;
+}
+
 /* need to adjust the margins when the page is xs - the buttons are too big */
 
 .Profession-Button:hover{

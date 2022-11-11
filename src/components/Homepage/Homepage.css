@@ -3,5 +3,9 @@
 }
 
 .homepage-component{
-    padding: 0 8%;
+    padding: 1rem 8% 2rem;
+}
+
+.container .row{
+    margin-top: 2rem;
 }

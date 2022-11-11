@@ -10,7 +10,7 @@ import ProfessionAccordionButton from "./ProfessionAccordionButton";
 const RecipesSection = (props) => {
   //props: profession, activeKeys, setActiveKeys, makeRow, URL
   return (
-    <div className="Recipes-Section">
+    <div id="Recipes-Section">
       <h1 className="header-lrg">Recipes</h1>
       <Accordion
         alwaysOpen="true"

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   capitalizeWord,
   websiteLooksLikeCrapNotice,
   displayIconMedium,
   qualityToImgClass,
+  checkFetchError,
 } from "../../Common";
 import "./ProfessionPage.css";
 import ProfessionDescription from "./ProfessionDescription";
@@ -29,12 +30,14 @@ const ProfessionPage = (props) => {
   const [profession, setProfession] = useState({});
   const [activeKeys, setActiveKeys] = useState([]);
 
-  let recipeKey = 0;
-
+  // this useEffect is now being handled by react-router-dom in index.js
+  // the data is now available through useLoaderData!
   useEffect(() => {
     let fetching = true;
     fetch(`${props.URL}/professions/by_name/${capitalizeWord(name)}`)
-      .then((res) => res.json())
+      .then((res) => {
+        checkFetchError(res);
+      })
       .then((data) => {
         if (fetching) {
           setProfession(data);
@@ -54,6 +57,7 @@ const ProfessionPage = (props) => {
 
     return (
       <tr key={`rc-row-${recipe.id}`}>
+        {console.log(profession)}
         <td>{firstColumn}</td>
         <td>
           {recipe.icon
@@ -96,14 +100,21 @@ const ProfessionPage = (props) => {
   return (
     <div className="Profession-Page">
       {websiteLooksLikeCrapNotice()}
-      <ProfessionDescription profession={profession} />
-      <RecipesSection
+      <ProfessionDescription
+        professionName={capitalizeWord(name)}
         profession={profession}
-        activeKeys={activeKeys}
-        setActiveKeys={setActiveKeys}
-        makeRow={makeRow}
-        URL={props.URL}
       />
+      {profession ? (
+        <RecipesSection
+          profession={profession}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
+          makeRow={makeRow}
+          URL={props.URL}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

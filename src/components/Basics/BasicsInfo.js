@@ -242,9 +242,76 @@ const BasicsInfo = (props) => {
               Many recipes can be enhanced with optional{" "}
               <span className="text-med-bold">Finishing Reagents</span>. This is
               basically an expansion of the Crafter's Mark/Missive system from
-              Shadowlands. There are a few types of common Finishing Reagents:
+              Shadowlands. Most can only be used in a recipe once you have
+              gotten a certain Specialization level that corresponds to that
+              type of craft. There are a few types of common Finishing Reagents:
               <ul>
-                <li></li>
+                <li>
+                  <span className="text-med-ital">
+                    (Most of these will have links to pages detailing them -
+                    coming soon!)
+                  </span>
+                </li>
+                <li>
+                  <span className="text-med-bold">
+                    Illustrious Insight & Lesser Illustrious Insight:
+                  </span>{" "}
+                  Increases Skill by 30. Used in almost all recipes with Quality
+                  levels. Higher ilvl gear pieces will usually use Illustrious
+                  Insight, whereas reagents, consumables & lower ilvl gear
+                  pieces usually use Lesser Illustrious Insight.
+                </li>
+                <li>
+                  <span className="text-med-bold">
+                    Profession Specific Finishing Reagents:
+                  </span>{" "}
+                  These largely have similar effects (ie, 'increase Inspiration
+                  by 30 & bonus Skill granted by Inspiration by 7%', or
+                  'increase chance of improving in your profession, but increase
+                  Recipe Difficulty'). However, each Profession has a different
+                  type/name for them. For example, Tailors use "Embroidery
+                  Thread", while Jewelcrafters use "Polishing Cloth." Each type
+                  is crafted by a different profession. (For example, "Polishing
+                  Cloth" used by Jewelcrafters, are made by Tailors.)
+                </li>
+                <li>
+                  <span className="text-med-bold">
+                    Gear Specific Finishing Reagents:
+                  </span>
+                  <ul>
+                    <li>
+                      <span className="text-med-bold">Missives:</span> Customize
+                      the secondary stats on a piece of gear. Crafted by
+                      Inscriptionists. Unlike Shadowlands, there are now
+                      missives for each pair of secondary stats (ie Draconic
+                      Missive of the Fireflash gives Crit & Haste.) There are
+                      also missives for Profession Gear & their secondary stats!
+                    </li>
+                    <li>
+                      <span className="text-med-bold">
+                        Training Matrixes/Primal Infusions:
+                      </span>{" "}
+                      Set the item level range of a piece of gear, and increase
+                      recipe Difficulty. These are basically the Crafter's Marks
+                      from Shadowlands. Lower ilvl crafted gear use Training
+                      Matrixes (which drop off of dungeon bosses), while Epic
+                      crafted gear use Primal Infusions (I think drop off of
+                      raid bosses?). There are four levels of Training Matrixes,
+                      and two levels of Primal Infusions.
+                    </li>
+                    <li>
+                      <span className="text-med-bold">Embellishments:</span>{" "}
+                      Gives a piece of gear a special effect, give it
+                      Unique-Equipped: Embellished (2), and increase recipe
+                      Difficulty. A popular example is the Alchemical Flavor
+                      Pocket - "Increases duration of Well Fed by 100% & they
+                      now persist through death." These are crafted by different
+                      professions, and you can only have 2 Embellished pieces on
+                      at a time. Usually only applicable to Epic crafted gear
+                      that don't already have Embellishments.
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </>
           }

@@ -13,16 +13,36 @@ const ProfessionButton = (props) => {
     navigate(path.toLowerCase());
   };
 
+  const isFinishedProfession = (name) => {
+    // this is a temp thing, while I only have a few professions with completed seeded data
+    // if it's one of the professions I've finished, make it hoverable and what not (return true)
+    // otherwise, return false
+    return name === "Engineering" || name === "Tailoring";
+  };
+
   return (
     <Col lg="3" md="4" sm="6">
-      <div className="Profession-Button" onClick={handleClick}>
-        <img
-          className="prof-button-icon"
-          src={props.icon}
-          alt={`${props.name} Icon`}
-        />
-        <h5 className="prof-button-name">{props.name}</h5>
-      </div>
+      {isFinishedProfession(props.name) ? (
+        <div className="Profession-Button" onClick={handleClick}>
+          <img
+            className="prof-button-icon"
+            src={props.icon}
+            alt={`${props.name} Icon`}
+          />
+          <h5 className="prof-button-name">{props.name}</h5>
+        </div>
+      ) : (
+        <div className="Disabled-Profession-Button">
+          <img
+            className="prof-button-icon"
+            src={props.icon}
+            alt={`${props.name} Icon`}
+          />
+          <h5 className="prof-button-name" style={{ color: "white" }}>
+            {props.name} (unavailable)
+          </h5>
+        </div>
+      )}
     </Col>
   );
 };

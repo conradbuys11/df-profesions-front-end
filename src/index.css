@@ -12,3 +12,103 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1,h2{
+  text-align: center;
+}
+
+
+.header-xl {
+  font-weight: 900;
+  font-size: 2.375rem;
+  color: #4663ac;
+  /* ^ 38px */
+}
+
+.header-lrg {
+  font-weight: 900;
+  font-size: 2.125rem;
+  color: #4663ac;
+  /* ^ 34px */
+}
+
+.header-med {
+  font-weight: 700;
+  font-size: 1.875rem;
+  /* ^ 30px */
+}
+
+.text-lrg {
+  font-weight: 400;
+  font-size: 1.5rem;
+  /* ^ 24px */
+}
+
+.text-lrg-bold {
+  font-weight: 700;
+  font-size: 1.5rem;
+    /* ^ 24px */
+}
+
+.text-lrg-ital {
+  font-weight: 400;
+  font-size: 1.5rem;
+    /* ^ 24px */
+  font-style: italic;
+}
+
+.text-med {
+  font-weight: 400;
+  font-size: 1.25rem;
+  /* ^ 20px */
+}
+
+.text-med-bold {
+  font-weight: 700;
+  font-size: 1.25rem;
+    /* ^ 20px */
+}
+
+.text-med-ital {
+  font-weight: 400;
+  font-size: 1.25rem;
+    /* ^ 20px */
+  font-style: italic;
+}
+
+.text-small-ital {
+  font-weight: 400;
+  font-size: 1rem;
+  /* ^ 16px */
+  font-style: italic;
+}
+
+.img-centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.item-common{
+  border: 3px solid #9f9f9f;
+}
+
+.item-uncommon{
+  border: 3px solid #1eff00;
+}
+
+.item-rare{
+  border: 3px solid #0070dd;
+}
+
+.item-epic{
+  border: 3px solid #a335ee;
+}
+
+li{
+  padding-bottom: 0.5rem;
+}
+
+.hide-bullet-point{
+  list-style-type: none;
+}
