@@ -21,7 +21,7 @@ import RecipePage from "./components/RecipePage/RecipePage";
 import NotFoundPage from "./components/NotFoundPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const URL = "http://localhost:3001";
+const URL = "https://dragonflight-professions-api.onrender.com";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
