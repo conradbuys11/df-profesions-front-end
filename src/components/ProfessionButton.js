@@ -17,7 +17,13 @@ const ProfessionButton = (props) => {
     // this is a temp thing, while I only have a few professions with completed seeded data
     // if it's one of the professions I've finished, make it hoverable and what not (return true)
     // otherwise, return false
-    return name === "Engineering" || name === "Tailoring";
+    return (
+      name === "Engineering" ||
+      name === "Tailoring" ||
+      name === "Alchemy" ||
+      name === "Blacksmithing" ||
+      name === "Enchanting"
+    );
   };
 
   return (

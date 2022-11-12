@@ -62,9 +62,12 @@ const createList = (arrayOfLi, professionName) => {
 const getDescription = (professionName) => {
   return switchHelper(
     professionName,
-    "TODO: ALCHEMY",
-    "TODO: BLACKSMITHING",
-    "TODO: ENCHANTING",
+    //alchemy
+    "Alchemists are the premier source of combat consumables - namely, Phials (the replacements for flasks) & potions. They can also make special Alchemist Stone trinkets.",
+    //blacksmithing
+    "Blacksmiths are the forgers of Plate gear, most weapons, & shields! They can also craft a variety of Profession Tools.",
+    //enchanting
+    "Enchanters make important enhancements to many gear pieces. They also craft Wands & some fun illusions.",
     // engineering
     "Engineers are the kings of gizmos and gadgets. Explosives, goggles with funky effects, guns, and quality of life toys are your bread and butter. Just make sure they don't backfire!",
     "TODO: INSCRIPTION",
@@ -82,9 +85,38 @@ const getDescription = (professionName) => {
 const getNotableCrafts = (professionName) => {
   return switchHelper(
     professionName,
-    "TODO: ALCHEMY",
-    "TODO: BLACKSMITHING",
-    "TODO: ENCHANTING",
+    //alchemy
+    createList(
+      [
+        "PHIALS: The new flask, Phials are much more varied this time around, doing everything from giving Versatility to exploding for damage upon hitting new enemies.",
+        "POTIONS: Like Phials, combat potions are much more varied this time around. There are even some you can use while dead!",
+        "CAULDRONS: Previous cauldrons gave an entire raid flasks - these new cauldrons will instead give your raid Potions.",
+        "ALCHEMIST STONES: Two different trinkets, each with a main stat proc, as well as either increasing your Phial duration or reducing your Potion cooldown.",
+        "TRANSMUTATIONS: Rousing & Awakened Elements are going to be hot commodities, and Alchemists can transmute them often.",
+      ],
+      professionName
+    ),
+    //blacksmithing
+    createList(
+      [
+        "PLATE GEAR: All 8 plate armor slots are available to craft. PvP versions too! There are also some pre-Embellished gear pieces that focus on giving you & nearby allies Versatility.",
+        "WEAPONS & SHIELDS: Blacksmiths craft most melee weapons, making them highly sought after for crafting orders. This also includes shields.",
+        "PROFESSION EQUIPMENT: Blacksmiths craft Tools for Blacksmiths, Leatherworkers, Miners, Herbalists, & Skinners, and Toolkit Accessories for Blacksmiths, Leatherworkers, and Tailors.",
+        "WEAPON STONES: Whetstones & Weightstones are back - 60min consumables for melee weapons that give a flat Attack Power increase. There is also a Razorstone to strengthen Gathering Skill Tools!",
+      ],
+      professionName
+    ),
+    //enchanting
+    createList(
+      [
+        "GEAR ENCHANTMENTS: Cloak, Chest, Bracer, Boot, and Ring enchantments are all made by Enchanters.",
+        "WEAPON & TOOL ENCHANTMENTS: There are 10 unique melee weapon enchantments, as well as 5 different enchants for Gathering & Profession Tools!",
+        "PROFESSION EQUIPMENT: Enchanters craft Tools for Enchanters.",
+        "WANDS: There are two different wands available to craft for those casters who can use them!",
+        "ILLUSIONS: Enchanters can craft 5 new weapon enchantment appearances, as well as temporary shoulder illusions & wands that shoot orbs.",
+      ],
+      professionName
+    ),
     // engineering
     createList(
       [
@@ -120,9 +152,33 @@ const getNotableCrafts = (professionName) => {
 const getToolsAndAccessories = (professionName) => {
   return switchHelper(
     professionName,
-    "TODO: ALCHEMY",
-    "TODO: BLACKSMITHING",
-    "TODO: ENCHANTING",
+    //alchemy
+    createList(
+      [
+        "TOOL: Made by Inscriptionists. Alchemist's Brilliant Mixing Rod (higher ilvl, BoP) or Draconium Encased Samophlange (lower ilvl, BoE.)",
+        "HEAD ACCESSORY: Made by Leatherworkers. Expert Alchemist's Hat (higher ilvl, BoP) or Alchemist's Hat (lower ilvl, BoE.)",
+        "CHEST ACCESSORY: Made by Tailors. Master Wildercloth Alchemist's Robe (higher ilvl, BoP) or Wildercloth Alchemist's Robe (lower ilvl, BoE.)",
+      ],
+      professionName
+    ),
+    //blacksmithing
+    createList(
+      [
+        "TOOL: Made by Blacksmiths. Black Touched Dragon Hammer (VERY high ilvl, BoP), Khaz'gorite Blacksmith's Hammer (higher ilvl, BoP), or Draconium Blacksmith's Hammer (lower ilvl, BoE.)",
+        "CHEST ACCESSORY: Made by Leatherworkers. Flameproof Apron (higher ilvl, BoP) or Smithing Apron (lower ilvl, BoE.)",
+        "TOOLKIT ACCESSORY: Made by Blacksmiths. Khaz'gorite Blacksmith's Toolbox (higher ilvl, BoP) or Draconium Blacksmith's Toolbox (lower ilvl, BoE.)",
+      ],
+      professionName
+    ),
+    //enchanting
+    createList(
+      [
+        "TOOL: Made by Enchanters. Runed Khaz'gorite Rod (higher ilvl, BoP), Runed Draconium Rod (lower ilvl, BoE), or Runed Serevite Rod (very low ilvl, BoE.)",
+        "HEAD ACCESORY: Made by Tailors. Master Wildercloth Enchanter's Hat (higher ilvl, BoP) or Wildercloth Enchanter's Hat (lower ilvl, BoE.)",
+        "FOCUS ACCESSORY: Made by Jewelcrafters. Resonant Focus (higher ilvl, BoP) or Chromatic Focus (higher ilvl, BoE.)",
+      ],
+      professionName
+    ),
     //engineering
     createList(
       [
@@ -154,9 +210,22 @@ const getToolsAndAccessories = (professionName) => {
 const getFinishingReagents = (professionName) => {
   return switchHelper(
     professionName,
-    "TODO: ALCHEMY",
-    "TODO: BLACKSMITHING",
-    "TODO: ENCHANTING",
+    //alchemy
+    createList(
+      [
+        "ALCHEMICAL CATALYSTS: Made by Alchemists. Includes Brood Salt (also useable by leatherworkers!), and either Agitating Potion Augmentation or Reactive Phial Embellishment, depending on what you're crafting.",
+      ],
+      professionName
+    ),
+    //blacksmithing
+    createList(
+      [
+        "QUENCHING FLUID: Made by Alchemists. Includes Stable Fluidic Draconium & Writhefire Oil.",
+      ],
+      professionName
+    ),
+    //enchanting
+    "Unless you count Vellums, Enchanters don't actually have any unique finishing reagents.",
     //engineering
     createList(
       [
@@ -186,15 +255,36 @@ const getFinishingReagents = (professionName) => {
 const getBenefits = (professionName) => {
   return switchHelper(
     professionName,
-    "TODO: ALCHEMY",
-    "TODO: BLACKSMITHING",
-    "TODO: ENCHANTING",
+    //alchemy
+    createList(
+      [
+        "UP TO 1.5 HOUR PHIALS: With enough specialization points, you can get triple the duration out of one Phial.",
+        "REDUCED NEGATIVE EFFECTS FROM TOXIC PHIALS/POTIONS: If any of the Toxic Phials/Potions turn out to be good, Alchemists can specialize in reducing the side effects by up to 50%.",
+      ],
+      professionName
+    ),
+    //blacksmithing
+    createList(
+      [
+        "REPAIRS: Blacksmiths can craft Repair Hammers, a consumable which repairs a piece of plate gear fully, and it can only be used if you have Blacksmithing 25. They can also eventually craft the Master's Hammer - it isn't consumed when repairing, but requires you to be specialized in the piece of gear you're repairing.",
+      ],
+      professionName
+    ),
+    //enchanting
+    createList(
+      [
+        "MORE DISENCHANTABLE ITEMS: You can specialize to have mobs randomly drop Mystic items. They can be disenchanted for extra materials! (No sell price or other use, though.)",
+        "ELEMENTAL SHATTERING: Enchanters can specialize to learn how to shatter Awakened elements, getting minor open world buffs from destroying them.",
+      ],
+      professionName
+    ),
     //engineering
     createList(
       [
         "GOGGLES W/ TINKER SOCKET: While the bracers Engineers can craft are universal, you can only wear the goggles if you have Engineering 1.",
         "WYRMHOLE GENERATOR: A nice toy to zip you around the Dragon Isles on a 1-2 Hour CD. Can only be used by Engineers.",
         "S.A.V.I.O.R. & EXPLOSIVES: The wipe protection bot can only be used by Engineers, and the non-EZ-Thro version of crafted bombs can only be used by Engineers.",
+        "BOMB MASTER: You can specialize in getting more damage from bombs, as well as reduced likelihood of their malfunction.",
       ],
       professionName
     ),
@@ -204,7 +294,7 @@ const getBenefits = (professionName) => {
     //tailoring
     createList(
       [
-        "NOT A WHOLE LOT: While many tailoring items are BoP, the new Crafting Order system allows non-tailors to get BoP Tailoring items through other people. There are no tailoring items that actually require you to have Tailoring!",
+        "INCREASED CLOTH ACQUISITION: You can specialize to get not only up to 150% more cloth from mobs, but also to be able to get Bolts or Elemental cloth (elements can be extracted from them.)",
       ],
       professionName
     ),
