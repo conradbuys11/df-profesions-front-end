@@ -73,7 +73,8 @@ const getDescription = (professionName) => {
     // inscription
     "Scribes make the all-important Missives, used to set secondary stats on crafted pieces. They also can make trinkets, off-hands, staves, and a whopping 20 Dragonriding customizations.",
     "TODO: JEWELCRAFTING",
-    "TODO: LEATHERWORKING",
+    // leatherworking
+    "Leatherworkers are the makers of Leather and Mail gear. They also make leg enchants for Strength & Agility users, and a variety of Profession Accesories.",
     //tailoring
     "Tailors are your crafters of Cloth gear & Backpieces. They can also make bags, and Intellect-based leg enchants called Spellthreads.",
     "TODO: HERBALISM",
@@ -143,7 +144,17 @@ const getNotableCrafts = (professionName) => {
       professionName
     ),
     "TODO: JEWELCRAFTING",
-    "TODO: LEATHERWORKING",
+    // leatherworking
+    createList(
+      [
+        "LEATHER/MAIL GEAR: All 8 leather and mail armor slots are made by Leatherworkers. PvP versions too! There is also one gear set for each armor type, and a variety of Decay-themed boots with unique effects to try out.",
+        "BOWS: While Engineers make guns for Hunters, Leatherworkers can make bows. Pretty self explanatory - these are your weapons of choice for Marksman/Beast Mastery Hunters.",
+        "PROFESSION EQUIPMENT: Leatherworkers make Head Accessories for Alchemists & Skinners, Chest Accessories for Blacksmiths, Leatherworkers, & Jewelcrafters, Back Accessories for Herbalists & Skinners, and Hand Accessories for Engineers.",
+        "AGILITY/STRENGTH LEG ENCHANTS: Armor Kits are leg enchants with Agility & Strength on them. Needed for every tank, melee DPS, & hunter!",
+        "DRUMS: Don't have a bloodlust effect in your party? No problem. Get a (slightly less powerful) bloodlust on a cooldown.",
+      ],
+      professionName
+    ),
     //tailoring
     createList(
       [
@@ -211,7 +222,15 @@ const getToolsAndAccessories = (professionName) => {
       professionName
     ),
     "TODO: JEWELCRAFTING",
-    "TODO: LEATHERWORKING",
+    // leatherworking
+    createList(
+      [
+        "TOOL: Made by Blacksmiths. Khaz'gorite Leatherworker's Knife (higher ilvl, BoP) or Draconium Leatherworker's Knife (lower ilvl, BoE.)",
+        "CHEST ACCESSORY: Made by Leatherworkers. Masterwork Smock (higher ilvl, BoP) or Resilient Smock (higher ilvl, BoE).",
+        "TOOLKIT ACCESSORY: Made by Blacksmiths. Khaz'gorite Leatherworker's Toolset (higher ilvl, BoP) or Draconium Leatherworker's Toolset (lower ilvl, BoE.)",
+      ],
+      professionName
+    ),
     //tailoring
     createList(
       [
@@ -265,7 +284,14 @@ const getFinishingReagents = (professionName) => {
       professionName
     ),
     "TODO: JEWELCRAFTING",
-    "TODO: LEATHERWORKING",
+    // leatherworking
+    createList(
+      [
+        "CURING AGENT: Used for Leather armor, made by Alchemists. Includes Writhefire Oil & Brood Salt.",
+        "CHAIN OIL: Used for Mail armor, made by Alchemists. Includes Writhefire Oil & Stable Fluidic Draconium.",
+      ],
+      professionName
+    ),
     //tailoring
     createList(
       [
@@ -324,7 +350,13 @@ const getBenefits = (professionName) => {
       professionName
     ),
     "TODO: JEWELCRAFTING",
-    "TODO: LEATHERWORKING",
+    // leatherworking
+    createList(
+      [
+        "NOT A WHOLE LOT: While you get an incredible variety of gear to craft, there isn't a whole lot you can do with Leatherworking that you can't also get satisfied with a Crafting Order.",
+      ],
+      professionName
+    ),
     //tailoring
     createList(
       [

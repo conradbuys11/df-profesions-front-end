@@ -66,6 +66,33 @@ const ItemPage = (props) => {
   that info is gonna be funky to get - get materials that reference this item, then get the recipe that is referenced by that material.
   don't forget to say the quantity of this item in that recipe, as well
   */
+
+  const processFinishingReagentTypes = () => {
+    let text = "";
+    if (item.qualityLevels.length === 1) {
+      text = item.qualityLevels[0];
+    } else {
+      item.qualityLevels.map((qLevel, index, array) => {
+        text += qLevel;
+
+        // if we're not the second to last or last index of the array, add a comma and a space
+        // (ie ... text, ...)
+        if (array.length - 1 - index >= 2) {
+          text += ", ";
+        }
+
+        // if we're the second to last element of the array
+        // ie (... text & ...)
+        else if (array.length - 1 - index === 1) {
+          text += " & ";
+        }
+
+        return text;
+      });
+    }
+    return text;
+  };
+
   return isObjectEmpty(item) ? (
     <h1 className="header-xl">Loading...</h1>
   ) : (
@@ -89,7 +116,7 @@ const ItemPage = (props) => {
         <></>
       )}
       {item.finishingReagentType ? (
-        <p>"{item.finishingReagentType}" Finishing Reagent</p>
+        <p>Finishing Reagent Type(s): {processFinishingReagentTypes()}</p>
       ) : (
         <></>
       )}
