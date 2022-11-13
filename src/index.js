@@ -22,7 +22,7 @@ import NotFoundPage from "./components/NotFoundPage";
 import { checkFetchError } from "./Common";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const URL = "https://dragonflight-professions-api.onrender.com";
+const URL = "http://localhost:3001";
 
 const fetchAllInfo = (baseURL, setState) => {
   //baseURL is either localhost:3001 or dragonflight-professions-api.onrender.com
