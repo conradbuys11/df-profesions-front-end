@@ -30,6 +30,13 @@ const ProfessionDescription = (props) => {
       <p>{getFinishingReagents(props.professionName)}</p>
       <h3 className="header-med">Benefits of Having {props.professionName}</h3>
       <p>{getBenefits(props.professionName)}</p>
+      <h3 className="header-med">
+        <a
+          href={`https://wowhead.com/profession-tree-calc/${props.professionName.toLowerCase()}`}
+        >
+          Wowhead Profession Tree Calculator
+        </a>
+      </h3>
     </div>
   );
 };

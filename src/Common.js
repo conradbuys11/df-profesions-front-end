@@ -101,7 +101,7 @@ const websiteLooksLikeCrapNotice = () => {
     <h2 className="header-med">
       Please note: The formatting of this page is under construction. Current
       focus is on getting the info on the page. Formatting is coming later.
-      Website last updated: 11/11/2022.
+      Website last updated: 11/12/2022.
     </h2>
   );
 };

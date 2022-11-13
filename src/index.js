@@ -19,9 +19,20 @@ import ProfessionPage from "./components/ProfessionPage/ProfessionPage";
 import ItemPage from "./components/ItemPage/ItemPage";
 import RecipePage from "./components/RecipePage/RecipePage";
 import NotFoundPage from "./components/NotFoundPage";
+import { checkFetchError } from "./Common";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const URL = "http://localhost:3001";
+
+const fetchAllInfo = (baseURL, setState) => {
+  //baseURL is either localhost:3001 or dragonflight-professions-api.onrender.com
+  //setState is the hook function passed in to set the state to whatever we fetch
+  //this... probably shouldn't be here, but rather in index.js or app or whatever
+  fetch(`${baseURL}/getAllInfo`)
+    .then((res) => checkFetchError(res))
+    .then((data) => setState(data))
+    .catch((e) => console.log("API call failed."));
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(

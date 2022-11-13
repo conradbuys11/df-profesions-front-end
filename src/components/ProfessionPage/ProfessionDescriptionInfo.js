@@ -70,7 +70,8 @@ const getDescription = (professionName) => {
     "Enchanters make important enhancements to many gear pieces. They also craft Wands & some fun illusions.",
     // engineering
     "Engineers are the kings of gizmos and gadgets. Explosives, goggles with funky effects, guns, and quality of life toys are your bread and butter. Just make sure they don't backfire!",
-    "TODO: INSCRIPTION",
+    // inscription
+    "Scribes make the all-important Missives, used to set secondary stats on crafted pieces. They also can make trinkets, off-hands, staves, and a whopping 20 Dragonriding customizations.",
     "TODO: JEWELCRAFTING",
     "TODO: LEATHERWORKING",
     //tailoring
@@ -128,7 +129,19 @@ const getNotableCrafts = (professionName) => {
       ],
       professionName
     ),
-    "TODO: INSCRIPTION",
+    // inscription
+    createList(
+      [
+        "MISSIVES: Almost all crafted gear across all professions can set their secondary stats with Missives. There are also now missives for Profession Tools!",
+        "DARKMOON DECKS & DECK BOXES: Always a strong early money maker, Darkmoon Decks can now be enhanced further into Deck Boxes, giving them a 10-20 item level boost.",
+        "PROFESSION EQUIPMENT: Scribes make Tools for Alchemists, Cooks, & Scribes.",
+        "EXTRA PROFESSION KNOWLEDGE: Draconic Treatises consumables can be crafted by Scribes, granting 1 extra Knowledge per week in a Profession. Just about everyone is gonna want one of these per profession per week.",
+        "STAVES & OFF-HANDS: Powerful two-handed Intellect or Agility staves can be made, as well as Intellect off-hands.",
+        "CONTRACTS: The old classic, giving 10-15 extra rep with a specific faction per world quest.",
+        "DRAGONRIDING CUSTOMIZATIONS: Five unique customizations for each of the four Dragonriding mounts can be made by Scribes.",
+      ],
+      professionName
+    ),
     "TODO: JEWELCRAFTING",
     "TODO: LEATHERWORKING",
     //tailoring
@@ -188,7 +201,15 @@ const getToolsAndAccessories = (professionName) => {
       ],
       professionName
     ),
-    "TODO: INSCRIPTION",
+    // inscription
+    createList(
+      [
+        "TOOL: Made by Scribes. Scribe's Resplendent Quill (higher ilvl, BoP) or Scribe's Fastened Quill (lower ilvl, BoE.)",
+        "HEAD ACCESSORY: Made by Jewelcrafters. Fine-Print Trifocals (higher ilvl, BoP) or Bold-Print Bifocals (lower ilvl, BoE.)",
+        "MAGNIFYING GLASS ACCESSORY: Made by Jewelcrafters. Magnificent Margin Magnifier (higher ilvl, BoP) or Left-Handed Magnifying Glass (lower ilvl, BoE.)",
+      ],
+      professionName
+    ),
     "TODO: JEWELCRAFTING",
     "TODO: LEATHERWORKING",
     //tailoring
@@ -235,7 +256,14 @@ const getFinishingReagents = (professionName) => {
       ],
       professionName
     ),
-    "TODO: INSCRIPTION",
+    // inscription
+    createList(
+      [
+        "BLOTTING SAND: Made by Jewelcrafters. Includes Blotting Sand & Pounce.",
+        "DARKMOON SIGILS: Made by Scribes. Affects the way the Darkmoon Deck Box shuffles.",
+      ],
+      professionName
+    ),
     "TODO: JEWELCRAFTING",
     "TODO: LEATHERWORKING",
     //tailoring
@@ -288,7 +316,13 @@ const getBenefits = (professionName) => {
       ],
       professionName
     ),
-    "TODO: INSCRIPTION",
+    // inscription
+    createList(
+      [
+        "MORE DARKMOON CARDS: Scribes can specialize in higher chance of finding Darkmoon cards, and can make the Bundle O Cards: Dragon Isles (basically, a booster pack of Darkmoon cards)",
+      ],
+      professionName
+    ),
     "TODO: JEWELCRAFTING",
     "TODO: LEATHERWORKING",
     //tailoring

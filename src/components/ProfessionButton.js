@@ -22,7 +22,8 @@ const ProfessionButton = (props) => {
       name === "Tailoring" ||
       name === "Alchemy" ||
       name === "Blacksmithing" ||
-      name === "Enchanting"
+      name === "Enchanting" ||
+      name === "Inscription"
     );
   };
 
