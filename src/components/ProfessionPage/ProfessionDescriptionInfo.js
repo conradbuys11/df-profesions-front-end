@@ -72,7 +72,8 @@ const getDescription = (professionName) => {
     "Engineers are the kings of gizmos and gadgets. Explosives, goggles with funky effects, guns, and quality of life toys are your bread and butter. Just make sure they don't backfire!",
     // inscription
     "Scribes make the all-important Missives, used to set secondary stats on crafted pieces. They also can make trinkets, off-hands, staves, and a whopping 20 Dragonriding customizations.",
-    "TODO: JEWELCRAFTING",
+    // jewelcrafting
+    "Jewelcrafters cut gems that give extra stats to gear with prismatic sockets. They also make rings & necklaces, and a few trinkets that are stronger for each gem you have socketed.",
     // leatherworking
     "Leatherworkers are the makers of Leather and Mail gear. They also make leg enchants for Strength & Agility users, and a variety of Profession Accesories.",
     //tailoring
@@ -143,7 +144,17 @@ const getNotableCrafts = (professionName) => {
       ],
       professionName
     ),
-    "TODO: JEWELCRAFTING",
+    // jewelcrafting
+    createList(
+      [
+        "GEMS: The bread & butter of JC is making gems. Many gems have two secondary stats on them now, and there are also Primalist gems with primary stat on them (can only socket one of them)",
+        "JEWELRY: Necklaces and rings are used by every class, and come with a boatload of secondary stats on them. There are a few Embellished varieties available as well.",
+        "PROFESSION EQUIPMENT: Jewelcrafters make Head Accessories for Jewelcrafters & Scribes, Magnifying Glass Accessories for Scribes, and Focus Accessories for Enchanters.",
+        "IDOL TRINKETS: Each of the dragon aspects has their own Idol trinket, which proc to grant secondary stats based on how much of their type of gem you have equipped.",
+        "PETS, TOYS & COSMETICS: Jewelcrafters can make a set of Jeweled Whelplings for each flight, a few fun toys, and two Cosmetic goggles for transmog!",
+      ],
+      professionName
+    ),
     // leatherworking
     createList(
       [
@@ -221,7 +232,15 @@ const getToolsAndAccessories = (professionName) => {
       ],
       professionName
     ),
-    "TODO: JEWELCRAFTING",
+    // jewelcrafting
+    createList(
+      [
+        "TOOL: Made by Engineers. Lapidary's Khaz'gorite Clamps (higher ilvl, BoP) or Lapidary's Draconium Clamps (lower ilvl, BoE.)",
+        "HEAD ACCESSORY: Made by Jewelcrafters. Alexstraszite Loupes (higher ilvl, BoP) or Sundered Onyx Loupes (lower ilvl, BoE.)",
+        "CHEST ACCESSORY: Made by Leatherworkers. Resplendent Cover (higher ilvl, BoP) or Jeweler's Cover (lower ilvl, BoE.)",
+      ],
+      professionName
+    ),
     // leatherworking
     createList(
       [
@@ -283,7 +302,13 @@ const getFinishingReagents = (professionName) => {
       ],
       professionName
     ),
-    "TODO: JEWELCRAFTING",
+    // jewelcrafting
+    createList(
+      [
+        "POLISHING CLOTH: Made by Tailors. Includes Abrasive & Vibrant Polishing Cloth.",
+      ],
+      professionName
+    ),
     // leatherworking
     createList(
       [
@@ -349,7 +374,13 @@ const getBenefits = (professionName) => {
       ],
       professionName
     ),
-    "TODO: JEWELCRAFTING",
+    // jewelcrafting
+    createList(
+      [
+        "CONVERT LOW QUALITY GEMS: Jewelcrafters can specialize in being able to turn green-quality gems into blue-quality gems! Like a Transmutation, but shinier.",
+      ],
+      professionName
+    ),
     // leatherworking
     createList(
       [
