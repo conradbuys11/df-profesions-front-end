@@ -12,19 +12,14 @@ const OtherRecipes = (props) => {
       eventKey={props.eventKey}
       profession={props.profession}
       URL={`${props.URL}/recipes/by_profession/${props.profession.id}/only_other_recipes`}
-      makeRow={props.makeRow}
       thisClass={"Other-Recipes"}
       recipesFrom={"Other Sources"}
       firstColumnName={"Source"}
       keyName={"specialAcquisitionMethod"}
+      recipes={props.recipes}
+      apiNavigation={props.apiNavigation}
       activeKeys={props.activeKeys}
       setActiveKeys={props.setActiveKeys}
-      sortingMethod={
-        ApiNavigation(useOutletContext())
-          .getRecipes()
-          .byProfession(props.profession.id).onlyOtherRecipes
-      }
-      recipes={props.recipes}
     />
   );
 };

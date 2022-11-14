@@ -6,10 +6,14 @@ import OtherRecipes from "./OtherRecipes";
 import "./ProfessionPage.css";
 import Accordion from "react-bootstrap/Accordion";
 import ProfessionAccordionButton from "./ProfessionAccordionButton";
+import { useState } from "react";
 
 const RecipesSection = (props) => {
-  //props: profession, activeKeys, setActiveKeys, makeRow, URL
+  //props: profession, URL, apiNavigation
   //the four sets of recipes - trainerRecipes, specializationRecipes, renownRecipes, otherRecipes
+
+  const [activeKeys, setActiveKeys] = useState([]);
+
   return (
     <div id="Recipes-Section">
       <h1 className="header-lrg">Recipes</h1>
@@ -17,47 +21,47 @@ const RecipesSection = (props) => {
         alwaysOpen="true"
         flush
         defaultActiveKey={[]}
-        activeKey={props.activeKeys}
+        activeKey={activeKeys}
       >
         <ProfessionAccordionButton
-          activeKeys={props.activeKeys}
-          setActiveKeys={props.setActiveKeys}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
         />
         <TrainerRecipes
           eventKey={0}
           profession={props.profession}
           URL={props.URL}
-          makeRow={props.makeRow}
-          activeKeys={props.activeKeys}
-          setActiveKeys={props.setActiveKeys}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
           recipes={props.trainerRecipes}
+          apiNavigation={props.apiNavigation}
         />
         <SpecializationRecipes
           eventKey={1}
           profession={props.profession}
           URL={props.URL}
-          makeRow={props.makeRow}
-          activeKeys={props.activeKeys}
-          setActiveKeys={props.setActiveKeys}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
           recipes={props.specializationRecipes}
+          apiNavigation={props.apiNavigation}
         />
         <RenownRecipes
           eventKey={2}
           profession={props.profession}
           URL={props.URL}
-          makeRow={props.makeRow}
-          activeKeys={props.activeKeys}
-          setActiveKeys={props.setActiveKeys}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
           recipes={props.renownRecipes}
+          apiNavigation={props.apiNavigation}
         />
         <OtherRecipes
           eventKey={3}
           profession={props.profession}
           URL={props.URL}
-          makeRow={props.makeRow}
-          activeKeys={props.activeKeys}
-          setActiveKeys={props.setActiveKeys}
+          activeKeys={activeKeys}
+          setActiveKeys={setActiveKeys}
           recipes={props.otherRecipes}
+          apiNavigation={props.apiNavigation}
         />
       </Accordion>
     </div>

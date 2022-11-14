@@ -13,19 +13,14 @@ const TrainerRecipes = (props) => {
       eventKey={props.eventKey}
       profession={props.profession}
       URL={`${props.URL}/recipes/by_profession/${props.profession.id}/only_trainer_recipes`}
-      makeRow={props.makeRow}
       thisClass={"Trainer-Recipes"}
       recipesFrom={"Profession Trainer"}
       firstColumnName={"Level"}
       keyName={"requiredProfessionLevel"}
+      recipes={props.recipes}
+      apiNavigation={props.apiNavigation}
       activeKeys={props.activeKeys}
       setActiveKeys={props.setActiveKeys}
-      sortingMethod={
-        ApiNavigation(useOutletContext())
-          .getRecipes()
-          .byProfession(props.profession.id).onlyTrainerRecipes
-      }
-      recipes={props.recipes}
     />
   );
 };
