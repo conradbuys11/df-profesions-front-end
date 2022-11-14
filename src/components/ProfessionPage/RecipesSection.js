@@ -33,7 +33,7 @@ const RecipesSection = (props) => {
           URL={props.URL}
           activeKeys={activeKeys}
           setActiveKeys={setActiveKeys}
-          recipes={props.trainerRecipes}
+          recipes={props.recipes.current.trainerRecipes}
           apiNavigation={props.apiNavigation}
         />
         <SpecializationRecipes
@@ -42,7 +42,7 @@ const RecipesSection = (props) => {
           URL={props.URL}
           activeKeys={activeKeys}
           setActiveKeys={setActiveKeys}
-          recipes={props.specializationRecipes}
+          recipes={props.recipes.current.specializationRecipes}
           apiNavigation={props.apiNavigation}
         />
         <RenownRecipes
@@ -51,7 +51,7 @@ const RecipesSection = (props) => {
           URL={props.URL}
           activeKeys={activeKeys}
           setActiveKeys={setActiveKeys}
-          recipes={props.renownRecipes}
+          recipes={props.recipes.current.renownRecipes}
           apiNavigation={props.apiNavigation}
         />
         <OtherRecipes
@@ -60,7 +60,7 @@ const RecipesSection = (props) => {
           URL={props.URL}
           activeKeys={activeKeys}
           setActiveKeys={setActiveKeys}
-          recipes={props.otherRecipes}
+          recipes={props.recipes.current.otherRecipes}
           apiNavigation={props.apiNavigation}
         />
       </Accordion>

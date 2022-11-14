@@ -1,16 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  useParams,
-  Link,
-  useNavigate,
-  useOutletContext,
-} from "react-router-dom";
+import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import {
   capitalizeWord,
   websiteLooksLikeCrapNotice,
-  displayIconMedium,
-  qualityToImgClass,
-  checkFetchError,
   isObjectEmpty,
 } from "../../Common";
 import "./ProfessionPage.css";
@@ -39,10 +31,7 @@ const ProfessionPage = (props) => {
   // const [specializationRecipes, setSpecializationRecipes] = useState(null);
   // const [renownRecipes, setRenownRecipes] = useState(null);
   // const [otherRecipes, setOtherRecipes] = useState(null);
-  const trainerRecipes = useRef(null);
-  const specializationRecipes = useRef(null);
-  const renownRecipes = useRef(null);
-  const otherRecipes = useRef(null);
+  const recipes = useRef({});
   const navigateTo = useNavigate();
   const apiNavigation = ApiNavigation(db);
 
@@ -55,25 +44,27 @@ const ProfessionPage = (props) => {
         try {
           const prof = apiNavigation.getProfession().byName(name);
           setProfession(prof);
-          trainerRecipes.current = apiNavigation
-            .getRecipes()
-            .byProfession(prof.id)
-            .onlyTrainerRecipes();
+          recipes.current = {
+            trainerRecipes: apiNavigation
+              .getRecipes()
+              .byProfession(prof.id)
+              .onlyTrainerRecipes(),
 
-          specializationRecipes.current = apiNavigation
-            .getRecipes()
-            .byProfession(prof.id)
-            .onlySpecializationRecipes();
+            specializationRecipes: apiNavigation
+              .getRecipes()
+              .byProfession(prof.id)
+              .onlySpecializationRecipes(),
 
-          renownRecipes.current = apiNavigation
-            .getRecipes()
-            .byProfession(prof.id)
-            .onlyRenownRecipes();
+            renownRecipes: apiNavigation
+              .getRecipes()
+              .byProfession(prof.id)
+              .onlyRenownRecipes(),
 
-          otherRecipes.current = apiNavigation
-            .getRecipes()
-            .byProfession(prof.id)
-            .onlyOtherRecipes();
+            otherRecipes: apiNavigation
+              .getRecipes()
+              .byProfession(prof.id)
+              .onlyOtherRecipes(),
+          };
         } catch (e) {
           console.log("Hey here's your error: " + e);
         }
@@ -81,10 +72,17 @@ const ProfessionPage = (props) => {
     } else {
       navigateTo("/oops");
     }
-    console.log(`Profession Page Rendering.`);
   }, [db, navigateTo, name, apiNavigation]);
 
-  //temp function while we're not calling on DB
+  // componentDidUpdate
+  // useEffect(() => {
+  //   console.log(
+  //     `Profession Page Updated. PROFESSION: ${
+  //       Object.keys(profession).length
+  //     }, DB: ${Object.keys(db).length},
+  //     apiNav: ${apiNavigation}`
+  //   );
+  // });
 
   return (
     <div className="Profession-Page">
@@ -97,10 +95,11 @@ const ProfessionPage = (props) => {
         <RecipesSection
           profession={profession}
           URL={props.URL}
-          trainerRecipes={trainerRecipes.current}
-          specializationRecipes={specializationRecipes.current}
-          renownRecipes={renownRecipes.current}
-          otherRecipes={otherRecipes.current}
+          recipes={recipes}
+          // trainerRecipes={recipes.current.trainerRecipes}
+          // specializationRecipes={recipes.current.specializationRecipes}
+          // renownRecipes={recipes.current.renownRecipes}
+          // otherRecipes={recipes.current.otherRecipes}
           apiNavigation={apiNavigation}
         />
       ) : (

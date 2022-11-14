@@ -27,7 +27,6 @@ const ApiNavigation = (db) => {
   const sortObjects = (objA, objB) => {
     //Object.getOwnPropertyNames returns array of the key names of our obj
     //only one key in these objects! so we can just get index 0
-    console.log(`objA: ${objA}, objB: ${objB}`);
     const aName = Object.getOwnPropertyNames(objA)[0];
     const bName = Object.getOwnPropertyNames(objB)[0];
     if (aName.toUpperCase() > bName.toUpperCase()) {
