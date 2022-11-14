@@ -30,41 +30,9 @@ const router = createBrowserRouter(
       <Route path="homepage" element={<Homepage />} />
       <Route path="basics" element={<Basics />} />
       <Route path="professions" element={<Professions />} />
-      <Route
-        path="professions/:name"
-        element={<ProfessionPage URL={URL} />}
-        errorElement={<NotFoundPage />}
-      />
-      <Route
-        path="items/:id"
-        element={<ItemPage URL={URL} />}
-        // loader={async ({ params }) => {
-        //   fetch(`${URL}/items/${params.id}`)
-        //     .then((res) => checkFetchError(res))
-        //     .then((data) => data)
-        //     .catch((e) => {
-        //       console.log(e);
-        //       return redirect("/oops");
-        //     });
-        // }}
-      />
-      <Route
-        path="recipes/:id"
-        element={
-          <RecipePage
-            URL={URL}
-            // loader={async ({ params }) => {
-            //   fetch(`${URL}/recipes/${params.id}`)
-            //     .then((res) => checkFetchError(res))
-            //     .then((data) => data)
-            //     .catch((e) => {
-            //       console.log(e);
-            //       return redirect("/oops");
-            //     });
-            // }}
-          />
-        }
-      />
+      <Route path="professions/:name" element={<ProfessionPage URL={URL} />} />
+      <Route path="items/:id" element={<ItemPage URL={URL} />} />
+      <Route path="recipes/:id" element={<RecipePage URL={URL} />} />
       <Route path="oops" element={<NotFoundPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>

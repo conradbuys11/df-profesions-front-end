@@ -8,7 +8,6 @@ import {
 import "./ProfessionPage.css";
 import ProfessionDescription from "./ProfessionDescription";
 import RecipesSection from "./RecipesSection";
-import ApiNavigation from "../../ApiNavigation";
 
 /*
 
@@ -25,15 +24,10 @@ ie only trainer recipes, only renown recipes, sort by category, etc.
 
 const ProfessionPage = (props) => {
   const { name } = useParams();
-  const db = useOutletContext();
+  const [db, apiNavigation] = useOutletContext();
   const [profession, setProfession] = useState({});
-  // const [trainerRecipes, setTrainerRecipes] = useState(null);
-  // const [specializationRecipes, setSpecializationRecipes] = useState(null);
-  // const [renownRecipes, setRenownRecipes] = useState(null);
-  // const [otherRecipes, setOtherRecipes] = useState(null);
   const recipes = useRef({});
   const navigateTo = useNavigate();
-  const apiNavigation = ApiNavigation(db);
 
   useEffect(() => {
     // if the db object is null, that means we failed, and we should navigate to /oops
@@ -74,15 +68,17 @@ const ProfessionPage = (props) => {
     }
   }, [db, navigateTo, name, apiNavigation]);
 
+  // componentDidMount
+
   // componentDidUpdate
-  // useEffect(() => {
-  //   console.log(
-  //     `Profession Page Updated. PROFESSION: ${
-  //       Object.keys(profession).length
-  //     }, DB: ${Object.keys(db).length},
-  //     apiNav: ${apiNavigation}`
-  //   );
-  // });
+  useEffect(() => {
+    console.log(
+      `Profession Page Updated. PROFESSION: ${
+        Object.keys(profession).length
+      }, DB: ${Object.keys(db).length},
+      apiNav: ${apiNavigation}`
+    );
+  });
 
   return (
     <div className="Profession-Page">

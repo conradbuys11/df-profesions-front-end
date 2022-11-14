@@ -100,7 +100,10 @@ const ApiNavigation = (db) => {
   // RECIPE METHODS
   const getRecipe = () => {
     const byId = (id) => {
-      return db.recipes.find((recipe) => recipe.id === id);
+      // return db.recipes.find((recipe) => recipe.id === id);
+      // since db.recipes is sorted by id, I can just get the array index of the id?
+      // minus one, since the first id is 1, not 0
+      return db.recipes[id - 1];
     };
 
     return { byId };
@@ -258,12 +261,12 @@ const ApiNavigation = (db) => {
   };
 
   const getFinishingReagents = () => {
-    const byRecipe = (id) => {
+    const byRecipeId = (id) => {
       return db.finishingReagents.filter(
         (fReagent) => fReagent.recipeId === id
       );
     };
-    return { byRecipe };
+    return { byRecipeId };
   };
 
   return {
