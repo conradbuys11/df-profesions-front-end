@@ -43,13 +43,12 @@ const RecipePage = (props) => {
       if (!isObjectEmpty(db)) {
         try {
           const rec = apiNavigation.getRecipe().byId(id);
-          console.log(rec);
           setRecipe(rec);
           item.current = apiNavigation.getItem().byId(rec.itemId);
-          materials.current = apiNavigation.getMaterials().byRecipeId(id);
+          materials.current = apiNavigation.getMaterials().byRecipeId(rec.id);
           finishingReagents.current = apiNavigation
             .getFinishingReagents()
-            .byRecipeId(id);
+            .byRecipeId(rec.id);
           profession.current = apiNavigation
             .getProfession()
             .byId(rec.professionId);
