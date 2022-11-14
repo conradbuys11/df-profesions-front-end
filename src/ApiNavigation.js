@@ -11,12 +11,50 @@ const ApiNavigation = (db) => {
       // simple: find item in array whose id property matches the one we passed in
       return db.items.find((item) => item.id === id);
     };
+
+    const byName = (name) => {
+      return db.items.find((item) => item.name === name);
+    };
+
+    return { byId, byName };
   };
 
   const getItems = () => {
     const byFinishingReagentType = (type) => {
-      return db.items.filter((item) => item.finishingReagentType === type);
+      return db.items.filter((item) =>
+        item.finishingReagentType.includes(type)
+      );
     };
+
+    const profToolAndAccessories = () => {
+      const byProfessionId = (id) => {
+        const profession = getProfession.byId(id);
+        const regex = new RegExp(
+          `${profession.name} Accessory|${profession.name} Tool`,
+          "i"
+        );
+        return db.items.filter((item) => item.armorWeaponType.match(regex));
+      };
+
+      const byProfessionName = (name) => {
+        const regex = new RegExp(`${name} Accessory|${name} Tool`, "i");
+        return db.items.filter((item) => item.armorWeaponType.match(regex));
+      };
+
+      const all = () => {
+        return db.items.filter((item) =>
+          item.armorWeaponType.match(/Accessory|Tool/i)
+        );
+      };
+
+      return { byProfessionId, byProfessionName, all };
+    };
+
+    const all = () => {
+      return db.items;
+    };
+
+    return { byFinishingReagentType, profToolAndAccessories, all };
   };
 
   // RECIPE METHODS
@@ -24,6 +62,8 @@ const ApiNavigation = (db) => {
     const byId = (id) => {
       return db.recipes.find((recipe) => recipe.id === id);
     };
+
+    return { byId };
   };
 
   const getRecipes = () => {
@@ -34,6 +74,12 @@ const ApiNavigation = (db) => {
     const byItem = (id) => {
       return db.recipes.filter((recipe) => recipe.itemId === id);
     };
+
+    const all = () => {
+      return db.recipes;
+    };
+
+    return { byProfession, byItem, all };
   };
 
   // PROFESSION METHODS
@@ -43,12 +89,20 @@ const ApiNavigation = (db) => {
     };
 
     const byName = (name) => {
-      return db.professions.find((profession) => profession.name === name);
+      return db.professions.find(
+        (profession) => profession.name.toLowerCase() === name.toLowerCase()
+      );
     };
+
+    return { byId, byName };
   };
 
   const getProfessions = () => {
-    return db.professions;
+    const all = () => {
+      return db.professions;
+    };
+
+    return { all };
   };
 
   // MATERIAL METHODS
@@ -56,6 +110,8 @@ const ApiNavigation = (db) => {
     const byId = (id) => {
       return db.materials.find((material) => material.id === id);
     };
+
+    return { byId };
   };
 
   const getMaterials = () => {
@@ -66,6 +122,8 @@ const ApiNavigation = (db) => {
     const byRecipeId = (id) => {
       return db.materials.filter((material) => material.recipeId === id);
     };
+
+    return { byItemId, byRecipeId };
   };
 
   // FINISHING REAGENT METHODS
@@ -73,6 +131,8 @@ const ApiNavigation = (db) => {
     const byId = (id) => {
       return db.finishingReagents.find((fReagent) => fReagent.id === id);
     };
+
+    return { byId };
   };
 
   const getFinishingReagents = () => {
@@ -81,7 +141,21 @@ const ApiNavigation = (db) => {
         (fReagent) => fReagent.recipeId === id
       );
     };
+    return { byRecipe };
+  };
+
+  return {
+    getItem,
+    getItems,
+    getRecipe,
+    getRecipes,
+    getProfession,
+    getProfessions,
+    getMaterial,
+    getMaterials,
+    getFinishingReagent,
+    getFinishingReagents,
   };
 };
 
-export { ApiNavigation };
+export default ApiNavigation;

@@ -23,13 +23,13 @@ const ProfessionDescription = (props) => {
       <h3 className="header-med">Description</h3>
       <p>{getDescription(props.professionName)}</p>
       <h3 className="header-med">Notable Crafts</h3>
-      <p>{getNotableCrafts(props.professionName)}</p>
+      {getNotableCrafts(props.professionName)}
       <h3 className="header-med">Tools & Accessories Used</h3>
-      <p>{getToolsAndAccessories(props.professionName)}</p>
+      {getToolsAndAccessories(props.professionName)}
       <h3 className="header-med">Finishing Reagents Used</h3>
-      <p>{getFinishingReagents(props.professionName)}</p>
+      {getFinishingReagents(props.professionName)}
       <h3 className="header-med">Benefits of Having {props.professionName}</h3>
-      <p>{getBenefits(props.professionName)}</p>
+      {getBenefits(props.professionName)}
       <h3 className="header-med">
         <a
           href={`https://wowhead.com/profession-tree-calc/${props.professionName.toLowerCase()}`}

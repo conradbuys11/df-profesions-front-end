@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  Link,
+  useNavigate,
+  useOutletContext,
+} from "react-router-dom";
 import {
   capitalizeWord,
   websiteLooksLikeCrapNotice,
   displayIconMedium,
   qualityToImgClass,
   checkFetchError,
+  isObjectEmpty,
 } from "../../Common";
 import "./ProfessionPage.css";
 import ProfessionDescription from "./ProfessionDescription";
 import RecipesSection from "./RecipesSection";
+import ApiNavigation from "../../ApiNavigation";
 
 /*
 
@@ -26,26 +33,41 @@ ie only trainer recipes, only renown recipes, sort by category, etc.
 
 const ProfessionPage = (props) => {
   const { name } = useParams();
-  // const URL = 'http://localhost:3001';
+  const db = useOutletContext();
   const [profession, setProfession] = useState({});
   const [activeKeys, setActiveKeys] = useState([]);
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    let fetching = true;
-    fetch(`${props.URL}/professions/by_name/${capitalizeWord(name)}`)
-      .then((res) => checkFetchError(res))
-      .then((data) => {
-        if (fetching) {
-          setProfession(data);
-        }
-      })
-      .catch((e) => navigateTo("/oops"));
+    // let fetching = true;
+    // fetch(`${props.URL}/professions/by_name/${capitalizeWord(name)}`)
+    //   .then((res) => checkFetchError(res))
+    //   .then((data) => {
+    //     if (fetching) {
+    //       setProfession(data);
+    //     }
+    //   })
+    //   .catch((e) => navigateTo("/oops"));
 
-    return () => {
-      fetching = false;
-    };
-  }, [name, props.URL, navigateTo]);
+    // return () => {
+    //   fetching = false;
+    // };
+
+    // if the db object is null, that means we failed, and we should navigate to /oops
+    if (db) {
+      // default for the db object is {}. so we need to wait for it to be actually populated before we start setting stuff.
+      // we just don't do anything if db is an empty object
+      if (!isObjectEmpty(db)) {
+        try {
+          setProfession(ApiNavigation(db).getProfession().byName(name));
+        } catch (e) {
+          console.log("Hey here's your error: " + e);
+        }
+      }
+    } else {
+      navigateTo("/oops");
+    }
+  }, [db, navigateTo, name]);
 
   const makeRow = (recipe, firstColumn) => {
     /* 

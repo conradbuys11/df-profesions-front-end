@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,25 +19,14 @@ import ProfessionPage from "./components/ProfessionPage/ProfessionPage";
 import ItemPage from "./components/ItemPage/ItemPage";
 import RecipePage from "./components/RecipePage/RecipePage";
 import NotFoundPage from "./components/NotFoundPage";
-import { checkFetchError } from "./Common";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// const URL = "http://localhost:3001";
-const URL = "https://dragonflight-professions-api.onrender.com";
-
-const fetchAllInfo = (baseURL, setState) => {
-  //baseURL is either localhost:3001 or dragonflight-professions-api.onrender.com
-  //setState is the hook function passed in to set the state to whatever we fetch
-  //this... probably shouldn't be here, but rather in index.js or app or whatever
-  fetch(`${baseURL}/getAllInfo`)
-    .then((res) => checkFetchError(res))
-    .then((data) => setState(data))
-    .catch((e) => console.log("API call failed."));
-};
+const URL = "http://localhost:3001";
+// const URL = "https://dragonflight-professions-api.onrender.com";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} errorElement={<NotFoundPage />}>
+    <Route path="/" element={<App URL={URL} />} errorElement={<NotFoundPage />}>
       <Route path="homepage" element={<Homepage />} />
       <Route path="basics" element={<Basics />} />
       <Route path="professions" element={<Professions />} />
