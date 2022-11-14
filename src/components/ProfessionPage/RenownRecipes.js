@@ -1,6 +1,8 @@
 import { React } from "react";
 import "./RenownRecipes.css";
 import RecipeTable from "./RecipeTable";
+import ApiNavigation from "../../ApiNavigation";
+import { useOutletContext } from "react-router-dom";
 
 const RenownRecipes = (props) => {
   //props: profession (object), URL, makeRow (method, takes recipe & level learned)
@@ -17,6 +19,12 @@ const RenownRecipes = (props) => {
       keyName={"requiredRenownLevel"}
       activeKeys={props.activeKeys}
       setActiveKeys={props.setActiveKeys}
+      sortingMethod={
+        ApiNavigation(useOutletContext())
+          .getRecipes()
+          .byProfession(props.profession.id).onlyRenownRecipes
+      }
+      recipes={props.recipes}
     />
   );
 };

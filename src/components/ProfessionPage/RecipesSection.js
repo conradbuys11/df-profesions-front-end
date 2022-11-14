@@ -9,6 +9,7 @@ import ProfessionAccordionButton from "./ProfessionAccordionButton";
 
 const RecipesSection = (props) => {
   //props: profession, activeKeys, setActiveKeys, makeRow, URL
+  //the four sets of recipes - trainerRecipes, specializationRecipes, renownRecipes, otherRecipes
   return (
     <div id="Recipes-Section">
       <h1 className="header-lrg">Recipes</h1>
@@ -29,6 +30,7 @@ const RecipesSection = (props) => {
           makeRow={props.makeRow}
           activeKeys={props.activeKeys}
           setActiveKeys={props.setActiveKeys}
+          recipes={props.trainerRecipes}
         />
         <SpecializationRecipes
           eventKey={1}
@@ -37,6 +39,7 @@ const RecipesSection = (props) => {
           makeRow={props.makeRow}
           activeKeys={props.activeKeys}
           setActiveKeys={props.setActiveKeys}
+          recipes={props.specializationRecipes}
         />
         <RenownRecipes
           eventKey={2}
@@ -45,6 +48,7 @@ const RecipesSection = (props) => {
           makeRow={props.makeRow}
           activeKeys={props.activeKeys}
           setActiveKeys={props.setActiveKeys}
+          recipes={props.renownRecipes}
         />
         <OtherRecipes
           eventKey={3}
@@ -53,6 +57,7 @@ const RecipesSection = (props) => {
           makeRow={props.makeRow}
           activeKeys={props.activeKeys}
           setActiveKeys={props.setActiveKeys}
+          recipes={props.otherRecipes}
         />
       </Accordion>
     </div>

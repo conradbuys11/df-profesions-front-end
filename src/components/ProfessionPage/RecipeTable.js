@@ -5,27 +5,31 @@ import { specOrRenownObjectToWords } from "../../Common";
 import Accordion from "react-bootstrap/Accordion";
 
 const RecipeTable = (props) => {
-  //props: eventKey, profession (obj), URL, makeRow (method, takes recipe & level learned),
+  //props: eventKey, profession (obj), makeRow (method, takes recipe & level learned),
   // thisClass, recipesFrom, firstColumnName, keyName,
-  // activeKeys, setActiveKeys
+  // activeKeys, setActiveKeys,
+  // recipes
 
   //this url is gonna be custom - ie the full thing, not just localhost:3001
 
   let thisClass = props.thisClass;
-  const [recipes, setRecipes] = useState(null);
+  // let sortingMethod = props.sortingMethod;
+  const recipes = props.recipes;
+  // const [recipes, setRecipes] = useState(null);
 
-  useEffect(() => {
-    let fetching = true;
-    if (props.URL && props.profession.id) {
-      fetch(props.URL)
-        .then((res) => res.json())
-        .then((data) => {
-          if (fetching) {
-            setRecipes(data);
-          }
-        });
-    }
-  }, [props.URL, props.profession]);
+  // useEffect(() => {
+  //   // let fetching = true;
+  //   // if (props.URL && props.profession.id) {
+  //   //   fetch(props.URL)
+  //   //     .then((res) => res.json())
+  //   //     .then((data) => {
+  //   //       if (fetching) {
+  //   //         setRecipes(data);
+  //   //       }
+  //   //     });
+  //   // }
+  //   setRecipes(sortingMethod());
+  // }, [thisClass, sortingMethod]);
 
   const setKeys = () => {
     //if our key is currently in the array of active keys, turn it off

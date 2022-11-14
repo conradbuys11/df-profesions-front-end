@@ -1,6 +1,8 @@
 import { React } from "react";
 import "./TrainerRecipes.css";
 import RecipeTable from "./RecipeTable";
+import ApiNavigation from "../../ApiNavigation";
+import { useOutletContext } from "react-router-dom";
 
 const TrainerRecipes = (props) => {
   //props: profession (object), URL, makeRow (method, takes recipe & level learned)
@@ -18,6 +20,12 @@ const TrainerRecipes = (props) => {
       keyName={"requiredProfessionLevel"}
       activeKeys={props.activeKeys}
       setActiveKeys={props.setActiveKeys}
+      sortingMethod={
+        ApiNavigation(useOutletContext())
+          .getRecipes()
+          .byProfession(props.profession.id).onlyTrainerRecipes
+      }
+      recipes={props.recipes}
     />
   );
 };

@@ -27,6 +27,7 @@ const ApiNavigation = (db) => {
   const sortObjects = (objA, objB) => {
     //Object.getOwnPropertyNames returns array of the key names of our obj
     //only one key in these objects! so we can just get index 0
+    console.log(`objA: ${objA}, objB: ${objB}`);
     const aName = Object.getOwnPropertyNames(objA)[0];
     const bName = Object.getOwnPropertyNames(objB)[0];
     if (aName.toUpperCase() > bName.toUpperCase()) {
@@ -108,61 +109,80 @@ const ApiNavigation = (db) => {
 
   const getRecipes = () => {
     const byProfession = (id) => {
-      const recipes = db.recipes.filter((recipe) => recipe.professionId === id);
+      const recipes = db
+        ? db.recipes.filter((recipe) => recipe.professionId === id)
+        : null;
 
       const onlyTrainerRecipes = () => {
-        const trainerRecipes = recipes.filter(
-          (recipe) => recipe.requiredProfessionLevel
-        );
-        trainerRecipes.sort(
-          (a, b) =>
-            a.requiredProfessionLevel - b.requiredProfessionLevel ||
-            sortStrings(a.name, b.name)
-        );
-        return trainerRecipes;
+        if (recipes) {
+          const trainerRecipes = recipes.filter(
+            (recipe) => recipe.requiredProfessionLevel
+          );
+          trainerRecipes.sort(
+            (a, b) =>
+              a.requiredProfessionLevel - b.requiredProfessionLevel ||
+              sortStrings(a.name, b.name)
+          );
+          return trainerRecipes;
+        }
+        return null;
       };
 
       const onlyRenownRecipes = () => {
-        const renownRecipes = recipes.filter(
-          (recipe) => recipe.requiredRenownLevel
-        );
-        renownRecipes.sort(
-          (a, b) =>
-            sortObjects(a.requiredRenownLevel, b.requiredRenownLevel) ||
-            sortStrings(a.name, b.name)
-        );
-        return renownRecipes;
+        if (recipes) {
+          const renownRecipes = recipes.filter(
+            (recipe) => recipe.requiredRenownLevel
+          );
+          renownRecipes.sort(
+            (a, b) =>
+              sortObjects(a.requiredRenownLevel, b.requiredRenownLevel) ||
+              sortStrings(a.name, b.name)
+          );
+          return renownRecipes;
+        }
+        return null;
       };
 
       const onlySpecializationRecipes = () => {
-        const specRecipes = recipes.filter(
-          (recipe) =>
-            recipe.requiredProfessionLevel && !recipe.specialAcquisitionMethod
-        );
-        specRecipes.sort(
-          (a, b) =>
-            sortObjects(a.requiredProfessionLevel, b.requiredProfessionLevel) ||
-            sortStrings(a.name, b.name)
-        );
-        return specRecipes;
+        if (recipes) {
+          const specRecipes = recipes.filter(
+            (recipe) =>
+              recipe.requiredSpecializationLevel &&
+              !recipe.specialAcquisitionMethod
+          );
+          specRecipes.sort(
+            (a, b) =>
+              sortObjects(
+                a.requiredSpecializationLevel,
+                b.requiredSpecializationLevel
+              ) || sortStrings(a.name, b.name)
+          );
+          return specRecipes;
+        }
+        return null;
       };
 
       const onlyOtherRecipes = () => {
-        const otherRecipes = recipes.filter(
-          (recipe) => recipe.specialAcquisitionMethod
-        );
-        otherRecipes.sort(
-          (a, b) =>
-            sortStrings(
-              a.specialAcquisitionMethod,
-              b.specialAcquisitionMethod
-            ) || sortStrings(a.name, b.name)
-        );
-        return otherRecipes;
+        if (recipes) {
+          const otherRecipes = recipes.filter(
+            (recipe) => recipe.specialAcquisitionMethod
+          );
+          otherRecipes.sort(
+            (a, b) =>
+              sortStrings(
+                a.specialAcquisitionMethod,
+                b.specialAcquisitionMethod
+              ) || sortStrings(a.name, b.name)
+          );
+          return otherRecipes;
+        }
+        return null;
       };
 
       const all = () => {
-        return recipes.sort((a, b) => sortStrings(a.name, b.name));
+        return recipes
+          ? recipes.sort((a, b) => sortStrings(a.name, b.name))
+          : null;
       };
 
       return {
