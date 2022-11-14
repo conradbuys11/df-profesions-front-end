@@ -6,7 +6,6 @@ import RecipeBanner from "./RecipeBanner";
 import RecipeDescription from "./RecipeDescription";
 import RecipeMaterials from "./RecipeMaterials";
 import RecipeFinishingReagents from "./RecipeFinishingReagents";
-import Button from "react-bootstrap/esm/Button";
 
 const RecipePage = (props) => {
   // props: URL
@@ -17,7 +16,7 @@ const RecipePage = (props) => {
   const [recipe, setRecipe] = useState({});
   const navigateTo = useNavigate();
   const [db, apiNavigation] = useOutletContext();
-  let item = useRef({});
+  const item = useRef({});
   const materials = useRef({});
   const finishingReagents = useRef({});
   const profession = useRef({});
@@ -61,10 +60,6 @@ const RecipePage = (props) => {
     }
   }, [apiNavigation, db, id, navigateTo]);
 
-  const testButtonEffect = (e) => {
-    console.log(apiNavigation.getMaterials().byRecipeId(recipe.id));
-  };
-
   /*
     all the info i need to put in:
     profession
@@ -83,9 +78,6 @@ const RecipePage = (props) => {
         {websiteLooksLikeCrapNotice()}
         <RecipeBanner recipe={recipe} item={item.current} />
         <div className="recipe-component">
-          <Button variant="primary" onClick={testButtonEffect}>
-            Hey click me
-          </Button>
           <RecipeDescription
             recipe={recipe}
             profession={profession.current}

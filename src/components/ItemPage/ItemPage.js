@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./ItemPage.css";
 import {
   websiteLooksLikeCrapNotice,
   isObjectEmpty,
   displayIconLarge,
   qualityToImgClass,
-  checkFetchError,
 } from "../../Common";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ItemPageCraftedBy from "./ItemPageCraftedBy";
 import ItemPageGearInfo from "./ItemPageGearInfo";
 import ItemPageReagentFor from "./ItemPageReagentFor";
@@ -25,22 +24,42 @@ const ItemPage = (props) => {
   const { id } = useParams();
   const [item, setItem] = useState({});
   const navigateTo = useNavigate();
+  const [db, apiNavigation] = useOutletContext();
+  const craftedBy = useRef([]);
+  const usedFor = useRef([]);
+
+  // useEffect(() => {
+  //   let fetching = true;
+  //   fetch(`${props.URL}/items/${id}`)
+  //     .then((res) => checkFetchError(res))
+  //     .then((data) => {
+  //       if (fetching) {
+  //         setItem(data);
+  //       }
+  //     })
+  //     .catch((e) => navigateTo("/oops"));
+
+  //   return () => {
+  //     fetching = false;
+  //   };
+  // }, [props.URL, id, navigateTo]);
 
   useEffect(() => {
-    let fetching = true;
-    fetch(`${props.URL}/items/${id}`)
-      .then((res) => checkFetchError(res))
-      .then((data) => {
-        if (fetching) {
-          setItem(data);
+    if (db) {
+      if (!isObjectEmpty(db)) {
+        try {
+          const i = apiNavigation.getItem().byId(id);
+          setItem(i);
+          craftedBy.current = apiNavigation.getRecipes().byItem(i.id);
+          usedFor.current = apiNavigation.getMaterials().byItemId(i.id);
+        } catch (e) {
+          console.log(`Hey here's your error: ${e}`);
         }
-      })
-      .catch((e) => navigateTo("/oops"));
-
-    return () => {
-      fetching = false;
-    };
-  }, [props.URL, id, navigateTo]);
+      }
+    } else {
+      navigateTo("/oops");
+    }
+  }, [apiNavigation, db, id, navigateTo]);
 
   /* 
   info we need to show:
@@ -69,10 +88,10 @@ const ItemPage = (props) => {
 
   const processFinishingReagentTypes = () => {
     let text = "";
-    if (item.qualityLevels.length === 1) {
-      text = item.qualityLevels[0];
+    if (item.finishingReagentType.length === 1) {
+      text = item.finishingReagentType[0];
     } else {
-      item.qualityLevels.map((qLevel, index, array) => {
+      item.finishingReagentType.map((qLevel, index, array) => {
         text += qLevel;
 
         // if we're not the second to last or last index of the array, add a comma and a space
@@ -137,10 +156,21 @@ const ItemPage = (props) => {
       )}
 
       {/* crafted by, stuff */}
-      {item.recipes.length > 0 ? <ItemPageCraftedBy item={item} /> : <></>}
+      {craftedBy.current.length > 0 ? (
+        <ItemPageCraftedBy
+          craftedBy={craftedBy.current}
+          apiNavigation={apiNavigation}
+        />
+      ) : (
+        <></>
+      )}
 
       {/* used as material for, stuff */}
-      {item.materials.length > 0 ? <ItemPageReagentFor item={item} /> : <></>}
+      {usedFor.current.length > 0 ? (
+        <ItemPageReagentFor reagentFor={usedFor.current} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

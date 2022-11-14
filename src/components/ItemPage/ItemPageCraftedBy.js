@@ -1,23 +1,31 @@
 import "./ItemPageCraftedBy.css";
 import Table from "react-bootstrap/esm/Table";
 import { Link } from "react-router-dom";
+import { displayIconMedium, qualityToImgClass } from "../../Common";
 
 const ItemPageCraftedBy = (props) => {
-  //props: item
+  //props: craftedBy, apiNavigation
 
   const craftedByRows = () => {
-    return props.item.recipes.map((recipe) => {
+    return props.craftedBy.map((recipe) => {
       // we're making a row that has the following info:
       // for each recipe, we want to know the recipe name/link, and what profession it is crafted by/link
+      const profName = props.apiNavigation
+        .getProfession()
+        .byId(recipe.professionId).name;
+      const item = props.apiNavigation.getItem().byId(recipe.itemId);
       return (
         <tr key={`recipe-${recipe.id}`}>
           <td>
+            {recipe.icon ? (
+              displayIconMedium(recipe.icon, qualityToImgClass(item.quality))
+            ) : (
+              <span>(ICON)</span>
+            )}{" "}
             <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
           </td>
           <td>
-            <Link to={`/professions/${recipe.profession.name}`}>
-              {recipe.profession.name}
-            </Link>
+            <Link to={`/professions/${profName}`}>{profName}</Link>
           </td>
         </tr>
       );

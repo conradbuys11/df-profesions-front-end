@@ -8,8 +8,6 @@ const RecipeMaterials = (props) => {
   const makeMaterialList = (materials) => {
     //this is eerily similar to makeMaterialTable in ProfessionPage
     //might wanna refactor into one method in Common or something
-
-    console.log(`Materials: ${materials}`);
     return materials.map((material) => {
       const item = props.apiNavigation.getItem().byId(material.itemId);
       return (

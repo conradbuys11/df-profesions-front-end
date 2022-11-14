@@ -17,6 +17,10 @@ const ApiNavigation = (db) => {
   // basically, we sort by the first field. if it's not 1 or -1 (true), that means they're the same
   // so we can then sort by the second field
 
+  // finding by id & return db.whatever[id - 1]
+  // since everything is sorted by id, I can just get the array index of the id
+  // minus one, since the id of index 0 is 1. need id and index to match
+
   // HELPER METHODS
   const sortStrings = (stringA, stringB) => {
     const a = stringA.toUpperCase();
@@ -47,11 +51,16 @@ const ApiNavigation = (db) => {
     return sortStrings(aValue, bValue);
   };
 
+  // const sortDb = (db) => {
+  //   let newDb = {}
+  //   newDb.items = db.items.sort((a, b) => a.id - b.id);
+  //   newDb.recipes = db.recipes.sort((a, b) => a.id - b.id)
+  // };
+
   // ITEM METHODS
   const getItem = () => {
     const byId = (id) => {
-      // simple: find item in array whose id property matches the one we passed in
-      return db.items.find((item) => item.id === id);
+      return db.items.find((item) => item.id === parseInt(id));
     };
 
     const byName = (name) => {
@@ -100,10 +109,7 @@ const ApiNavigation = (db) => {
   // RECIPE METHODS
   const getRecipe = () => {
     const byId = (id) => {
-      // return db.recipes.find((recipe) => recipe.id === id);
-      // since db.recipes is sorted by id, I can just get the array index of the id?
-      // minus one, since the first id is 1, not 0
-      return db.recipes[id - 1];
+      return db.recipes.find((recipe) => recipe.id === parseInt(id));
     };
 
     return { byId };
@@ -112,7 +118,7 @@ const ApiNavigation = (db) => {
   const getRecipes = () => {
     const byProfession = (id) => {
       const recipes = db
-        ? db.recipes.filter((recipe) => recipe.professionId === id)
+        ? db.recipes.filter((recipe) => recipe.professionId === parseInt(id))
         : null;
 
       const onlyTrainerRecipes = () => {
@@ -197,7 +203,7 @@ const ApiNavigation = (db) => {
     };
 
     const byItem = (id) => {
-      return db.recipes.filter((recipe) => recipe.itemId === id);
+      return db.recipes.filter((recipe) => recipe.itemId === parseInt(id));
     };
 
     const all = () => {
@@ -210,7 +216,9 @@ const ApiNavigation = (db) => {
   // PROFESSION METHODS
   const getProfession = () => {
     const byId = (id) => {
-      return db.professions.find((profession) => profession.id === id);
+      return db.professions.find(
+        (profession) => profession.id === parseInt(id)
+      );
     };
 
     const byName = (name) => {
@@ -233,7 +241,7 @@ const ApiNavigation = (db) => {
   // MATERIAL METHODS
   const getMaterial = () => {
     const byId = (id) => {
-      return db.materials.find((material) => material.id === id);
+      return db.materials.find((material) => material.id === parseInt(id));
     };
 
     return { byId };
@@ -241,11 +249,15 @@ const ApiNavigation = (db) => {
 
   const getMaterials = () => {
     const byItemId = (id) => {
-      return db.materials.filter((material) => material.itemId === id);
+      return db.materials.filter(
+        (material) => material.itemId === parseInt(id)
+      );
     };
 
     const byRecipeId = (id) => {
-      return db.materials.filter((material) => material.recipeId === id);
+      return db.materials.filter(
+        (material) => material.recipeId === parseInt(id)
+      );
     };
 
     return { byItemId, byRecipeId };
@@ -254,7 +266,9 @@ const ApiNavigation = (db) => {
   // FINISHING REAGENT METHODS
   const getFinishingReagent = () => {
     const byId = (id) => {
-      return db.finishingReagents.find((fReagent) => fReagent.id === id);
+      return db.finishingReagents.find(
+        (fReagent) => fReagent.id === parseInt(id)
+      );
     };
 
     return { byId };
@@ -263,7 +277,7 @@ const ApiNavigation = (db) => {
   const getFinishingReagents = () => {
     const byRecipeId = (id) => {
       return db.finishingReagents.filter(
-        (fReagent) => fReagent.recipeId === id
+        (fReagent) => fReagent.recipeId === parseInt(id)
       );
     };
     return { byRecipeId };

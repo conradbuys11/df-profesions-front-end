@@ -5,8 +5,9 @@ import { Outlet, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useEffect, useRef, useState } from "react";
-import { checkFetchError } from "./Common";
+import { checkFetchError, isObjectEmpty } from "./Common";
 import ApiNavComponent from "./components/ApiNavComponent";
+import TempLoad from "./components/TempLoad";
 
 const App = (props) => {
   // ALL OUR DB DATA. SET DURING USEEFFECT
@@ -26,8 +27,11 @@ const App = (props) => {
   return (
     <div className="App">
       <Header />
-      {/* if we're at the default URL, load up the homepage! otherwise, load up whatever page we're on */}
-      <ApiNavComponent db={dbRefState} />
+      {isObjectEmpty(dbRefState) ? (
+        <TempLoad />
+      ) : (
+        <ApiNavComponent db={dbRefState} />
+      )}
       <Footer />
     </div>
   );

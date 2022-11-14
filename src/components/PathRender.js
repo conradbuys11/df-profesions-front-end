@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import Homepage from "./Homepage/Homepage";
 import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
 
 const PathRender = (props) => {
   // props: db, apiNavigation

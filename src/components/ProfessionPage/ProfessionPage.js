@@ -75,8 +75,7 @@ const ProfessionPage = (props) => {
     console.log(
       `Profession Page Updated. PROFESSION: ${
         Object.keys(profession).length
-      }, DB: ${Object.keys(db).length},
-      apiNav: ${apiNavigation}`
+      }, RECIPES: ${Object.keys(recipes.current).length}`
     );
   });
 
