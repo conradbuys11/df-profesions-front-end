@@ -120,7 +120,11 @@ const ApiNavigation = (db) => {
       return db.recipes.find((recipe) => recipe.id === parseInt(id));
     };
 
-    return { byId };
+    const byItemId = (id) => {
+      return db.recipes.find((recipe) => recipe.itemId === parseInt(id));
+    };
+
+    return { byId, byItemId };
   };
 
   const getRecipes = () => {

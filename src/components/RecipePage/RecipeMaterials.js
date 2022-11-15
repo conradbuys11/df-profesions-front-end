@@ -14,6 +14,7 @@ const RecipeMaterials = (props) => {
         <li key={`mt-${material.id}`}>
           {/* one again want data to look like this:
                         3x (icon) Item Name */}
+          {/* TODO: Make helper method in Common or something */}
           {item.icon
             ? displayIconLarge(item.icon, qualityToImgClass(item.quality))
             : "(ICON)"}{" "}
