@@ -19,6 +19,7 @@ import ProfessionPage from "./components/ProfessionPage/ProfessionPage";
 import ItemPage from "./components/ItemPage/ItemPage";
 import RecipePage from "./components/RecipePage/RecipePage";
 import NotFoundPage from "./components/NotFoundPage";
+import FinishingReagentsPage from "./components/FinishingReagentsPage/FinishingReagentsPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const URL = "http://localhost:3001";
@@ -32,6 +33,10 @@ const router = createBrowserRouter(
       <Route path="professions" element={<Professions />} />
       <Route path="professions/:name" element={<ProfessionPage URL={URL} />} />
       <Route path="items/:id" element={<ItemPage URL={URL} />} />
+      <Route
+        path="items/finishingreagents"
+        element={<FinishingReagentsPage />}
+      />
       <Route path="recipes/:id" element={<RecipePage URL={URL} />} />
       <Route path="oops" element={<NotFoundPage />} />
       <Route path="*" element={<NotFoundPage />} />

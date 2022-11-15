@@ -24,6 +24,12 @@ const App = (props) => {
     console.log("App rendered");
   }, [props.URL]);
 
+  useEffect(() => {
+    if (!isObjectEmpty(dbRefState)) {
+      console.log(`DB Promise: ${Object.keys(dbRefState)}`);
+    }
+  }, [dbRefState]);
+
   return (
     <div className="App">
       <Header />

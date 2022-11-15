@@ -71,10 +71,18 @@ const ApiNavigation = (db) => {
   };
 
   const getItems = () => {
-    const byFinishingReagentType = (type) => {
-      return db.items.filter((item) =>
-        item.finishingReagentType.includes(type)
-      );
+    const finishingReagents = () => {
+      const byType = (type) => {
+        return db.items.filter((item) =>
+          item.finishingReagentType.includes(type)
+        );
+      };
+
+      const all = () => {
+        return db.items.filter((item) => item.finishingReagentType);
+      };
+
+      return { byType, all };
     };
 
     const profToolAndAccessories = () => {
@@ -103,7 +111,7 @@ const ApiNavigation = (db) => {
       return db.items;
     };
 
-    return { byFinishingReagentType, profToolAndAccessories, all };
+    return { finishingReagents, profToolAndAccessories, all };
   };
 
   // RECIPE METHODS
