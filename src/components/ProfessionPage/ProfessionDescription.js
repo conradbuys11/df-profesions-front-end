@@ -1,15 +1,17 @@
 import "./ProfessionDescription.css";
 import { displayIconLarge, isObjectEmpty } from "../../Common";
-import {
-  getDescription,
-  getNotableCrafts,
-  getFinishingReagents,
-  getBenefits,
-  getToolsAndAccessories,
-} from "./ProfessionDescriptionInfo";
+// import {
+//   getDescription,
+//   getNotableCrafts,
+//   getFinishingReagents,
+//   getBenefits,
+//   getToolsAndAccessories,
+// } from "./ProfessionDescriptionInfo";
+import ProfessionDescriptionInfo from "./ProfessionDescriptionInfo";
 
 const ProfessionDescription = (props) => {
   //props: professionName (basically, the name in the URL capitalized) profession
+  const professionDescriptionInfo = ProfessionDescriptionInfo();
 
   return (
     <div className="Profession-Description">
@@ -21,15 +23,15 @@ const ProfessionDescription = (props) => {
         : ""}
       <h1 className="header-xl">Dragonflight {props.professionName}</h1>
       <h3 className="header-med">Description</h3>
-      <p>{getDescription(props.professionName)}</p>
+      <p>{professionDescriptionInfo.getDescription(props.professionName)}</p>
       <h3 className="header-med">Notable Crafts</h3>
-      {getNotableCrafts(props.professionName)}
+      {professionDescriptionInfo.getNotableCrafts(props.professionName)}
       <h3 className="header-med">Tools & Accessories Used</h3>
-      {getToolsAndAccessories(props.professionName)}
+      {professionDescriptionInfo.getToolsAndAccessories(props.professionName)}
       <h3 className="header-med">Finishing Reagents Used</h3>
-      {getFinishingReagents(props.professionName)}
+      {professionDescriptionInfo.getFinishingReagents(props.professionName)}
       <h3 className="header-med">Benefits of Having {props.professionName}</h3>
-      {getBenefits(props.professionName)}
+      {professionDescriptionInfo.getBenefits(props.professionName)}
       <h3 className="header-med">
         <a
           href={`https://wowhead.com/profession-tree-calc/${props.professionName.toLowerCase()}`}

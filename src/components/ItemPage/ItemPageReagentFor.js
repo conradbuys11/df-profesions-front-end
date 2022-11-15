@@ -8,9 +8,9 @@ const ItemPageReagentFor = (props) => {
   // props: reagentFor, apiNavigation
   const apiNavigation = useOutletContext()[1];
 
-  useEffect(() => {
-    console.log(apiNavigation);
-  });
+  // useEffect(() => {
+  //   console.log(apiNavigation);
+  // });
 
   const reagentForRows = () => {
     return props.reagentFor.map((material) => {

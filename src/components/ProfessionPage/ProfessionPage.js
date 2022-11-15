@@ -71,13 +71,13 @@ const ProfessionPage = (props) => {
   // componentDidMount
 
   // componentDidUpdate
-  useEffect(() => {
-    console.log(
-      `Profession Page Updated. PROFESSION: ${
-        Object.keys(profession).length
-      }, RECIPES: ${Object.keys(recipes.current).length}`
-    );
-  });
+  // useEffect(() => {
+  //   console.log(
+  //     `Profession Page Updated. PROFESSION: ${
+  //       Object.keys(profession).length
+  //     }, RECIPES: ${Object.keys(recipes.current).length}`
+  //   );
+  // });
 
   return (
     <div className="Profession-Page">

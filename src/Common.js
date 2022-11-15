@@ -191,11 +191,11 @@ const checkFetchError = (res) => {
 };
 
 const fReagentTypeToUrl = (type) => {
-  return type.replace(" ", "_");
+  return type.replaceAll(" ", "_");
 };
 
 const fReagentUrlToType = (url) => {
-  return url.replace("_", " ");
+  return url.replaceAll("_", " ");
 };
 
 export {
