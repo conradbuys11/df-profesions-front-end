@@ -73,9 +73,7 @@ const ApiNavigation = (db) => {
   const getItems = () => {
     const finishingReagents = () => {
       const byType = (type) => {
-        return db.items.filter((item) =>
-          item.finishingReagentType.includes(type)
-        );
+        return all().filter((item) => item.finishingReagentType.includes(type));
       };
 
       const all = () => {

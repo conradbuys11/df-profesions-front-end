@@ -190,6 +190,14 @@ const checkFetchError = (res) => {
   }
 };
 
+const fReagentTypeToUrl = (type) => {
+  return type.replace(" ", "_");
+};
+
+const fReagentUrlToType = (url) => {
+  return url.replace("_", " ");
+};
+
 export {
   specOrRenownObjectToWords,
   keyToWords,
@@ -205,4 +213,6 @@ export {
   displayIconMedium,
   qualityToImgClass,
   checkFetchError,
+  fReagentTypeToUrl,
+  fReagentUrlToType,
 };

@@ -1,5 +1,4 @@
 import "./FrTypeTable.css";
-import { useState } from "react";
 import FReagentTypeInfo from "./FReagentTypeInfo";
 import Table from "react-bootstrap/esm/Table";
 import { useOutletContext } from "react-router-dom";
@@ -7,31 +6,31 @@ import { Link } from "react-router-dom";
 import { displayIconMedium, qualityToImgClass } from "../../Common";
 
 const FrTypeTable = (props) => {
-  // props: professionName
+  // props: type, frKey, useName
 
   const [db, apiNavigation] = useOutletContext();
-  const fReagentTypeInfo = FReagentTypeInfo();
-  const [activeKeys, setActiveKeys] = useState([]);
 
-  const makeFrTypeInfo = (professionName) => {
-    return fReagentTypeInfo.types
-      .filter((type) => type.professionUsedFor === professionName)
-      .map((type, index) => (
-        <div key={`type-${index}`}>
-          <p className="text-lrg-bold">{type.name}</p>
-          <p className="text-med">{type.description}</p>
-          <Table>
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Effect</th>
-                <th>Made By</th>
-              </tr>
-            </thead>
-            <tbody>{makeFrTableRow(type)}</tbody>
-          </Table>
-        </div>
-      ));
+  const removeWhenCraftingText = (effect) => {
+    return effect.replace("When crafting: ", "");
+  };
+
+  const makeFrTable = (type, key) => {
+    return (
+      <div className="Fr-Type-Table" key={key ? key : ""}>
+        {props.useName ? <p className="text-lrg-bold">{type.name}</p> : <></>}
+        <p className="text-med">{type.description}</p>
+        <Table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Effect</th>
+              <th>Made By</th>
+            </tr>
+          </thead>
+          <tbody>{makeFrTableRow(type.name)}</tbody>
+        </Table>
+      </div>
+    );
   };
 
   const makeFrTableRow = (type) => {
@@ -51,7 +50,7 @@ const FrTypeTable = (props) => {
                 : "(ICON)"}{" "}
               <Link to={`/items/${item.id}`}>{item.name}</Link>
             </td>
-            <td>{item.onUse}</td>
+            <td>{removeWhenCraftingText(item.effect)}</td>
             <td>{professionName}</td>
           </tr>
         );
@@ -63,10 +62,12 @@ const FrTypeTable = (props) => {
     }
   };
 
-  return props.professionName ? (
-    <div className="Fr-Type-Table">
-      <h2 className="header-med">{props.professionName}</h2>
-    </div>
+  return props.type ? (
+    props.frKey ? (
+      makeFrTable(props.type, props.frKey)
+    ) : (
+      makeFrTable(props.type)
+    )
   ) : (
     <></>
   );

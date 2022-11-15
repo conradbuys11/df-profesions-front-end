@@ -9,7 +9,6 @@ const ApiNavComponent = (props) => {
   const [apiNavigation, setApiNav] = useState(null);
 
   useEffect(() => {
-    console.log(props.db);
     if (props.db) {
       setApiNav(ApiNavigation(props.db));
     }

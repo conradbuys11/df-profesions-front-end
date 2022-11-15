@@ -7,6 +7,7 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import FReagentTypeInfo from "./FReagentTypeInfo";
 import FrTypeTable from "./FrTypeTable";
+import FrProfessionSection from "./FrProfessionSection";
 
 const FinishingReagentsPage = (props) => {
   const [db, apiNavigation] = useOutletContext();
@@ -94,7 +95,7 @@ const FinishingReagentsPage = (props) => {
           </Container>
           <br />
           {activeProfession ? (
-            <FrTypeTable professionName={activeProfession} />
+            <FrProfessionSection professionName={activeProfession} />
           ) : (
             <></>
           )}
