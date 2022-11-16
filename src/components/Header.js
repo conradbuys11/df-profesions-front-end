@@ -4,9 +4,11 @@ import Nav from "react-bootstrap/esm/Nav";
 import Navbar from "react-bootstrap/esm/Navbar";
 import NavDropdown from "react-bootstrap/esm/NavDropdown";
 import { LinkContainer } from "react-router-bootstrap";
+import HeaderSearchBar from "./HeaderSearchBar";
 import "./Header.css";
 
 const Header = (props) => {
+  // props: db, apiNavigation (for our HeaderSearchBar)
   return (
     <div className="Header">
       <Navbar sticky="top">
@@ -14,7 +16,12 @@ const Header = (props) => {
           <LinkContainer to="/">
             <Navbar.Brand id="header-logo">DF Professions</Navbar.Brand>
           </LinkContainer>
-          {/* <input placeholder="Search (NYI)" /> */}
+          <Nav className="justify-content-center">
+            <HeaderSearchBar
+              db={props.db}
+              apiNavigation={props.apiNavigation}
+            />
+          </Nav>
           <Navbar.Toggle aria-controls="navbar-pages" />
           <Navbar.Collapse id="navbar-pages" className="justify-content-end">
             <Nav>

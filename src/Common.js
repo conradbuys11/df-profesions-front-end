@@ -198,6 +198,17 @@ const fReagentUrlToType = (url) => {
   return url.replaceAll("_", " ");
 };
 
+const convertToSearchTerm = (string) => {
+  // the steps here: make everything lowercase, case sensitivity is bad
+  // gonna replace some common weirdo things, ie -, _, "", ', :, .
+  const charactersToMakeIntoSpaces = /[-_]/g;
+  const charactersToMakeIntoEmpty = /["':.]/g;
+  return string
+    .toLowerCase()
+    .replaceAll(charactersToMakeIntoSpaces, " ")
+    .replaceAll(charactersToMakeIntoEmpty, "");
+};
+
 export {
   specOrRenownObjectToWords,
   keyToWords,
@@ -215,4 +226,5 @@ export {
   checkFetchError,
   fReagentTypeToUrl,
   fReagentUrlToType,
+  convertToSearchTerm,
 };

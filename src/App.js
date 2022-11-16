@@ -1,10 +1,9 @@
 // import Test from './components/Test.js'
-import Homepage from "./components/Homepage/Homepage";
 import "./App.css";
-import { Outlet, useLocation } from "react-router-dom";
+import { ScrollRestoration } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { checkFetchError, isObjectEmpty } from "./Common";
 import ApiNavComponent from "./components/ApiNavComponent";
 import TempLoad from "./components/TempLoad";
@@ -32,13 +31,12 @@ const App = (props) => {
 
   return (
     <div className="App">
-      <Header />
+      <ScrollRestoration />
       {isObjectEmpty(dbRefState) ? (
         <TempLoad />
       ) : (
         <ApiNavComponent db={dbRefState} />
       )}
-      <Footer />
     </div>
   );
   // <div className="App">

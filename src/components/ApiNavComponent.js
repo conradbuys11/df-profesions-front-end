@@ -2,6 +2,8 @@ import ApiNavigation from "../ApiNavigation";
 import { useEffect, useState } from "react";
 import PathRender from "./PathRender";
 import TempLoad from "./TempLoad";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const ApiNavComponent = (props) => {
   // props: db
@@ -19,7 +21,11 @@ const ApiNavComponent = (props) => {
   });
 
   return apiNavigation ? (
-    <PathRender db={props.db} apiNavigation={apiNavigation} />
+    <>
+      <Header db={props.db} apiNavigation={apiNavigation} />
+      <PathRender db={props.db} apiNavigation={apiNavigation} />
+      <Footer />
+    </>
   ) : (
     <TempLoad />
   );
