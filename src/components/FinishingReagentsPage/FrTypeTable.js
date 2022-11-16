@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { displayIconMedium, qualityToImgClass } from "../../Common";
 
 const FrTypeTable = (props) => {
-  // props: type, frKey, useName
+  // props: type, frKey,
+  // useName (bool, whether we want a header [if it's on the Reagents page] or no header [if it's on the Reagent page])
 
   const [db, apiNavigation] = useOutletContext();
 

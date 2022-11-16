@@ -216,11 +216,19 @@ const ApiNavigation = (db) => {
       return db.recipes.filter((recipe) => recipe.itemId === parseInt(id));
     };
 
+    const byFinishingReagentType = (type) => {
+      // first, we get the list of finishing reagents that are this type
+      // then, we map all of the recipes in that list
+      return getFinishingReagents()
+        .byType(type)
+        .map((fReagent) => getRecipe().byId(fReagent.recipeId));
+    };
+
     const all = () => {
       return db.recipes;
     };
 
-    return { byProfession, byItem, all };
+    return { byProfession, byItem, byFinishingReagentType, all };
   };
 
   // PROFESSION METHODS
@@ -290,7 +298,13 @@ const ApiNavigation = (db) => {
         (fReagent) => fReagent.recipeId === parseInt(id)
       );
     };
-    return { byRecipeId };
+
+    const byType = (name) => {
+      return db.finishingReagents.filter(
+        (fReagent) => fReagent.reagentType === name
+      );
+    };
+    return { byRecipeId, byType };
   };
 
   return {

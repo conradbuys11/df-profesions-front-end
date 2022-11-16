@@ -5,8 +5,14 @@ import {
   isObjectEmpty,
   displayIconLarge,
   qualityToImgClass,
+  fReagentTypeToUrl,
 } from "../../Common";
-import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
 import ItemPageCraftedBy from "./ItemPageCraftedBy";
 import ItemPageGearInfo from "./ItemPageGearInfo";
 import ItemPageReagentFor from "./ItemPageReagentFor";
@@ -87,29 +93,40 @@ const ItemPage = (props) => {
   */
 
   const processFinishingReagentTypes = () => {
-    let text = "";
     if (item.finishingReagentType.length === 1) {
-      text = item.finishingReagentType[0];
+      return (
+        <Link
+          to={`/items/finishingreagents/${fReagentTypeToUrl(
+            item.finishingReagentType[0]
+          )}`}
+        >
+          {item.finishingReagentType[0]}
+        </Link>
+      );
     } else {
-      item.finishingReagentType.map((qLevel, index, array) => {
-        text += qLevel;
-
-        // if we're not the second to last or last index of the array, add a comma and a space
-        // (ie ... text, ...)
-        if (array.length - 1 - index >= 2) {
-          text += ", ";
-        }
-
-        // if we're the second to last element of the array
-        // ie (... text & ...)
-        else if (array.length - 1 - index === 1) {
-          text += " & ";
-        }
-
-        return text;
+      return item.finishingReagentType.map((type, index, array) => {
+        let elementsLeftToIterateOn = array.length - 1 - index;
+        return (
+          <span key={`fr-type-${index}`}>
+            <Link to={`/items/finishingreagents/${fReagentTypeToUrl(type)}`}>
+              {type}
+            </Link>
+            {
+              // if we're not the second to last or last index of the array, add a comma and a space
+              // (ie ... text, ...)
+              elementsLeftToIterateOn >= 2
+                ? ", "
+                : // if we're the second to last element of the array
+                // ie (... text & ...)
+                elementsLeftToIterateOn === 1
+                ? " & "
+                : //if we're the last element of the array, cool, stop there
+                  ""
+            }
+          </span>
+        );
       });
     }
-    return text;
   };
 
   return isObjectEmpty(item) ? (
