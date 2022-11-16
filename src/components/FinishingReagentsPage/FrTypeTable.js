@@ -39,9 +39,9 @@ const FrTypeTable = (props) => {
     try {
       return items.map((item, index) => {
         const recipe = apiNavigation.getRecipe().byItemId(item.id);
-        const professionName = apiNavigation
-          .getProfession()
-          .byId(recipe.professionId).name;
+        const professionName = recipe
+          ? apiNavigation.getProfession().byId(recipe.professionId).name
+          : "N/A";
         return (
           <tr key={`type-item-${index}`}>
             {/* TODO: make helper method in Common or something */}

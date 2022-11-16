@@ -1,5 +1,6 @@
 import "./RecipeFinishingReagents.css";
-import { keyToWords } from "../../Common";
+import { keyToWords, fReagentTypeToUrl } from "../../Common";
+import { Link } from "react-router-dom";
 
 const RecipeFinishingReagents = (props) => {
   //props: finishingReagents
@@ -13,7 +14,13 @@ const RecipeFinishingReagents = (props) => {
             {/* if we have any finishing reagents, we use our gross helper method to convert the key/value pair to words 
                                 otherwise, we completely ignore putting data in 
                                 might want to put the check BEFORE the push? */}
-            {fReagent.reagentType}
+            <Link
+              to={`/items/finishingreagents/${fReagentTypeToUrl(
+                fReagent.reagentType
+              )}`}
+            >
+              {fReagent.reagentType}
+            </Link>
             {Object.keys(fReagent.requiredSpecializationLevel).length > 0
               ? ` (via ${fReagentSpecLevelToWords(
                   fReagent.requiredSpecializationLevel
