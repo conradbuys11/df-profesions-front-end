@@ -17,16 +17,21 @@ h1,h2{
   text-align: center;
 }
 
+img{
+  max-width: 100%;
+}
+
 /* 
 VERY rough conversion from px to vw: 
 px * 0.059 = vw
 */
 
-
-
-.header-xl {
+.header-xl, .header-lrg{
   font-weight: 900;
   color: #4663ac;
+}
+
+.header-xl {
   font-size: 2.375rem;
   /* ^ 38px */
 
@@ -35,8 +40,6 @@ px * 0.059 = vw
 }
 
 .header-lrg {
-  font-weight: 900;
-  color: #4663ac;
   font-size: 2.125rem;
   /* ^ 34px */
 
@@ -51,7 +54,7 @@ px * 0.059 = vw
   /* font-size: 1.77vw; */
 }
 
-.text-lrg {
+.text-lrg, .text-lrg-ital, .text-lrg-bold {
   font-weight: 400;
   font-size: 1.5rem;
   /* ^ 24px */
@@ -61,22 +64,13 @@ px * 0.059 = vw
 
 .text-lrg-bold {
   font-weight: 700;
-  font-size: 1.5rem;
-  /* ^ 24px */
-
-  /* font-size: 1.416vw; */
 }
 
 .text-lrg-ital {
-  font-weight: 400;
   font-style: italic;
-  font-size: 1.5rem;
-    /* ^ 24px */
-  
-  /* font-size: 1.416vw; */
 }
 
-.text-med {
+.text-med, .text-med-ital, .text-med-bold {
   font-weight: 400;
   font-size: 1.25rem;
   /* ^ 20px */
@@ -86,19 +80,10 @@ px * 0.059 = vw
 
 .text-med-bold {
   font-weight: 700;
-  font-size: 1.25rem;
-  /* ^ 20px */
-
-  /* font-size: 1.18vw; */
 }
 
 .text-med-ital {
-  font-weight: 400;
   font-style: italic;
-  font-size: 1.25rem;
-  /* ^ 20px */
-
-  /* font-size: 1.18vw; */
 }
 
 .text-small-ital {
@@ -138,4 +123,92 @@ li{
 
 .hide-bullet-point{
   list-style-type: none;
+}
+
+/* i'm making my own max widths for all of these, don't need to worry about bootstrap doing it */
+.container{
+  max-width: 100%;
+}
+
+/* XXL & XL in bootstrap */
+/* can honestly just have these as default values */
+/* @media screen and (min-width: 1200px){
+  .header-xl{
+
+  }
+
+  .header-lrg{
+
+  }
+
+  .header-med{
+
+  }
+
+  .text-lrg, .text-lrg-bold, .text-lrg-ital{
+
+  }
+
+  .text-med, .text-med-bold, .text-med-ital{
+
+  }
+
+  .text-small-ital{
+
+  }
+} */
+
+
+/* LG & MD in bootstrap */
+@media screen and (max-width: 1199px) and (min-width: 768px){
+  .header-xl{
+
+  }
+
+  .header-lrg{
+
+  }
+
+  .header-med{
+
+  }
+
+  .text-lrg, .text-lrg-bold, .text-lrg-ital{
+
+  }
+
+  .text-med, .text-med-bold, .text-med-ital{
+
+  }
+
+  .text-small-ital{
+    
+  }
+}
+
+/* SM & XS in bootstrap */
+@media screen and (max-width: 767px){
+  .header-xl{
+
+  }
+
+  .header-lrg{
+
+  }
+
+  .header-med{
+
+  }
+
+  .text-lrg, .text-lrg-bold, .text-lrg-ital{
+
+  }
+
+  .text-med, .text-med-bold, .text-med-ital{
+
+  }
+
+  .text-small-ital{
+    
+  }
 }

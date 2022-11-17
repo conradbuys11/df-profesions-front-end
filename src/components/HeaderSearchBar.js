@@ -1,8 +1,8 @@
-import "./HeaderSearchBar.css";
 import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { convertToSearchTerm, displayIconMedium } from "../Common";
 import { LinkContainer } from "react-router-bootstrap";
+import "./HeaderSearchBar.css";
 
 const HeaderSearchBar = (props) => {
   //props: db, apiNavigation
@@ -13,6 +13,21 @@ const HeaderSearchBar = (props) => {
   const handleChange = (e) => {
     e.preventDefault();
     setText(e.target.value);
+  };
+
+  const handleCriteriaChange = (e, type) => {
+    // if we're changing search items, "type" will be "items". so we are items. otherwise, we're recipes. so we're not items.
+    const isItems = type === "items";
+    const curSearch = isItems ? searchItems : searchRecipes;
+    isItems ? setSearchItems(!curSearch) : setSearchRecipes(!curSearch);
+  };
+
+  const handleItemChange = (e) => {
+    handleCriteriaChange(e, "items");
+  };
+
+  const handleRecipeChange = (e) => {
+    handleCriteriaChange(e, "recipes");
   };
 
   const executeSearch = () => {
@@ -82,9 +97,30 @@ const HeaderSearchBar = (props) => {
   };
 
   return (
-    <div className="Header-Search-Bar">
-      <input placeholder="Search (WIP)" value={text} onChange={handleChange} />
-      <Dropdown.Menu show={text.length > 2}>
+    <div id="Header-Search-Bar">
+      <input
+        className="search-bar-input"
+        placeholder="Search (WIP)"
+        value={text}
+        onChange={handleChange}
+      />
+      <br />
+      <span>Show: </span>
+      <input
+        className="search-bar-item-enable"
+        type="checkbox"
+        checked={searchItems}
+        onChange={handleItemChange}
+      />{" "}
+      <span>Items </span>
+      <input
+        className="search-bar-item-enable"
+        type="checkbox"
+        checked={searchRecipes}
+        onChange={handleRecipeChange}
+      />{" "}
+      <span>Recipes</span>
+      <Dropdown.Menu className="search-bar-dropdown" show={text.length > 2}>
         {text.length > 2 ? createDropdownItemList() : "asdf"}
       </Dropdown.Menu>
     </div>
