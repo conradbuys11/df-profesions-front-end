@@ -5,9 +5,11 @@
 
 #header-logo{
     font-weight: 900;
-    font-size: 2.5rem;
     color: #4663ac;
+    font-size: 2.5rem;
     /* 40px */
+
+    /* font-size: 2.36vw; */
 }
 
 .header-search-bar{
@@ -18,4 +20,6 @@
     margin: auto 0.5rem;
     font-size: 1.25rem;
     /* 20px */
+
+    /* font-size: 1.18vw; */
 }

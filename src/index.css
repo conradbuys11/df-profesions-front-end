@@ -17,70 +17,97 @@ h1,h2{
   text-align: center;
 }
 
+/* 
+VERY rough conversion from px to vw: 
+px * 0.059 = vw
+*/
+
+
 
 .header-xl {
   font-weight: 900;
-  font-size: 2.375rem;
   color: #4663ac;
+  font-size: 2.375rem;
   /* ^ 38px */
+
+  /* font-size: 2.242vw; */
+
 }
 
 .header-lrg {
   font-weight: 900;
-  font-size: 2.125rem;
   color: #4663ac;
+  font-size: 2.125rem;
   /* ^ 34px */
+
+  /* font-size: 2.006vw; */
 }
 
 .header-med {
   font-weight: 700;
   font-size: 1.875rem;
   /* ^ 30px */
+
+  /* font-size: 1.77vw; */
 }
 
 .text-lrg {
   font-weight: 400;
   font-size: 1.5rem;
   /* ^ 24px */
+
+  /* font-size: 1.416vw; */
 }
 
 .text-lrg-bold {
   font-weight: 700;
   font-size: 1.5rem;
-    /* ^ 24px */
+  /* ^ 24px */
+
+  /* font-size: 1.416vw; */
 }
 
 .text-lrg-ital {
   font-weight: 400;
+  font-style: italic;
   font-size: 1.5rem;
     /* ^ 24px */
-  font-style: italic;
+  
+  /* font-size: 1.416vw; */
 }
 
 .text-med {
   font-weight: 400;
   font-size: 1.25rem;
   /* ^ 20px */
+
+  /* font-size: 1.18vw; */
 }
 
 .text-med-bold {
   font-weight: 700;
   font-size: 1.25rem;
-    /* ^ 20px */
+  /* ^ 20px */
+
+  /* font-size: 1.18vw; */
 }
 
 .text-med-ital {
   font-weight: 400;
-  font-size: 1.25rem;
-    /* ^ 20px */
   font-style: italic;
+  font-size: 1.25rem;
+  /* ^ 20px */
+
+  /* font-size: 1.18vw; */
 }
 
 .text-small-ital {
   font-weight: 400;
+  font-style: italic;
   font-size: 1rem;
   /* ^ 16px */
-  font-style: italic;
+
+  /* font-size: 0.944vw; */
 }
 
 .img-centered {
