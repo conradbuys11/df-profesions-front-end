@@ -7,7 +7,7 @@ import { websiteLooksLikeCrapNotice } from "../../Common";
 
 const Homepage = (props) => {
   return (
-    <div className="Homepage">
+    <div className="Homepage navbar-margin">
       {/* 
                 BIG, BIG, BIG TO-DO
                 I NEED BETTER IMAGES FOR BOTH HOMEPAGEWELCOME AND HOMEPAGEWHERETOSTART

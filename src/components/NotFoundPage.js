@@ -3,7 +3,7 @@ import "./NotFoundPage.css";
 const NotFoundPage = (props) => {
   return (
     <div>
-      <p>Hey you messed up btw.</p>
+      <h1 className="header-xl">Hey something went wrong btw.</h1>
     </div>
   );
 };

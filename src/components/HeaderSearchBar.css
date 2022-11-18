@@ -1,11 +1,11 @@
 #Header-Search-Bar{
-    /* padding: 0 2rem; */
     justify-content: center;
-    padding: 0 2rem;
+    width: 100%;
+    /* padding: 0 2rem; */
 }
 
 .search-bar-input{
-    width: 23.25vw;
+    width: 100%;
     /* width: 325px; */
 }
 
@@ -13,6 +13,8 @@
     top: auto;
     left: auto;
 }
+
+
 
 /* before XXL (XL and below) */
 @media screen and (max-width: 1399px) {
@@ -27,3 +29,8 @@
         position: absolute;
     }
 }
+
+/* M and below */
+/* @media screen and (max-width: 991){
+    
+} */

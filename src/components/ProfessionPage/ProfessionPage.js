@@ -80,7 +80,7 @@ const ProfessionPage = (props) => {
   // });
 
   return (
-    <div className="Profession-Page">
+    <div className="Profession-Page navbar-margin">
       {websiteLooksLikeCrapNotice()}
       <ProfessionDescription
         professionName={capitalizeWord(name)}

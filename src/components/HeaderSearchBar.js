@@ -9,6 +9,7 @@ const HeaderSearchBar = (props) => {
   const [text, setText] = useState("");
   const [searchItems, setSearchItems] = useState(true);
   const [searchRecipes, setSearchRecipes] = useState(true);
+  const [isBarClicked, setIsBarClicked] = useState(false);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -28,6 +29,18 @@ const HeaderSearchBar = (props) => {
 
   const handleRecipeChange = (e) => {
     handleCriteriaChange(e, "recipes");
+  };
+
+  const clickedOnBar = (e) => {
+    setIsBarClicked(true);
+  };
+
+  const clickedOffBar = (e) => {
+    setIsBarClicked(false);
+  };
+
+  const showEvent = (e) => {
+    console.log(e);
   };
 
   const executeSearch = () => {
@@ -103,6 +116,8 @@ const HeaderSearchBar = (props) => {
         placeholder="Search (WIP)"
         value={text}
         onChange={handleChange}
+        onFocus={clickedOnBar}
+        onBlur={clickedOffBar}
       />
       <br />
       <span>Show: </span>
@@ -120,7 +135,10 @@ const HeaderSearchBar = (props) => {
         onChange={handleRecipeChange}
       />{" "}
       <span>Recipes</span>
-      <Dropdown.Menu className="search-bar-dropdown" show={text.length > 2}>
+      <Dropdown.Menu
+        className="search-bar-dropdown"
+        show={text.length > 2 && isBarClicked}
+      >
         {text.length > 2 ? createDropdownItemList() : "asdf"}
       </Dropdown.Menu>
     </div>

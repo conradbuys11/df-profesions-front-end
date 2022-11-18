@@ -130,9 +130,9 @@ const ItemPage = (props) => {
   };
 
   return isObjectEmpty(item) ? (
-    <h1 className="header-xl">Loading...</h1>
+    <h1 className="header-xl navbar-margin">Loading...</h1>
   ) : (
-    <div className="Item-Page">
+    <div className="Item-Page navbar-margin">
       {websiteLooksLikeCrapNotice()}
       {item.icon ? (
         displayIconLarge(

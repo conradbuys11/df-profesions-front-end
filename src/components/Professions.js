@@ -49,7 +49,7 @@ const Professions = (props) => {
   const secondaryButtons = makeProfessionButtons(secondaryProfessions);
 
   return (
-    <div className="Professions">
+    <div className="Professions navbar-margin">
       {websiteLooksLikeCrapNotice()}
       <Container>
         <h2>Crafting Professions:</h2>

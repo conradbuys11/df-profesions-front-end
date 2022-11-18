@@ -72,9 +72,9 @@ const RecipePage = (props) => {
   return (
     // if we haven't loaded our info yet, just hit em with some loading text
     isObjectEmpty(recipe) ? (
-      <h1 className="header-xl">Loading...</h1>
+      <h1 className="header-xl navbar-margin">Loading...</h1>
     ) : (
-      <div className="Recipe-Page">
+      <div className="Recipe-Page navbar-margin">
         {websiteLooksLikeCrapNotice()}
         <RecipeBanner recipe={recipe} item={item.current} />
         <div className="recipe-component">
