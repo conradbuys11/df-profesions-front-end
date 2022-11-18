@@ -13,7 +13,7 @@ const FinishingReagentPage = (props) => {
     );
 
   return (
-    <div className="Finishing-Reagent-Page">
+    <div className="Finishing-Reagent-Page navbar-margin">
       <h2 className="header-lrg">{fReagentUrlToType(name)}</h2>
       <FrTypeTable type={type()} />
       <FrUsedForTable type={type()} />

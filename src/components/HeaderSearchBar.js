@@ -113,7 +113,7 @@ const HeaderSearchBar = (props) => {
     <div id="Header-Search-Bar">
       <input
         className="search-bar-input"
-        placeholder="Search (WIP)"
+        placeholder="Search"
         value={text}
         onChange={handleChange}
         onFocus={clickedOnBar}

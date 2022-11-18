@@ -81,7 +81,7 @@ const FinishingReagentsPage = (props) => {
   // const makeFrTypeTable = (frType) => {};
 
   return (
-    <div className="Finishing-Reagents-Page">
+    <div className="Finishing-Reagents-Page navbar-margin">
       {isObjectEmpty(finishingReagents) ? (
         <p>Loading...</p>
       ) : (
