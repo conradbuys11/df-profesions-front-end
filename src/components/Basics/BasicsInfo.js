@@ -1,12 +1,127 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BasicsInfo.css";
 import BasicsInfoButton from "./BasicsInfoButton";
+import NewBasicsInfoButton from "./NewBasicsInfoButton";
 import Accordion from "react-bootstrap/Accordion";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
+import Fade from "react-bootstrap/esm/Fade";
 
 const BasicsInfo = (props) => {
+  // each of our five sections can be active or inactive. basically building out an accordion that i want to work in my own way.
+  const [isSectionActive, setSectionActive] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  const handleSectionClick = (sectionId) => {
+    const curSectionActive = isSectionActive[sectionId];
+    // mapping through the array - if the section is the one we passed in, set it to the opposite. otherwise, return what was already there!
+    setSectionActive(
+      isSectionActive.map((section, index) =>
+        index === sectionId ? !curSectionActive : section
+      )
+    );
+  };
+
   return (
     <div id="Basics-Info" className="basics-component">
-      <Accordion alwaysOpen="true">
+      <Container>
+        <Row xs={"auto"} className={"justify-content-center"}>
+          <Col lg={4} xs={"auto"}>
+            <NewBasicsInfoButton
+              sectionId={0}
+              header="Quality Levels & Difficulty"
+              handleSectionClick={handleSectionClick}
+              isSectionActive={isSectionActive[0]}
+            />
+          </Col>
+          <Col lg={4} xs={"auto"}>
+            <NewBasicsInfoButton
+              sectionId={1}
+              header="Stats"
+              handleSectionClick={handleSectionClick}
+              isSectionActive={isSectionActive[1]}
+            />
+          </Col>
+          <Col lg={4} xs={"auto"}>
+            <NewBasicsInfoButton
+              sectionId={2}
+              header="Equipment"
+              handleSectionClick={handleSectionClick}
+              isSectionActive={isSectionActive[2]}
+            />
+          </Col>
+          <Col lg={{ span: 4 }} xs={"auto"}>
+            <NewBasicsInfoButton
+              sectionId={3}
+              header="Specializations & Knowledge"
+              handleSectionClick={handleSectionClick}
+              isSectionActive={isSectionActive[3]}
+            />
+          </Col>
+          <Col lg={{ span: 4 }} xs={"auto"}>
+            <NewBasicsInfoButton
+              sectionId={4}
+              header="Finishing Reagents"
+              handleSectionClick={handleSectionClick}
+              isSectionActive={isSectionActive[4]}
+            />
+          </Col>
+        </Row>
+      </Container>
+
+      <Fade unmountOnExit={true} in={isSectionActive[0]}>
+        <div className="info-div">
+          <span className="text-med-bold">Quality:</span> Most items now have
+          multiple levels of Quality they can be. Reagents, consumables, etc.
+          usually have 3 quality levels, while gear pieces usually have 5. These
+          quality levels determine a few things:
+          <ul>
+            <li>
+              For <span className="text-med-bold">Crafting Reagents:</span>{" "}
+              Higher quality reagents used in recipes will grant bonus Skill
+              when crafting. For example, Quality 1 Ore gave me no bonus Skill
+              in a recipe using it, while Quality 3 Ore gave me a large boost.
+            </li>
+            <li>
+              For <span className="text-med-bold">Consumables:</span> Higher
+              quality consumables will have more potent effects. For example, a
+              Quality 1 Refreshing Healing Potion restores 68k HP, while Quality
+              3 restores 93k HP.
+            </li>
+            <li>
+              For <span className="text-med-bold">Gear:</span> Higher quality
+              gear pieces are higher item levels, & therefore have more stats.
+              For example, most Epic crafted gear is item level 382 at Quality
+              1, and is 392 at Quality 5.
+            </li>
+          </ul>
+          <span className="text-med-bold">Difficulty:</span> The Difficulty
+          level of a recipe refers to the amount of Skill needed to craft at
+          item at its highest Quality. For example, the Engineer's "Handful of
+          Serevite Bolts" has a recipe Difficulty of 50. This means it will
+          craft at Quality 1 when you have 1-24 Skill, Quality 2 when you have
+          25-49 Skill, and Quality 3 when you have 50+ Skill.
+        </div>
+      </Fade>
+      <Fade unmountOnExit={true} in={isSectionActive[1]}>
+        <div>Test</div>
+      </Fade>
+      <Fade unmountOnExit={true} in={isSectionActive[2]}>
+        <div>Hi there</div>
+      </Fade>
+      <Fade unmountOnExit={true} in={isSectionActive[3]}>
+        <div>Perchance.</div>
+      </Fade>
+      <Fade unmountOnExit={true} in={isSectionActive[4]}>
+        <div>Goodbye</div>
+      </Fade>
+      {/* <Accordion alwaysOpen="true">
         <BasicsInfoButton
           eventKey="0"
           header="Quality Levels & Difficulty"
@@ -179,10 +294,6 @@ const BasicsInfo = (props) => {
                   These function exactly like above!
                 </li>
               </ul>
-              (hey maybe insert a picture here because this is kinda confusing?
-              or reword the whole "tree" & "node" thing since they're the same
-              thing but you're using two different words for it)
-              <br />
               <span className="text-med-bold">Knowledge:</span>
               <ul>
                 <li>
@@ -316,7 +427,7 @@ const BasicsInfo = (props) => {
             </>
           }
         />
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };

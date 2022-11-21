@@ -11,9 +11,10 @@ const HomepageWhereToStart = (props) => {
   return (
     <div id="Homepage-Where-To-Start" className="homepage-component">
       <h1 className="header-lrg">Where Should I Start?</h1>
+      <hr className="divider" />
       <Container>
         <Row className="align-items-center">
-          <Col xs={6}>
+          <Col lg={6} md={12}>
             <img
               className="homepage-image-section-two"
               src={specTree}
@@ -21,8 +22,8 @@ const HomepageWhereToStart = (props) => {
             />
           </Col>
 
-          <Col xs={6}>
-            <div className="where-to-start-basics">
+          <Col lg={6} md={12}>
+            <div className="where-to-start-text">
               <p className="text-lrg">
                 Professions now have stats, talent trees... oh man, where to
                 even begin? The{" "}
@@ -36,8 +37,16 @@ const HomepageWhereToStart = (props) => {
         </Row>
 
         <Row className="align-items-center">
-          <Col xs={6}>
-            <div className="where-to-start-professions">
+          <Col lg={{ span: 6, order: "last" }} md={{ span: 12 }}>
+            <img
+              className="homepage-image-section-two"
+              src={recipeList}
+              alt="recipe list"
+            />
+          </Col>
+
+          <Col lg={{ span: 6, order: "first" }} md={{ span: 12 }}>
+            <div className="where-to-start-text">
               <p className="text-lrg">
                 Want to just see what each profession can make in Dragonflight?
                 Check the{" "}
@@ -48,14 +57,6 @@ const HomepageWhereToStart = (props) => {
                 of recipes available.
               </p>
             </div>
-          </Col>
-
-          <Col xs={6}>
-            <img
-              className="homepage-image-section-two"
-              src={recipeList}
-              alt="recipe list"
-            />
           </Col>
         </Row>
       </Container>

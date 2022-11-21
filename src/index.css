@@ -134,6 +134,12 @@ li{
   max-width: 100%;
 }
 
+.divider{
+  margin: 0 auto 1rem auto;
+  border-top: 5px solid #4663ac;
+  border-radius: 5px;
+}
+
 /* XXL & XL in bootstrap */
 /* can honestly just have these as default values */
 /* @media screen and (min-width: 1200px){
@@ -206,7 +212,7 @@ li{
   }
 
   .navbar-margin{
-    margin-top: 109.781px;
+    margin-top: 112.17px;
   }
 }
 

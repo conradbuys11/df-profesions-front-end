@@ -28,3 +28,10 @@
 }
 
 /* Breakpoints */
+
+/* MD and below */
+@media screen and (max-width: 991px) {
+    .welcome-paragraph{
+        text-align: center;
+    }    
+}

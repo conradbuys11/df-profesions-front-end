@@ -5,8 +5,9 @@ const BasicsIntro = (props) => {
   return (
     <div id="Basics-Intro" className="basics-component">
       <h1 className="header-lrg">
-        How have professions changed in Dragonflight?
+        How have Professions changed in Dragonflight?
       </h1>
+      <hr className="divider" />
       <ol>
         <li className="text-med">
           Most crafting recipes have a{" "}

@@ -69,4 +69,8 @@
     .header-logo{
         font-size: 4rem;
     }
+
+    .search-bar-input{
+        margin-bottom: .25rem;
+    }
 }

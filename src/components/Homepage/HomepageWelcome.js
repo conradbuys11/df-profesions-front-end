@@ -11,9 +11,10 @@ const HomepageWelcome = (props) => {
       <h1 className="header-xl">
         Welcome to Conrad's WoW: Dragonflight Profession Page
       </h1>
+      <hr className="divider" />
       <Container>
         <Row className="align-items-center">
-          <Col xs={5}>
+          <Col lg={5} xs={{ span: 12 /* order: "last" */ }}>
             <div className="welcome-paragraph">
               <p className="text-lrg">
                 Professions are changing a LOT in 10.0, and navigating all the
@@ -27,7 +28,7 @@ const HomepageWelcome = (props) => {
             </div>
           </Col>
 
-          <Col xs={7}>
+          <Col lg={7} xs={{ span: 12 /* order: "first" */ }}>
             <img src={miningArt} alt="mining art" className="key-image" />
           </Col>
         </Row>
