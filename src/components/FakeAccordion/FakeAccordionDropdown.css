@@ -9,7 +9,7 @@
 
 /* MD and below */
 @media screen and (max-width: 991px) {
-    .FakeAccordion-Dropdown{
+    .Fake-Accordion-Dropdown{
         display: flex;
         justify-content: center;
         align-items: center;

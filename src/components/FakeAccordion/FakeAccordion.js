@@ -39,9 +39,14 @@ const FakeAccordion = (props) => {
         <FakeAccordionContent
           isSectionActive={isSectionActive[index]}
           key={`f-accordion-content-${index}`}
-          divider={props.divider !== undefined ? props.divider : true}
         >
           {content}
+          {/* if either divider is not provided, or it is true. ie, only time we're not putting in divider is when false */}
+          {props.divider === undefined || props.divider ? (
+            <hr className="divider" />
+          ) : (
+            <></>
+          )}
         </FakeAccordionContent>
       ))
     ) : (

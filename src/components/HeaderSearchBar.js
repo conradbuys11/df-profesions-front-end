@@ -135,10 +135,7 @@ const HeaderSearchBar = (props) => {
         onChange={handleRecipeChange}
       />{" "}
       <span>Recipes</span>
-      <Dropdown.Menu
-        className="search-bar-dropdown"
-        show={text.length > 2 && isBarClicked}
-      >
+      <Dropdown.Menu className="search-bar-dropdown" show={text.length > 2}>
         {text.length > 2 ? createDropdownItemList() : "asdf"}
       </Dropdown.Menu>
     </div>

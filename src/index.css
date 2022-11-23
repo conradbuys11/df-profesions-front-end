@@ -41,10 +41,12 @@ VERY rough conversion from px to vw:
 px * 0.059 = vw
 */
 
+.header-xl, .header-lrg, .header-med{
+  color: #4663ac;
+}
+
 .header-xl, .header-lrg{
   font-weight: 900;
-  color: #4663ac;
-
 }
 
 .header-xl {
@@ -112,19 +114,19 @@ px * 0.059 = vw
 }
 
 .item-common{
-  border: 3px solid #9f9f9f;
+  border: 0.1875rem solid #9f9f9f;
 }
 
 .item-uncommon{
-  border: 3px solid #1eff00;
+  border: 0.1875rem solid #1eff00;
 }
 
 .item-rare{
-  border: 3px solid #0070dd;
+  border: 0.1875rem solid #0070dd;
 }
 
 .item-epic{
-  border: 3px solid #a335ee;
+  border: 0.1875rem solid #a335ee;
 }
 
 .navbar-margin{
@@ -199,6 +201,22 @@ li:last-child{
 
   .navbar-margin{
     margin-top: 112.17px;
+  }
+
+  .item-common{
+    border: 2px solid #9f9f9f;
+  }
+  
+  .item-uncommon{
+    border: 2px solid #1eff00;
+  }
+  
+  .item-rare{
+    border: 2px solid #0070dd;
+  }
+  
+  .item-epic{
+    border: 2px solid #a335ee;
   }
 }
 

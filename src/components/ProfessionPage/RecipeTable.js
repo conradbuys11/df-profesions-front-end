@@ -1,8 +1,7 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import Table from "react-bootstrap/esm/Table";
 import "./RecipeTable.css";
 import { specOrRenownObjectToWords } from "../../Common";
-import Accordion from "react-bootstrap/Accordion";
 import { displayIconMedium, qualityToImgClass } from "../../Common";
 import { Link } from "react-router-dom";
 
@@ -12,36 +11,18 @@ const RecipeTable = (props) => {
   // activeKeys, setActiveKeys,
   // recipes, apiNavigation
 
-  //this url is gonna be custom - ie the full thing, not just localhost:3001
-
-  let thisClass = props.thisClass;
-  // let sortingMethod = props.sortingMethod;
+  // let thisClass = props.thisClass;
   const recipes = props.recipes;
-  // const [recipes, setRecipes] = useState(null);
 
-  // useEffect(() => {
-  //   // let fetching = true;
-  //   // if (props.URL && props.profession.id) {
-  //   //   fetch(props.URL)
-  //   //     .then((res) => res.json())
-  //   //     .then((data) => {
-  //   //       if (fetching) {
-  //   //         setRecipes(data);
-  //   //       }
-  //   //     });
-  //   // }
-  //   setRecipes(sortingMethod());
-  // }, [thisClass, sortingMethod]);
-
-  const setKeys = () => {
-    //if our key is currently in the array of active keys, turn it off
-    //otherwise, add it to it
-    props.activeKeys.includes(props.eventKey)
-      ? props.setActiveKeys(
-          props.activeKeys.filter((key) => key !== props.eventKey)
-        )
-      : props.setActiveKeys([...props.activeKeys, props.eventKey]);
-  };
+  // const setKeys = () => {
+  //   //if our key is currently in the array of active keys, turn it off
+  //   //otherwise, add it to it
+  //   props.activeKeys.includes(props.eventKey)
+  //     ? props.setActiveKeys(
+  //         props.activeKeys.filter((key) => key !== props.eventKey)
+  //       )
+  //     : props.setActiveKeys([...props.activeKeys, props.eventKey]);
+  // };
 
   const makeRow = (recipe, firstColumn) => {
     /*
@@ -61,12 +42,12 @@ const RecipeTable = (props) => {
           {recipe.icon
             ? displayIconMedium(
                 recipe.icon,
-                qualityToImgClass(recipeItem.quality)
+                `${qualityToImgClass(recipeItem.quality)} icon-shrink`
               )
             : "(ICON)"}{" "}
           <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
         </td>
-        <td>{recipe.category}</td>
+        <td className="hide-md">{recipe.category}</td>
         <td>
           <ul>{makeMaterialTable(recipeMaterials)}</ul>
         </td>
@@ -82,7 +63,10 @@ const RecipeTable = (props) => {
           {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
           {item.icon
-            ? displayIconMedium(item.icon, qualityToImgClass(item.quality))
+            ? displayIconMedium(
+                item.icon,
+                `${qualityToImgClass(item.quality)} icon-shrink`
+              )
             : "(ICON)"}{" "}
           {material.quantity}x <Link to={`/items/${item.id}`}>{item.name}</Link>
         </li>
@@ -115,48 +99,53 @@ const RecipeTable = (props) => {
 
   const accordionBody = () => {
     return (
-      <Table striped>
-        <thead>
-          <tr>
-            <th>{props.firstColumnName ? props.firstColumnName : ""}</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Materials</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {recipes && recipes.length !== 0 ? (
-            makeAllRows()
-          ) : (
+      <div>
+        <h2 className="header-lrg">{props.recipesFrom}</h2>
+        <Table striped>
+          <thead>
             <tr>
-              <td></td>
+              <th>{props.firstColumnName ? props.firstColumnName : ""}</th>
+              <th>Name</th>
+              <th className="hide-md">Category</th>
+              <th>Materials</th>
             </tr>
-          )}
-        </tbody>
-      </Table>
+          </thead>
+
+          <tbody>
+            {recipes && recipes.length !== 0 ? (
+              makeAllRows()
+            ) : (
+              <tr>
+                <td></td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
+      </div>
     );
   };
 
-  return (
-    <Accordion.Item eventKey={props.eventKey} className={thisClass}>
-      <Accordion.Header onClick={setKeys}>
-        {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
-      </Accordion.Header>
-      <Accordion.Body>
-        {/* if recipes is null (its default), we say that we're loading
-        if recipes is an array with stuff in it, we have loaded stuff
-        if recipes is an array with nothing it in, we say there's no info */}
-        {!recipes ? (
-          <h2>Loading...</h2>
-        ) : recipes.length > 0 ? (
-          accordionBody()
-        ) : (
-          <h2>No recipes found.</h2>
-        )}
-      </Accordion.Body>
-    </Accordion.Item>
-  );
+  // return (
+  //   <Accordion.Item eventKey={props.eventKey} className={thisClass}>
+  //     <Accordion.Header onClick={setKeys}>
+  //       {props.recipesFrom ? `Recipes from ${props.recipesFrom}` : "Recipes"}
+  //     </Accordion.Header>
+  //     <Accordion.Body>
+  //       {/* if recipes is null (its default), we say that we're loading
+  //       if recipes is an array with stuff in it, we have loaded stuff
+  //       if recipes is an array with nothing it in, we say there's no info */}
+  //       {!recipes ? (
+  //         <h2>Loading...</h2>
+  //       ) : recipes.length > 0 ? (
+  //         accordionBody()
+  //       ) : (
+  //         <h2>No recipes found.</h2>
+  //       )}
+  //     </Accordion.Body>
+  //   </Accordion.Item>
+  // );
+
+  return accordionBody();
 };
 
 export default RecipeTable;

@@ -1,0 +1,18 @@
+.hide-md{
+
+}
+
+.icon-shrink{
+
+}
+
+/* MD and below */
+@media screen and (max-width: 991px){
+    .hide-md{
+        display: none;
+    }
+
+    .icon-shrink{
+        width: 2rem;
+    }
+}
