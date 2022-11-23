@@ -1,0 +1,10 @@
+.Fake-Accordion-Container{
+    padding-bottom: 0.5rem;
+}
+
+/* MD AND BELOW */
+@media screen and (max-width: 991px){
+    .Fake-Accordion-Container{
+        display: none;
+    }
+}
