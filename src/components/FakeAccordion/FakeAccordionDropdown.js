@@ -5,7 +5,7 @@ const FakeAccordionDropdown = (props) => {
   // props: isSectionActive, headers, handleSectionClick
 
   const makeDropdownItems = () => {
-    props.headers ? (
+    return props.headers ? (
       props.headers.map((header, index) => (
         <Dropdown.Item
           className={

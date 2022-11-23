@@ -8,7 +8,7 @@ const FakeAccordionContainer = (props) => {
   // props: isSectionActive, handleSectionClick, headers, colSize
 
   const makeAccordionButtons = () => {
-    props.headers ? (
+    return props.headers ? (
       props.headers.map((header, index) => (
         <Col lg={props.colSize} key={`f-accordion-${index}`}>
           <FakeAccordionButton
@@ -19,7 +19,7 @@ const FakeAccordionContainer = (props) => {
         </Col>
       ))
     ) : (
-      <></>
+      <>Hey, you didn't give the container any headers.</>
     );
   };
 

@@ -3,11 +3,13 @@ import { useState } from "react";
 import FakeAccordionContainer from "./FakeAccordionContainer";
 import FakeAccordionDropdown from "./FakeAccordionDropdown";
 import FakeAccordionContent from "./FakeAccordionContent";
+import Fade from "react-bootstrap/esm/Fade";
 
 const FakeAccordion = (props) => {
   // props: sections (ie, number of sections), headers (ie, array of text of headers),
   // colSize (if you want to manually set how many columns for the container),
   // content (array of the stuff in each section. this is gonna be a lot of html)
+  // divider (bool, puts a divider at the end of each content. true by default)
 
   const setNumberOfSections = (number) => {
     let array = [];
@@ -32,11 +34,12 @@ const FakeAccordion = (props) => {
   };
 
   const makeAccordionContent = () => {
-    props.content ? (
+    return props.content ? (
       props.content.map((content, index) => (
         <FakeAccordionContent
           isSectionActive={isSectionActive[index]}
           key={`f-accordion-content-${index}`}
+          divider={props.divider !== undefined ? props.divider : true}
         >
           {content}
         </FakeAccordionContent>
