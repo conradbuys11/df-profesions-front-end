@@ -13,8 +13,6 @@ const Homepage = (props) => {
                 I NEED BETTER IMAGES FOR BOTH HOMEPAGEWELCOME AND HOMEPAGEWHERETOSTART
                 MORE SQUARE-LIKE: CURRENT IMAGES ARE VERY WIDE, BUT NOT TALL AT ALL
                 */}
-
-      {websiteLooksLikeCrapNotice()}
       <HomepageWelcome />
       <HomepageWhereToStart />
     </div>

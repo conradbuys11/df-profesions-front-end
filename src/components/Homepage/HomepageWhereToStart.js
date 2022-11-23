@@ -9,7 +9,7 @@ import recipeList from "../../img/screenshots/recipe_list_1140_520.png";
 
 const HomepageWhereToStart = (props) => {
   return (
-    <div id="Homepage-Where-To-Start" className="homepage-component">
+    <div id="Homepage-Where-To-Start" className="even-section">
       <h1 className="header-lrg">Where Should I Start?</h1>
       <hr className="divider" />
       <Container>

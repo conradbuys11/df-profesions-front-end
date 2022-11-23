@@ -50,18 +50,23 @@ const Professions = (props) => {
 
   return (
     <div className="Professions navbar-margin">
-      {websiteLooksLikeCrapNotice()}
-      <Container>
-        <h2>Crafting Professions:</h2>
-        {/* justify-content-md-center basically centers the columns.
-                ie if the amount of rows does not fill out the entire column, they'll be centered. */}
-        <Row className="justify-content-md-center">{craftingButtons}</Row>
-
-        <h2>Gathering Professions:</h2>
-        <Row className="justify-content-md-center">{gatheringButtons}</Row>
-
-        <h2>Secondary Professions:</h2>
-        <Row className="justify-content-md-center">{secondaryButtons}</Row>
+      <Container style={{ padding: 0 }}>
+        <div className="odd-section">
+          <h2 className="header-lrg">Crafting Professions</h2>
+          <hr className="divider" />
+          {/* justify-content-center basically centers the columns.
+                  ie if the amount of rows does not fill out the entire column, they'll be centered. */}
+          <Row className="justify-content-center">{craftingButtons}</Row>
+        </div>
+        <div className="even-section">
+          <h2 className="header-lrg">Gathering Professions:</h2>
+          <hr className="divider" />
+          <Row className="justify-content-center">{gatheringButtons}</Row>
+        </div>
+        <div className="odd-section">
+          <h2 className="header-lrg">Secondary Professions:</h2>
+          <Row className="justify-content-center">{secondaryButtons}</Row>
+        </div>
       </Container>
     </div>
   );

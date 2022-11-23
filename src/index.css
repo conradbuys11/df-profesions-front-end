@@ -6,6 +6,7 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d2deeb;
 }
 
 code {
@@ -21,6 +22,20 @@ img{
   max-width: 100%;
 }
 
+a{
+  -webkit-text-stroke: initial;
+}
+
+.odd-section{
+  background-color: #e1f1fd;
+  padding: 1rem 8% 1rem;
+}
+
+.even-section{
+  background-color: #c1d8f0;
+  padding: 1rem 8% 1rem;
+}
+
 /* 
 VERY rough conversion from px to vw: 
 px * 0.059 = vw
@@ -29,21 +44,21 @@ px * 0.059 = vw
 .header-xl, .header-lrg{
   font-weight: 900;
   color: #4663ac;
+
 }
 
 .header-xl {
   font-size: 2.375rem;
   /* ^ 38px */
-
-  /* font-size: 2.242vw; */
-
+  -webkit-text-stroke: 0.0125rem white;
+  /* about 0.2px @ font-size 100% */
 }
 
 .header-lrg {
   font-size: 2.125rem;
   /* ^ 34px */
-
-  /* font-size: 2.006vw; */
+  -webkit-text-stroke: 0.009375rem white;
+  /* about 0.15px @ font-size 100% */
 }
 
 .header-med {
@@ -51,15 +66,14 @@ px * 0.059 = vw
   font-size: 1.875rem;
   /* ^ 30px */
 
-  /* font-size: 1.77vw; */
+  -webkit-text-stroke: 0.00625rem white;
+  /* about 0.1px @ font-size 100% */
 }
 
 .text-lrg, .text-lrg-ital, .text-lrg-bold {
   font-weight: 400;
   font-size: 1.5rem;
   /* ^ 24px */
-
-  /* font-size: 1.416vw; */
 }
 
 .text-lrg-bold {
@@ -74,8 +88,6 @@ px * 0.059 = vw
   font-weight: 400;
   font-size: 1.25rem;
   /* ^ 20px */
-
-  /* font-size: 1.18vw; */
 }
 
 .text-med-bold {
@@ -91,8 +103,6 @@ px * 0.059 = vw
   font-style: italic;
   font-size: 1rem;
   /* ^ 16px */
-
-  /* font-size: 0.944vw; */
 }
 
 .img-centered {
@@ -144,35 +154,6 @@ li:last-child{
   border-radius: 5px;
   padding-bottom: 1rem;
 }
-
-/* XXL & XL in bootstrap */
-/* can honestly just have these as default values */
-/* @media screen and (min-width: 1200px){
-  .header-xl{
-
-  }
-
-  .header-lrg{
-
-  }
-
-  .header-med{
-
-  }
-
-  .text-lrg, .text-lrg-bold, .text-lrg-ital{
-
-  }
-
-  .text-med, .text-med-bold, .text-med-ital{
-
-  }
-
-  .text-small-ital{
-
-  }
-} */
-
 
 /* LG in bootstrap */
 @media screen and (max-width: 1199px){

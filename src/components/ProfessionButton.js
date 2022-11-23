@@ -31,7 +31,7 @@ const ProfessionButton = (props) => {
   };
 
   return (
-    <Col lg="3" md="4" sm="6">
+    <Col lg="3" md="4" xs="6">
       {isFinishedProfession(props.name) ? (
         <div className="Profession-Button" onClick={handleClick}>
           <img
