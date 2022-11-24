@@ -1,7 +1,36 @@
 .Item-Page{
-    padding: 0 8%;
+    /* padding: 0 8%; */
+}
+
+.item-banner{
+    padding-top: 1rem;
+}
+
+/* identical to RecipePage's recipe-col */
+/* well, with a bit more side padding */
+.item-container {
+    padding: 0 6%;
+    margin-bottom: 1rem;
+}
+
+/* identical to RecipePage's recipe-col */
+.item-col{
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+    border: medium double #4663ac;
 }
 
 .temp-center {
     text-align: center;
+}
+
+/* MD AND BELOW */
+@media screen and (max-width: 991px){
+    .item-col{
+        margin-bottom: 0.5rem;
+    }
+
+    .item-container{
+        margin-bottom: 0.5rem;
+    }
 }

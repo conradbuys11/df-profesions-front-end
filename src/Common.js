@@ -189,6 +189,14 @@ const partialStatRangeText = (array) => {
   return "ERROR";
 };
 
+const equipOnUsePartialStatRangeText = (equipOrOnUse) => {
+  // converting 382/384/386/389/392 to 382-392
+  // regex checks that we have 5 sets of either 1+ digits, or a ? - all separated by /
+  // also captures groups 1 and 2 w/ () so we can use that in our return
+  const fullStatRangeRegex = /([\d?]+)\/[\d?]+\/[\d?]+\/[\d?]+\/([\d?]+)/g;
+  return equipOrOnUse.replaceAll(fullStatRangeRegex, `$1-$2`);
+};
+
 const correctFoozlesIconURL = (iconURL) => {
   //just fixing my dummy mistake until i re-seed the db
   return iconURL.replace(
@@ -263,4 +271,5 @@ export {
   convertToSearchTerm,
   displayIconMediumScaling,
   displayIconLargeScaling,
+  equipOnUsePartialStatRangeText,
 };

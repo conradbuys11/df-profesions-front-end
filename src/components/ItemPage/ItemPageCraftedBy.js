@@ -1,7 +1,11 @@
 import "./ItemPageCraftedBy.css";
 import Table from "react-bootstrap/esm/Table";
 import { Link } from "react-router-dom";
-import { displayIconMedium, qualityToImgClass } from "../../Common";
+import {
+  displayIconMedium,
+  qualityToImgClass,
+  displayIconMediumScaling,
+} from "../../Common";
 
 const ItemPageCraftedBy = (props) => {
   //props: craftedBy, apiNavigation
@@ -18,7 +22,10 @@ const ItemPageCraftedBy = (props) => {
         <tr key={`recipe-${recipe.id}`}>
           <td>
             {recipe.icon ? (
-              displayIconMedium(recipe.icon, qualityToImgClass(item.quality))
+              displayIconMediumScaling(
+                recipe.icon,
+                qualityToImgClass(item.quality)
+              )
             ) : (
               <span>(ICON)</span>
             )}{" "}
@@ -33,8 +40,8 @@ const ItemPageCraftedBy = (props) => {
   };
 
   return (
-    <div>
-      <h3>Crafted by:</h3>
+    <div className="odd-section">
+      <h2 className="header-med">Crafted by:</h2>
       <Table>
         <thead>
           <tr>

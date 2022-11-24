@@ -6,10 +6,12 @@ import FakeAccordionContent from "./FakeAccordionContent";
 import Fade from "react-bootstrap/esm/Fade";
 
 const FakeAccordion = (props) => {
-  // props: sections (ie, number of sections), headers (ie, array of text of headers),
+  // PROPS:
+  // sections (ie, number of sections), headers (ie, array of text of headers),
   // colSize (if you want to manually set how many columns for the container),
   // content (array of the stuff in each section. this is gonna be a lot of html)
   // divider (bool, puts a divider at the end of each content. true by default)
+  // dropdownMenuName (string, what the dropdown menu should have as text for the button. defaults to "Sections to Show")
 
   const setNumberOfSections = (number) => {
     let array = [];
@@ -100,6 +102,9 @@ const FakeAccordion = (props) => {
         // areAllSectionsInactive={areAllSectionsInactive}
         handleShowAll={handleShowAll}
         handleHideAll={handleHideAll}
+        dropdownMenuName={
+          props.dropdownMenuName ? props.dropdownMenuName : "Sections to Show"
+        }
       />
       <hr className="divider" />
       {makeAccordionContent()}

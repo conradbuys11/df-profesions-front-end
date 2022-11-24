@@ -16,6 +16,9 @@ import {
 import ItemPageCraftedBy from "./ItemPageCraftedBy";
 import ItemPageGearInfo from "./ItemPageGearInfo";
 import ItemPageReagentFor from "./ItemPageReagentFor";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 const ItemPage = (props) => {
   /*
@@ -129,48 +132,107 @@ const ItemPage = (props) => {
     }
   };
 
+  const isGearPiece = () => {
+    return item.slot || item.armorWeaponType;
+  };
+
   return isObjectEmpty(item) ? (
     <h1 className="header-xl navbar-margin">Loading...</h1>
   ) : (
-    <div className="Item-Page navbar-margin">
-      {websiteLooksLikeCrapNotice()}
-      {item.icon ? (
-        displayIconLarge(
-          item.icon,
-          `img-centered ${qualityToImgClass(item.quality)}`
-        )
-      ) : (
-        <h5 className="temp-center">(ICON)</h5>
-      )}
-      <h1 className="header-xl">{item.name}</h1>
-      {item.bindOn ? <p>{`Binds on ${item.bindOn}`}</p> : <></>}
-      {item.stacksTo > 1 ? <p>Stacks to {item.stacksTo}</p> : <></>}
-      {item.otherType ? <p>{item.otherType}</p> : <></>}
-      {item.qualityLevels > 1 ? (
-        <p>Possible Levels of Quality: {item.qualityLevels}</p>
-      ) : (
-        <></>
-      )}
-      {item.finishingReagentType ? (
-        <p>Finishing Reagent Type(s): {processFinishingReagentTypes()}</p>
-      ) : (
-        <></>
-      )}
-      {item.description ? <p>{`"${item.description}"`}</p> : <></>}
-      {item.notes ? (
-        <p className="text-med-ital">(Conrad's notes: {item.notes})</p>
-      ) : (
-        <></>
-      )}
+    <div className="Item-Page navbar-margin text-med">
+      {/* this could be its own component, like RecipeBanner */}
+      <div className="item-banner">
+        {item.icon ? (
+          displayIconLarge(
+            item.icon,
+            `img-centered ${qualityToImgClass(item.quality)}`
+          )
+        ) : (
+          <h5 className="temp-center">(ICON)</h5>
+        )}
+        <h1 className="header-xl">{item.name}</h1>
+        <hr className="divider" />
+      </div>
 
-      {/* gear stuff */}
-      {item.slot || item.armorWeaponType ? (
-        <ItemPageGearInfo item={item} />
-      ) : item.onUse ? (
-        <p>{item.onUse}</p>
-      ) : (
-        <></>
-      )}
+      <Container className="item-container">
+        <Row>
+          <Col xs={12} lg className="odd-section-no-padding item-col">
+            {/* this could ALSO be its own component, like RecipeDescription */}
+            <div className="item-description">
+              <h1 className="header-med">Properties:</h1>
+              <div className="text-lrg">
+                {item.bindOn ? (
+                  <p>
+                    <span className="text-lrg-bold">Binds on:</span>{" "}
+                    {item.bindOn}
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {item.stacksTo > 1 ? (
+                  <p>
+                    <span className="text-lrg-bold">Stacks To:</span>{" "}
+                    {item.stacksTo}
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {item.otherType ? (
+                  <p>
+                    <span className="text-lrg-bold">Type:</span>{" "}
+                    {item.otherType}
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {item.qualityLevels > 1 ? (
+                  <p>
+                    <span className="text-lrg-bold">
+                      Possible Levels of Quality:
+                    </span>{" "}
+                    {item.qualityLevels}
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {item.finishingReagentType ? (
+                  <p>
+                    <span className="text-lrg-bold">
+                      Finishing Reagent Type(s):
+                    </span>{" "}
+                    {processFinishingReagentTypes()}
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {!isGearPiece() && item.effect ? <p>{item.effect}</p> : <></>}
+
+                {item.description ? (
+                  <p>
+                    <span className="text-lrg-ital">{`"${item.description}"`}</span>
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {item.notes ? (
+                  <p className="text-med-ital">
+                    (Conrad's notes: {item.notes})
+                  </p>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
+          </Col>
+          {isGearPiece() ? (
+            <Col xs={12} lg className="even-section-no-padding item-col">
+              <ItemPageGearInfo item={item} />
+            </Col>
+          ) : (
+            <></>
+          )}
+        </Row>
+      </Container>
 
       {/* crafted by, stuff */}
       {craftedBy.current.length > 0 ? (

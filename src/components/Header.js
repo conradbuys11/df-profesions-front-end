@@ -13,11 +13,11 @@ const Header = (props) => {
   // props: db, apiNavigation (for our HeaderSearchBar)
   return (
     // <div id="Header">
-    <Navbar id="Header" fixed="top" expand="xl">
+    <Navbar id="Header" fixed="top" expand="xl" collapseOnSelect>
       <Container>
         <Row className="align-items-center">
           <Col lg="auto" xs={12}>
-            <LinkContainer to="/">
+            <LinkContainer to="/" active={false}>
               <Navbar.Brand className="header-logo">
                 DF Professions
               </Navbar.Brand>

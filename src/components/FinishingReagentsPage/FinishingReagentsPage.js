@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import "./FinishingReagentsPage.css";
-import { isObjectEmpty } from "../../Common";
+import { isObjectEmpty, websiteLooksLikeCrapNotice } from "../../Common";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -86,6 +86,7 @@ const FinishingReagentsPage = (props) => {
         <p>Loading...</p>
       ) : (
         <div>
+          {websiteLooksLikeCrapNotice()}
           <h2 className="header-lrg">
             Finishing Reagent Types, per Profession
           </h2>

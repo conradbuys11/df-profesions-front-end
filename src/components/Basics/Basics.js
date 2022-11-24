@@ -7,7 +7,6 @@ import { websiteLooksLikeCrapNotice } from "../../Common";
 const Basics = (props) => {
   return (
     <div className="Basics navbar-margin">
-      {websiteLooksLikeCrapNotice()}
       <BasicsIntro />
       <BasicsInfo />
     </div>

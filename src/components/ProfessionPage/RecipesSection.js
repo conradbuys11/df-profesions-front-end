@@ -61,12 +61,13 @@ const RecipesSection = (props) => {
 
   return (
     <div id="Recipes-Section">
-      <h1 className="header-lrg">Recipes From:</h1>
+      <h1 className="header-lrg hide-md">Recipes From:</h1>
       <FakeAccordion
         sections={4}
         headers={headers}
         colSize={3}
         content={content}
+        dropdownMenuName={"Recipes From"}
       />
       {/* <Accordion
         alwaysOpen="true"

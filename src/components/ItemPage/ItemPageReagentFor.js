@@ -1,8 +1,11 @@
 import "./ItemPageReagentFor.css";
 import Table from "react-bootstrap/esm/Table";
 import { Link, useOutletContext } from "react-router-dom";
-import { displayIconMedium, qualityToImgClass } from "../../Common";
-import { useEffect } from "react";
+import {
+  displayIconMedium,
+  qualityToImgClass,
+  displayIconMediumScaling,
+} from "../../Common";
 
 const ItemPageReagentFor = (props) => {
   // props: reagentFor, apiNavigation
@@ -27,7 +30,10 @@ const ItemPageReagentFor = (props) => {
         <tr key={`mt-${material.id}`}>
           <td>
             {recipe.icon ? (
-              displayIconMedium(recipe.icon, qualityToImgClass(item.quality))
+              displayIconMediumScaling(
+                recipe.icon,
+                qualityToImgClass(item.quality)
+              )
             ) : (
               <span>(ICON)</span>
             )}{" "}
@@ -45,8 +51,8 @@ const ItemPageReagentFor = (props) => {
   };
 
   return (
-    <div>
-      <h3>Used in Crafting:</h3>
+    <div className="even-section">
+      <h2 className="header-med">Used in Crafting:</h2>
       <Table>
         <thead>
           <tr>

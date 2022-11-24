@@ -228,6 +228,10 @@ li:last-child{
   .lrg-icon-shrink{
     width: 4rem;
   }
+
+  .hide-md{
+    display: none;
+  }
 }
 
 /* SM & XS in bootstrap */

@@ -2,7 +2,7 @@ import "./FakeAccordionDropdown.css";
 import Dropdown from "react-bootstrap/esm/Dropdown";
 
 const FakeAccordionDropdown = (props) => {
-  // props: isSectionActive, headers, handleSectionClick, handleShowAll, handleHideAll
+  // props: isSectionActive, headers, handleSectionClick, handleShowAll, handleHideAll, dropdownMenuName
 
   const makeDropdownItemsArray = () => {
     let arr = props.headers.map((header, index) => (
@@ -45,7 +45,7 @@ const FakeAccordionDropdown = (props) => {
   return (
     <div className="Fake-Accordion-Dropdown">
       <Dropdown autoClose={false}>
-        <Dropdown.Toggle size="lg">Sections to Show</Dropdown.Toggle>
+        <Dropdown.Toggle size="lg">{props.dropdownMenuName}</Dropdown.Toggle>
         <Dropdown.Menu>{makeDropdownItems()}</Dropdown.Menu>
       </Dropdown>
     </div>

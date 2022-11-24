@@ -9,7 +9,7 @@ const FakeAccordionContainer = (props) => {
   // (these next props are for the show all/hide all buttons) handleShowAll, handleHideAll
 
   const makeAccordionButtonsArray = () => {
-    let arr = props.headers.map((header, index) => (
+    return props.headers.map((header, index) => (
       <Col lg={props.colSize} key={`f-accordion-${index}`}>
         <FakeAccordionButton
           header={header}
@@ -18,25 +18,6 @@ const FakeAccordionContainer = (props) => {
         />
       </Col>
     ));
-    arr.push(
-      <Col lg={props.colSize} key={`f-accordion-show-all`}>
-        <FakeAccordionButton
-          header={"Show All"}
-          isSectionActive={false}
-          handleSectionClick={props.handleShowAll}
-        />
-      </Col>
-    );
-    arr.push(
-      <Col lg={props.colSize} key={`f-accordion-hide-all`}>
-        <FakeAccordionButton
-          header={"Hide All"}
-          isSectionActive={false}
-          handleSectionClick={props.handleHideAll}
-        />
-      </Col>
-    );
-    return arr;
   };
   const makeAccordionButtons = () => {
     return props.headers ? (
@@ -46,9 +27,31 @@ const FakeAccordionContainer = (props) => {
     );
   };
 
+  const makeShowAndHideAllButtons = () => {
+    return (
+      <Row xs={"auto"} className={"justify-content-center"}>
+        <Col lg={{ span: 3 }} key={`f-accordion-show-all`}>
+          <FakeAccordionButton
+            header={"Show All"}
+            isSectionActive={false}
+            handleSectionClick={props.handleShowAll}
+          />
+        </Col>
+        <Col lg={{ span: 3 }} key={`f-accordion-hide-all`}>
+          <FakeAccordionButton
+            header={"Hide All"}
+            isSectionActive={false}
+            handleSectionClick={props.handleHideAll}
+          />
+        </Col>
+      </Row>
+    );
+  };
+
   return (
     <div className="Fake-Accordion-Container">
       <Container>
+        {makeShowAndHideAllButtons()}
         <Row xs={"auto"} className={"justify-content-center"}>
           {makeAccordionButtons()}
         </Row>

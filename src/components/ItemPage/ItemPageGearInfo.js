@@ -1,7 +1,14 @@
 import "./ItemPageGearInfo.css";
-import { fullStatRangeText, partialStatRangeText } from "../../Common";
+import {
+  fullStatRangeText,
+  partialStatRangeText,
+  equipOnUsePartialStatRangeText,
+} from "../../Common";
+import { useState } from "react";
 
 const ItemPageGearInfo = (props) => {
+  const [showAllNumbers, setAllNumbers] = useState(false);
+
   const item = props.item;
   const armorTypesRegex =
     /(Cloth)|(Leather)|(Mail)|(Plate)|(Tool)|(Accessory)/g;
@@ -9,6 +16,16 @@ const ItemPageGearInfo = (props) => {
   const uniqueEquipped = item.isUniqueEquipped
     ? `Unique Equipped: ${item.isUniqueEquipped}`
     : "";
+
+  const handleAllNumbersChange = (e) => {
+    e.target.value === "true" ? setAllNumbers(true) : setAllNumbers(false);
+  };
+
+  const statRangeText = (text) => {
+    return showAllNumbers
+      ? fullStatRangeText(text)
+      : partialStatRangeText(text);
+  };
 
   // if this is an armor piece for fighting, we want armorWeaponType to come before slot
   // ie, Cloth Chest
@@ -23,13 +40,13 @@ const ItemPageGearInfo = (props) => {
       : `${item.slot} ${item.armorWeaponType}`
     : item.slot;
 
-  const itemLevelLine = `Item Level ${partialStatRangeText(item.itemLevel)}`;
+  const itemLevelLine = `Item Level ${statRangeText(item.itemLevel)}`;
 
   // since primaryStats is an array that looks like this: [["Agility", "Intellect"], [300, 301, 302, 303, 304]]
   // we want to take the second sub-array and format it, then put the stat names (formatted) after
   // ie, 300/301/302/303/304 Agility/Intellect
   const mainStatLine = item.primaryStats
-    ? `${partialStatRangeText(item.primaryStats[1])} ${fullStatRangeText(
+    ? `${statRangeText(item.primaryStats[1])} ${fullStatRangeText(
         item.primaryStats[0]
       )}`
     : null;
@@ -44,7 +61,7 @@ const ItemPageGearInfo = (props) => {
         // so we need to format everything except the first index, then put the stat name (first index) after
         // ie, 300/301/302/303/304 Haste
         secondaryStatLines.push(
-          `${partialStatRangeText(secondary.slice(1))} ${secondary[0]}`
+          `${statRangeText(secondary.slice(1))} ${secondary[0]}`
         );
       });
     }
@@ -52,8 +69,16 @@ const ItemPageGearInfo = (props) => {
     return secondaryStatLines;
   };
 
-  const equipText = item.effect ? item.effect : null;
-  const onUseText = item.onUse ? `Use: ${item.onUse}` : null;
+  const equipText = item.effect
+    ? showAllNumbers
+      ? item.effect
+      : equipOnUsePartialStatRangeText(item.effect)
+    : null;
+  const onUseText = item.onUse
+    ? showAllNumbers
+      ? item.onUse
+      : equipOnUsePartialStatRangeText(item.onUse)
+    : null;
 
   let secondaryStatLineKey = 0;
 
@@ -72,7 +97,26 @@ const ItemPageGearInfo = (props) => {
 
   return (
     <div>
-      <h2>Gear Stats:</h2>
+      <h2 className="header-med">Gear Stats:</h2>
+      <p>
+        Numbers:{" "}
+        <input
+          type="radio"
+          value={false}
+          name="show-all-numbers"
+          checked={!showAllNumbers}
+          onChange={handleAllNumbersChange}
+        />{" "}
+        Min/Max{" "}
+        <input
+          type="radio"
+          value={true}
+          name="show-all-numbers"
+          checked={showAllNumbers}
+          onChange={handleAllNumbersChange}
+        />{" "}
+        All
+      </p>
       {uniqueEquipped ? <p>{uniqueEquipped}</p> : <></>}
       <p>
         {firstLine}, {itemLevelLine}
@@ -83,8 +127,8 @@ const ItemPageGearInfo = (props) => {
         return <p key={`sec-stat-${secondaryStatLineKey}`}>{line}</p>;
       })}
       <br />
-      {equipText ? <p>{equipText}</p> : <></>}
-      {onUseText ? <p>{onUseText}</p> : <></>}
+      {equipText ? <p>Equip: {equipText}</p> : <></>}
+      {onUseText ? <p>Use: {onUseText}</p> : <></>}
     </div>
   );
 };
