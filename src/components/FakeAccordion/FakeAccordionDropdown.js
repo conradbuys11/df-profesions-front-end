@@ -2,7 +2,7 @@ import "./FakeAccordionDropdown.css";
 import Dropdown from "react-bootstrap/esm/Dropdown";
 
 const FakeAccordionDropdown = (props) => {
-  // props: isSectionActive, headers, handleSectionClick
+  // props: isSectionActive, headers, handleSectionClick, handleShowAll, handleHideAll
 
   const makeDropdownItemsArray = () => {
     let arr = props.headers.map((header, index) => (
@@ -18,7 +18,23 @@ const FakeAccordionDropdown = (props) => {
         {header}
       </Dropdown.Item>
     ));
-    // arr.push();
+    arr.push(<Dropdown.Divider key={`f-accordion-dropdown-divider`} />);
+    arr.push(
+      <Dropdown.Item
+        onClick={props.handleShowAll}
+        key={`f-accordion-dropdown-show-all`}
+      >
+        Show All
+      </Dropdown.Item>
+    );
+    arr.push(
+      <Dropdown.Item
+        onClick={props.handleHideAll}
+        key={`f-accordion-dropdown-hide-all`}
+      >
+        Hide All
+      </Dropdown.Item>
+    );
     return arr;
   };
 

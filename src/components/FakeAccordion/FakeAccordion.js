@@ -23,8 +23,13 @@ const FakeAccordion = (props) => {
     props.sections ? setNumberOfSections(props.sections) : []
   );
 
-  const areAllSectionsActive = () =>
-    isSectionActive.every((section) => section === true);
+  // const areAllSectionsActive = () => {
+  //   return isSectionActive.every((section) => section === true);
+  // };
+
+  // const areAllSectionsInactive = () => {
+  //   return isSectionActive.every((section) => section === false);
+  // };
 
   const handleSectionClick = (sectionId) => {
     const curSectionActive = isSectionActive[sectionId];
@@ -36,10 +41,22 @@ const FakeAccordion = (props) => {
     );
   };
 
-  const handleToggleAll = () => {
-    setSectionActive(
-      isSectionActive.map((section) => (areAllSectionsActive() ? false : true))
-    );
+  // const handleToggleAll = () => {
+  //   setSectionActive(
+  //     isSectionActive.map((section) => (areAllSectionsActive() ? false : true))
+  //   );
+  // };
+
+  const handleShowAll = () => {
+    if (!isSectionActive.every((section) => section === true)) {
+      setSectionActive(isSectionActive.map((section) => true));
+    }
+  };
+
+  const handleHideAll = () => {
+    if (!isSectionActive.every((section) => section === false)) {
+      setSectionActive(isSectionActive.map((section) => false));
+    }
   };
 
   const makeAccordionContent = () => {
@@ -70,11 +87,19 @@ const FakeAccordion = (props) => {
         handleSectionClick={handleSectionClick}
         headers={props.headers}
         colSize={props.colSize ? props.colSize : 4}
+        // areAllSectionsActive={areAllSectionsActive}
+        // areAllSectionsInactive={areAllSectionsInactive}
+        handleShowAll={handleShowAll}
+        handleHideAll={handleHideAll}
       />
       <FakeAccordionDropdown
         isSectionActive={isSectionActive}
         handleSectionClick={handleSectionClick}
         headers={props.headers}
+        // areAllSectionsActive={areAllSectionsActive}
+        // areAllSectionsInactive={areAllSectionsInactive}
+        handleShowAll={handleShowAll}
+        handleHideAll={handleHideAll}
       />
       <hr className="divider" />
       {makeAccordionContent()}
