@@ -39,7 +39,11 @@ const RecipeFinishingReagents = (props) => {
     let length = Object.keys(obj).length;
     let text = "";
     if (length === 1) {
-      return keyToWords(Object.keys(obj)[0]);
+      return (
+        keyToWords(Object.keys(obj)[0]) +
+        " " +
+        Object.getOwnPropertyDescriptor(obj, Object.keys(obj)[0]).value
+      );
     } else if (length > 1) {
       for (let i = 0; i < length; i++) {
         let rawName = Object.keys(obj)[i];
@@ -60,8 +64,8 @@ const RecipeFinishingReagents = (props) => {
   };
 
   return (
-    <div>
-      <h3>Finishing Reagents:</h3>
+    <div className="text-med">
+      <h2 className="header-med">Finishing Reagents:</h2>
       <ul>{makeFinishingReagentList(props.finishingReagents)}</ul>
     </div>
   );

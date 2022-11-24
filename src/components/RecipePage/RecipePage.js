@@ -6,6 +6,9 @@ import RecipeBanner from "./RecipeBanner";
 import RecipeDescription from "./RecipeDescription";
 import RecipeMaterials from "./RecipeMaterials";
 import RecipeFinishingReagents from "./RecipeFinishingReagents";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 const RecipePage = (props) => {
   // props: URL
@@ -75,29 +78,36 @@ const RecipePage = (props) => {
       <h1 className="header-xl navbar-margin">Loading...</h1>
     ) : (
       <div className="Recipe-Page navbar-margin">
-        {websiteLooksLikeCrapNotice()}
         <RecipeBanner recipe={recipe} item={item.current} />
-        <div className="recipe-component">
-          <RecipeDescription
-            recipe={recipe}
-            profession={profession.current}
-            item={item.current}
-          />
-          <RecipeMaterials
-            recipe={recipe}
-            materials={materials.current}
-            apiNavigation={apiNavigation}
-          />
-          {isObjectEmpty(finishingReagents.current) ? (
-            <></>
-          ) : (
-            <RecipeFinishingReagents
-              recipe={recipe}
-              finishingReagents={finishingReagents.current}
-              apiNavigation={apiNavigation}
-            />
-          )}
-        </div>
+        <Container className="recipe-container">
+          <Row>
+            <Col xs={12} lg className="odd-section-no-padding recipe-col">
+              <RecipeDescription
+                recipe={recipe}
+                profession={profession.current}
+                item={item.current}
+              />
+            </Col>
+            <Col xs={12} lg className="even-section-no-padding recipe-col">
+              <RecipeMaterials
+                recipe={recipe}
+                materials={materials.current}
+                apiNavigation={apiNavigation}
+              />
+            </Col>
+            {isObjectEmpty(finishingReagents.current) ? (
+              <></>
+            ) : (
+              <Col xs={12} lg className="odd-section-no-padding recipe-col">
+                <RecipeFinishingReagents
+                  recipe={recipe}
+                  finishingReagents={finishingReagents.current}
+                  apiNavigation={apiNavigation}
+                />
+              </Col>
+            )}
+          </Row>
+        </Container>
       </div>
     )
   );

@@ -23,6 +23,9 @@ const FakeAccordion = (props) => {
     props.sections ? setNumberOfSections(props.sections) : []
   );
 
+  const areAllSectionsActive = () =>
+    isSectionActive.every((section) => section === true);
+
   const handleSectionClick = (sectionId) => {
     const curSectionActive = isSectionActive[sectionId];
     // mapping through the array - if the section is the one we passed in, set it to the opposite. otherwise, return what was already there!
@@ -30,6 +33,12 @@ const FakeAccordion = (props) => {
       isSectionActive.map((section, index) =>
         index === sectionId ? !curSectionActive : section
       )
+    );
+  };
+
+  const handleToggleAll = () => {
+    setSectionActive(
+      isSectionActive.map((section) => (areAllSectionsActive() ? false : true))
     );
   };
 

@@ -26,13 +26,15 @@ a{
   -webkit-text-stroke: initial;
 }
 
-.odd-section{
+.odd-section, .odd-section-no-padding{
   background-color: #e1f1fd;
-  padding: 1rem 8% 1rem;
 }
 
-.even-section{
+.even-section, .even-section-no-padding{
   background-color: #c1d8f0;
+}
+
+.odd-section, .even-section{
   padding: 1rem 8% 1rem;
 }
 
@@ -217,6 +219,14 @@ li:last-child{
   
   .item-epic{
     border: 2px solid #a335ee;
+  }
+
+  .med-icon-shrink{
+    width: 2rem;
+  }
+
+  .lrg-icon-shrink{
+    width: 4rem;
   }
 }
 

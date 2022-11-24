@@ -6,7 +6,7 @@ const RecipeBanner = (props) => {
   //props: recipe, item
 
   return (
-    <div>
+    <div className="Recipe-Banner">
       {props.recipe.icon ? (
         displayIconLarge(
           props.recipe.icon,
@@ -19,6 +19,7 @@ const RecipeBanner = (props) => {
       <h2 className="header-med">
         <Link to={`/items/${props.item.id}`}>Item Page</Link>
       </h2>
+      <hr className="divider" />
     </div>
   );
 };

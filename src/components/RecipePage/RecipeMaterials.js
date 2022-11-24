@@ -1,5 +1,5 @@
 import "./RecipeMaterials.css";
-import { displayIconLarge, qualityToImgClass } from "../../Common";
+import { displayIconLargeScaling, qualityToImgClass } from "../../Common";
 import { Link } from "react-router-dom";
 
 const RecipeMaterials = (props) => {
@@ -16,7 +16,10 @@ const RecipeMaterials = (props) => {
                         3x (icon) Item Name */}
           {/* TODO: Make helper method in Common or something */}
           {item.icon
-            ? displayIconLarge(item.icon, qualityToImgClass(item.quality))
+            ? displayIconLargeScaling(
+                item.icon,
+                qualityToImgClass(item.quality)
+              )
             : "(ICON)"}{" "}
           {material.quantity}x <Link to={`/items/${item.id}`}>{item.name}</Link>
         </li>
@@ -25,8 +28,8 @@ const RecipeMaterials = (props) => {
   };
 
   return (
-    <div>
-      <h3>Materials Needed:</h3>
+    <div className="text-med">
+      <h2 className="header-med">Materials Needed:</h2>
       <ul>{makeMaterialList(props.materials)}</ul>
     </div>
   );

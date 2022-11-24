@@ -2,7 +2,7 @@ import { React } from "react";
 import Table from "react-bootstrap/esm/Table";
 import "./RecipeTable.css";
 import { specOrRenownObjectToWords } from "../../Common";
-import { displayIconMedium, qualityToImgClass } from "../../Common";
+import { displayIconMediumScaling, qualityToImgClass } from "../../Common";
 import { Link } from "react-router-dom";
 
 const RecipeTable = (props) => {
@@ -40,7 +40,7 @@ const RecipeTable = (props) => {
         <td>{firstColumn}</td>
         <td>
           {recipe.icon
-            ? displayIconMedium(
+            ? displayIconMediumScaling(
                 recipe.icon,
                 `${qualityToImgClass(recipeItem.quality)} icon-shrink`
               )
@@ -63,9 +63,9 @@ const RecipeTable = (props) => {
           {/* we basically want the data to look like this: 3x (icon) Chromatic Dust
                         first is quantity, then the icon, then the name */}
           {item.icon
-            ? displayIconMedium(
+            ? displayIconMediumScaling(
                 item.icon,
-                `${qualityToImgClass(item.quality)} icon-shrink`
+                `${qualityToImgClass(item.quality)}`
               )
             : "(ICON)"}{" "}
           {material.quantity}x <Link to={`/items/${item.id}`}>{item.name}</Link>

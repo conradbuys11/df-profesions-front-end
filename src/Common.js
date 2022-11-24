@@ -92,6 +92,40 @@ const displayIconLarge = (icon, imgClassName, imgAlt) => {
   );
 };
 
+const displayIconMediumScaling = (icon, imgClassName, imgAlt) => {
+  // this is the same as displayIconMedium but with an additional class name added that does viewport shenanigans for mobile
+  return (
+    <img
+      className={`med-icon-shrink ${imgClassName ? imgClassName : ""}`}
+      src={largeIconToMedium(icon)}
+      alt={imgAlt ? imgAlt : "icon"}
+      onError={(e) => {
+        //changing icon source to a placeholder smiley face img
+        e.target.src =
+          "https://wow.zamimg.com/images/wow/icons/medium/spell_misc_emotionhappy.jpg";
+        console.log(`${icon} is a broken url, btw`);
+      }}
+    />
+  );
+};
+
+const displayIconLargeScaling = (icon, imgClassName, imgAlt) => {
+  // this is the same as displayIconLarge but with an additional class name added that does viewport shenanigans for mobile
+  return (
+    <img
+      className={`lrg-icon-shrink ${imgClassName ? imgClassName : ""}`}
+      src={icon}
+      alt={imgAlt ? imgAlt : "icon"}
+      onError={(e) => {
+        //changing icon source to a placeholder smiley face img
+        e.target.src =
+          "https://wow.zamimg.com/images/wow/icons/large/spell_misc_emotionhappy.jpg";
+        console.log(`${icon} is a broken url, btw`);
+      }}
+    />
+  );
+};
+
 const capitalizeWord = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
@@ -227,4 +261,6 @@ export {
   fReagentTypeToUrl,
   fReagentUrlToType,
   convertToSearchTerm,
+  displayIconMediumScaling,
+  displayIconLargeScaling,
 };

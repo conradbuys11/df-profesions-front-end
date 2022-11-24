@@ -2,8 +2,15 @@
     
 }
 
-.recipe-component {
-    padding: 0 8%;
+.recipe-col{
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+    border: medium double #4663ac;
+}
+
+.recipe-container {
+    padding: 0 4%;
+    margin-bottom: 1rem;
 }
 
 .recipe-page-pg{
@@ -13,4 +20,15 @@
 
 .temp-center{
     text-align: center;
+}
+
+/* MD AND BELOW */
+@media screen and (max-width: 991px){
+    .recipe-col{
+        margin-bottom: 0.5rem;
+    }
+
+    .recipe-container{
+        margin-bottom: 0.5rem;
+    }
 }
