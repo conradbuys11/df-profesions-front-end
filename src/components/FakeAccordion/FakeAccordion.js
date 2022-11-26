@@ -13,11 +13,16 @@ const FakeAccordion = (props) => {
   // divider (bool, puts a divider at the end of each content. true by default)
   // dropdownMenuName (string, what the dropdown menu should have as text for the button. defaults to "Sections to Show")
   // showOnlyOne (bool, will only allow one thing to be showing at a time if true, also removes show/hide all buttons. defaults to false.)
+  // defaultOpen (int, if a section should be open by default. defaults to null)
 
   const setNumberOfSections = (number) => {
     let array = [];
     for (let i = 0; i < number; i++) {
-      array.push(false);
+      if (i === props.defaultOpen) {
+        array.push(true);
+      } else {
+        array.push(false);
+      }
     }
     return array;
   };

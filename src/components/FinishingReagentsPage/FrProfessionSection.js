@@ -14,6 +14,7 @@ const FrProfessionSection = (props) => {
     return types.length > 0 ? (
       types.map((type, index) => (
         <FrTypeTable
+          sectionName={index % 2 === 0 ? "even-section" : "odd-section"}
           key={`table-${index}`}
           useName={true}
           type={type}
@@ -27,7 +28,7 @@ const FrProfessionSection = (props) => {
 
   return (
     <div className="FrProfessionSection">
-      <h2 className="header-med">{props.professionName}</h2>
+      <h2 className="header-lrg">{props.professionName}</h2>
       {makeFrTypeInfo(props.professionName)}
     </div>
   );

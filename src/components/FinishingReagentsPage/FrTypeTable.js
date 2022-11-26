@@ -3,11 +3,12 @@ import FReagentTypeInfo from "./FReagentTypeInfo";
 import Table from "react-bootstrap/esm/Table";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { displayIconMedium, qualityToImgClass } from "../../Common";
+import { displayIconMediumScaling, qualityToImgClass } from "../../Common";
 
 const FrTypeTable = (props) => {
   // props: type, frKey,
   // useName (bool, whether we want a header [if it's on the Reagents page] or no header [if it's on the Reagent page])
+  // sectionName (basically a classname, either even or odd section, for background color)
 
   const [db, apiNavigation] = useOutletContext();
 
@@ -17,8 +18,13 @@ const FrTypeTable = (props) => {
 
   const makeFrTable = (type, key) => {
     return (
-      <div className="Fr-Type-Table" key={key ? key : ""}>
-        {props.useName ? <p className="text-lrg-bold">{type.name}</p> : <></>}
+      <div
+        className={`Fr-Type-Table ${
+          props.sectionName ? props.sectionName : "odd-section"
+        }`}
+        key={key ? key : ""}
+      >
+        {props.useName ? <h3 className="header-med">{type.name}</h3> : <></>}
         <p className="text-med">{type.description}</p>
         <Table>
           <thead>
@@ -47,7 +53,10 @@ const FrTypeTable = (props) => {
             {/* TODO: make helper method in Common or something */}
             <td>
               {item.icon
-                ? displayIconMedium(item.icon, qualityToImgClass(item.quality))
+                ? displayIconMediumScaling(
+                    item.icon,
+                    qualityToImgClass(item.quality)
+                  )
                 : "(ICON)"}{" "}
               <Link to={`/items/${item.id}`}>{item.name}</Link>
             </td>

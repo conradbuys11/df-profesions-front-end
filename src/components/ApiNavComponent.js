@@ -16,9 +16,9 @@ const ApiNavComponent = (props) => {
     }
   }, [props.db]);
 
-  useEffect(() => {
-    console.log("ApiNavComponent Mounted");
-  });
+  // useEffect(() => {
+  //   console.log("ApiNavComponent Mounted");
+  // });
 
   return apiNavigation ? (
     <>

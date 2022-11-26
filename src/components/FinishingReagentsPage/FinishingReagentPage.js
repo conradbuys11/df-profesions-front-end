@@ -14,10 +14,12 @@ const FinishingReagentPage = (props) => {
 
   return (
     <div className="Finishing-Reagent-Page navbar-margin">
-      {websiteLooksLikeCrapNotice()}
-      <h2 className="header-lrg">{fReagentUrlToType(name)}</h2>
-      <FrTypeTable type={type()} />
-      <FrUsedForTable type={type()} />
+      <h2 className="header-xl">{fReagentUrlToType(name)}</h2>
+      <hr className="divider" />
+      <div className="text-med">
+        <FrTypeTable type={type()} />
+        <FrUsedForTable type={type()} />
+      </div>
     </div>
   );
 };

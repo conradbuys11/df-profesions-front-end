@@ -1,7 +1,7 @@
 import { Link, useOutletContext } from "react-router-dom";
 import "./FrUsedForTable.css";
 import Table from "react-bootstrap/esm/Table";
-import { displayIconMedium, qualityToImgClass } from "../../Common";
+import { displayIconMediumScaling, qualityToImgClass } from "../../Common";
 
 const FrUsedForTable = (props) => {
   //props: type
@@ -36,7 +36,10 @@ const FrUsedForTable = (props) => {
         <tr key={keyName}>
           <td>
             {recipe.icon
-              ? displayIconMedium(recipe.icon, qualityToImgClass(itemQuality))
+              ? displayIconMediumScaling(
+                  recipe.icon,
+                  qualityToImgClass(itemQuality)
+                )
               : "(ICON)"}{" "}
             <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
           </td>
@@ -51,8 +54,8 @@ const FrUsedForTable = (props) => {
   };
 
   return props.type ? (
-    <div className="Fr-Used-For-Table">
-      <p className="text-med">Used in Crafting</p>
+    <div className="Fr-Used-For-Table even-section">
+      <h2 className="header-med">Used in Crafting</h2>
       {makeFrTable(props.type)}
     </div>
   ) : (

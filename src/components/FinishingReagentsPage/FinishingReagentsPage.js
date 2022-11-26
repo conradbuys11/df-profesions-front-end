@@ -63,10 +63,9 @@ const FinishingReagentsPage = (props) => {
       {isObjectEmpty(finishingReagents) ? (
         <p>Loading...</p>
       ) : (
-        <div>
-          {websiteLooksLikeCrapNotice()}
+        <div className="text-med">
           <h2 className="header-xl">Finishing Reagent Types</h2>
-          <h2 className="header-lrg">Used By:</h2>
+          <h2 className="header-lrg hide-md">Used By:</h2>
           <FakeAccordion
             sections={10}
             headers={fReagentTypeInfo.professions}
@@ -74,6 +73,7 @@ const FinishingReagentsPage = (props) => {
             content={makeFrProfessionSections(fReagentTypeInfo.professions)}
             dropdownMenuName={"Used By:"}
             showOnlyOne={true}
+            defaultOpen={0}
           />
           <br />
           {activeProfession ? (
