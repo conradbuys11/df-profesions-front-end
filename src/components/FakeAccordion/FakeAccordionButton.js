@@ -1,13 +1,13 @@
 import "./FakeAccordionButton.css";
 
 const FakeAccordionButton = (props) => {
-  // props: header, isSectionActive, handleSectionClick
+  // props: header, isSectionActive, handleSectionClick, isShowOrHideAll
 
   return (
     <div
-      className={`Fake-Accordion-Button ${
-        props.isSectionActive ? "f-button-active" : ""
-      }`}
+      className={`Fake-Accordion-Button${
+        props.isShowOrHideAll ? ` fab-light` : ""
+      }${props.isSectionActive ? " f-button-active" : ""}`}
       onClick={props.handleSectionClick}
     >
       <span className="f-button-text">

@@ -35,6 +35,7 @@ const FakeAccordionContainer = (props) => {
             header={"Show All"}
             isSectionActive={false}
             handleSectionClick={props.handleShowAll}
+            isShowOrHideAll={true}
           />
         </Col>
         <Col lg={{ span: 2 }} key={`f-accordion-hide-all`}>
@@ -42,6 +43,7 @@ const FakeAccordionContainer = (props) => {
             header={"Hide All"}
             isSectionActive={false}
             handleSectionClick={props.handleHideAll}
+            isShowOrHideAll={true}
           />
         </Col>
       </Row>

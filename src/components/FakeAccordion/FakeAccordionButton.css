@@ -7,6 +7,11 @@
     font-size: 1.4rem;
     color: #212529;
     margin-top: 1rem;
+    border: thick double;
+}
+
+.fab-light{
+    background-color: #c8d9edcc;
 }
 
 .f-button-active{

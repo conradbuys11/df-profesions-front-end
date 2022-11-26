@@ -159,6 +159,16 @@ li:last-child{
   padding-bottom: 1rem;
 }
 
+.btn-primary{
+  --bs-btn-bg: #4663ac;
+  --bs-btn-border-color: #4663ac;
+  --bs-btn-hover-bg: #4662aa;
+  --bs-btn-hover-border-color: #4662aa;
+  --bs-btn-active-bg: #4663ac;
+  --bs-btn-active-border-color: #4663ac;
+
+}
+
 /* LG in bootstrap */
 @media screen and (max-width: 1199px){
 
