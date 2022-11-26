@@ -111,16 +111,18 @@ const ProfessionDescriptionInfo = () => {
         bags, and Intellect-based leg enchants called Spellthreads.
       </>,
       <>
-        <span className="text-med-bold">TODO</span>: HERBALISM"
+        <span className="text-med-bold">TODO</span>: HERBALISM
       </>,
       <>
-        <span className="text-med-bold">TODO</span>: MINING"
+        <span className="text-med-bold">TODO</span>: MINING
       </>,
       <>
-        <span className="text-med-bold">TODO</span>: SKINNING"
+        <span className="text-med-bold">TODO</span>: SKINNING
       </>,
       <>
-        <span className="text-med-bold">TODO</span>: COOKING"
+        Cooks make meals that provide buffs to your character! Being a secondary
+        profession, anyone can pick up Cooking - it doesn't count as one of your
+        two "primary" professions!
       </>,
       <>
         <span className="text-med-bold">TODO</span>: FISHING
@@ -406,9 +408,16 @@ const ProfessionDescriptionInfo = () => {
       <>
         <span className="text-med-bold">TODO</span>: SKINNING"
       </>,
-      <>
-        <span className="text-med-bold">TODO</span>: COOKING"
-      </>,
+      createList(
+        [
+          <>
+            <span className="text-med-bold">FOOD, GLORIOUS FOOD:</span> Cooks
+            make meals that provide the Well Fed buff - giving stats for 60 min
+            or until you die!
+          </>,
+        ],
+        professionName
+      ),
       <>
         <span className="text-med-bold">TODO</span>: FISHING"
       </>
@@ -555,7 +564,7 @@ const ProfessionDescriptionInfo = () => {
           <>
             <span className="text-med-bold">CHEST ACCESSORY</span>: Made by
             Leatherworkers. Masterwork Smock (higher ilvl, BoP) or Resilient
-            Smock (higher ilvl, BoE).
+            Smock (lower ilvl, BoE.)
           </>,
           <>
             <span className="text-med-bold">TOOLKIT ACCESSORY</span>: Made by
@@ -595,9 +604,21 @@ const ProfessionDescriptionInfo = () => {
       <>
         <span className="text-med-bold">TODO</span>: SKINNING
       </>,
-      <>
-        <span className="text-med-bold">TODO</span>: COOKING
-      </>,
+      createList(
+        [
+          <>
+            <span className="text-med-bold">TOOL</span>: Made by Scribes. Chef's
+            Splendid Rolling Pin (higher ilvl, BoP) or Chef's Smooth Rolling Pin
+            (lower ilvl, BoE.)
+          </>,
+          <>
+            <span className="text-med-bold">HEAD ACCESSORY</span>: Made by
+            Tailors. Master's Wildercloth Chef's Hat (higher ilvl, BoP) or
+            Wildercloth Chef's Hat (lower ilvl, BoE.)
+          </>,
+        ],
+        professionName
+      ),
       <>
         <span className="text-med-bold">TODO</span>: FISHING"
       </>
@@ -745,9 +766,24 @@ const ProfessionDescriptionInfo = () => {
       <>
         <span className="text-med-bold">TODO</span>: SKINNING
       </>,
-      <>
-        <span className="text-med-bold">TODO</span>: COOKING
-      </>,
+      createList(
+        [
+          <>
+            <Link to={`/items/finishingreagents/Finishing_Touches`}>
+              FINISHING TOUCHES:
+            </Link>{" "}
+            Made by Chefs. Includes Salad on the Side & Impossibly Sharp Cutting
+            Knife.
+          </>,
+          <>
+            <Link to={`/items/finishingreagents/Secret_Ingredient`}>
+              SECRET INGREDIENT:
+            </Link>{" "}
+            Made by Chefs. Ooey-Gooey Chocolate is the only item!
+          </>,
+        ],
+        professionName
+      ),
       <>
         <span className="text-med-bold">TODO</span>: FISHING
       </>
@@ -887,9 +923,16 @@ const ProfessionDescriptionInfo = () => {
       <>
         <span className="text-med-bold">TODO</span>: SKINNING
       </>,
-      <>
-        <span className="text-med-bold">TODO</span>: COOKING
-      </>,
+      createList(
+        [
+          <>
+            <span className="text-med-bold">NOT A WHOLE LOT</span>: Since
+            literally everyone can have Cooking, and there's no Specializations
+            involved, there are no direct benefits from having Cooking.
+          </>,
+        ],
+        professionName
+      ),
       <>
         <span className="text-med-bold">TODO</span>: FISHING"
       </>
