@@ -22,7 +22,9 @@ const FrProfessionSection = (props) => {
         />
       ))
     ) : (
-      <p>There are no Finishing Reagents for {props.professionName}!</p>
+      <h2 className="text-med" style={{ paddingBottom: "1rem" }}>
+        There are no Finishing Reagents for {props.professionName}!
+      </h2>
     );
   };
 

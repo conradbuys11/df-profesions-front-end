@@ -639,11 +639,17 @@ const ProfessionDescriptionInfo = () => {
         professionName
       ),
       //enchanting
-      <>
-        Unless you count Vellums, Enchanters don't actually have any unique
-        finishing reagents.
-      </>,
-      //engineeringprofessionName
+      createList(
+        [
+          <>
+            Unless you count Vellums, Enchanters don't actually have any unique
+            finishing reagents.
+          </>,
+        ],
+        professionName
+      ),
+
+      //engineering
       createList(
         [
           <>

@@ -39,6 +39,8 @@ const ProfessionDescription = (props) => {
         <h3 className="header-med">
           <a
             href={`https://wowhead.com/profession-tree-calc/${props.professionName.toLowerCase()}`}
+            target="_blank"
+            rel="noreferrer"
           >
             Wowhead Profession Tree Calculator
           </a>

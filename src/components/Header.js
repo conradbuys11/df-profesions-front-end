@@ -53,7 +53,7 @@ const Header = (props) => {
                   </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/contact">
-                  <Nav.Link className="header-page">Contact</Nav.Link>
+                  <Nav.Link className="header-page">Contact/FAQ</Nav.Link>
                 </LinkContainer>
               </Nav>
             </Navbar.Collapse>
