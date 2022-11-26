@@ -12,6 +12,8 @@
 #Header-Search-Bar .dropdown-menu{
     top: auto;
     left: auto;
+    max-height: 440px;
+    overflow-y: scroll;
 }
 
 

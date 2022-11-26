@@ -46,8 +46,8 @@ const Header = (props) => {
                     Finishing Reagents
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/">
-                  <Nav.Link className="header-page">Contact (NYI)</Nav.Link>
+                <LinkContainer to="/contact">
+                  <Nav.Link className="header-page">Contact</Nav.Link>
                 </LinkContainer>
               </Nav>
             </Navbar.Collapse>

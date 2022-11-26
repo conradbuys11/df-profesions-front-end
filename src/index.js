@@ -21,6 +21,7 @@ import RecipePage from "./components/RecipePage/RecipePage";
 import NotFoundPage from "./components/NotFoundPage";
 import FinishingReagentsPage from "./components/FinishingReagentsPage/FinishingReagentsPage";
 import FinishingReagentPage from "./components/FinishingReagentsPage/FinishingReagentPage";
+import Contact from "./Contact";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const URL = "http://localhost:3001";
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
         element={<FinishingReagentPage />}
       />
       <Route path="recipes/:id" element={<RecipePage URL={URL} />} />
+      <Route path="contact" element={<Contact />} />
       <Route path="oops" element={<NotFoundPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>

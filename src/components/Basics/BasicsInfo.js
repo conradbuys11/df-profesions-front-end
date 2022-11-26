@@ -176,13 +176,13 @@ const BasicsInfo = (props) => {
         <ul>
           <li>
             Each Profession has its own pool of Knowledge (think of them as
-            Specialization Points) to apply to its Specializations. These are
+            Specialization Points) to apply to its specializations. These are
             accrued in a couple different ways:
           </li>
           <li className="hide-bullet-point">
             <ul>
               <li>
-                Crafting an item for the first time will give you 1 Knowledge.
+                Crafting an item for the first time will give 1 Knowledge.
               </li>
               <li>
                 Daily quests near your profession's crafting table in Valdrakken
@@ -202,10 +202,7 @@ const BasicsInfo = (props) => {
                 (currency received from crafting - more on that later.) These
                 are one-time purchases.
               </li>
-              <li>
-                There are probably other methods I'm unaware of, but these are
-                the main ones.
-              </li>
+              <li className="text-med-ital">(those are the main ones)</li>
             </ul>
           </li>
           <li>
@@ -241,7 +238,7 @@ const BasicsInfo = (props) => {
             <span className="text-med-bold">
               Illustrious Insight & Lesser Illustrious Insight:
             </span>{" "}
-            Increases Skill by 30. Used in almost all recipes with Quality
+            Increases Skill by 30. Used in almost all recipes with quality
             levels. Higher ilvl gear pieces will usually use Illustrious
             Insight, whereas reagents, consumables & lower ilvl gear pieces
             usually use Lesser Illustrious Insight.
@@ -252,8 +249,8 @@ const BasicsInfo = (props) => {
             </span>{" "}
             These largely have similar effects (ie, 'increase Inspiration by 30
             & bonus Skill granted by Inspiration by 7%', or 'increase chance of
-            improving in your profession, but increase Recipe Difficulty').
-            However, each Profession has a different type/name for them. For
+            improving in your profession, but increase recipe difficulty').
+            However, each profession has a different type/name for them. For
             example, Tailors use "Embroidery Thread", while Jewelcrafters use
             "Polishing Cloth." Each type is crafted by a different profession.
             (For example, "Polishing Cloth" used by Jewelcrafters, are made by
@@ -269,7 +266,7 @@ const BasicsInfo = (props) => {
                 secondary stats on a piece of gear. Crafted by Inscriptionists.
                 Unlike Shadowlands, there are now missives for each pair of
                 secondary stats (ie Draconic Missive of the Fireflash gives Crit
-                & Haste.) There are also missives for Profession Gear & their
+                & Haste.) There are also missives for profession gear & their
                 secondary stats!
               </li>
               <li>
@@ -280,9 +277,8 @@ const BasicsInfo = (props) => {
                 Difficulty. These are basically the Crafter's Marks from
                 Shadowlands. Lower ilvl crafted gear use Training Matrixes
                 (which drop off of dungeon bosses), while Epic crafted gear use
-                Primal Infusions (I think drop off of raid bosses?). There are
-                four levels of Training Matrixes, and two levels of Primal
-                Infusions.
+                Primal Infusions. There are four levels of Training Matrixes,
+                and two levels of Primal Infusions.
               </li>
               <li>
                 <span className="text-med-bold">Embellishments:</span> Gives a
@@ -291,8 +287,8 @@ const BasicsInfo = (props) => {
                 example is the Alchemical Flavor Pocket - "Increases duration of
                 Well Fed by 100% & they now persist through death." These are
                 crafted by different professions, and you can only have 2
-                Embellished pieces on at a time. Usually only applicable to Epic
-                crafted gear that don't already have Embellishments.
+                embellished pieces on at a time. Usually only applicable to epic
+                crafted gear that don't already have embellishments.
               </li>
             </ul>
           </li>
