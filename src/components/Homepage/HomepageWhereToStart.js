@@ -4,8 +4,8 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { Link } from "react-router-dom";
-import specTree from "../../img/screenshots/specialization_tree_1140_520.png";
-import recipeList from "../../img/screenshots/recipe_list_1140_520.png";
+import specTree from "../../img/screenshots/specialization_tree_1150_700.png";
+import recipeList from "../../img/screenshots/recipe_list_1150_700.png";
 
 const HomepageWhereToStart = (props) => {
   return (
@@ -13,7 +13,7 @@ const HomepageWhereToStart = (props) => {
       <h1 className="header-lrg">Where Should I Start?</h1>
       <hr className="divider" />
       <Container>
-        <Row className="align-items-center">
+        <Row className="align-items-center where-to-start-row">
           <Col lg={6} md={12}>
             <img
               className="homepage-image-section-two"
@@ -36,7 +36,7 @@ const HomepageWhereToStart = (props) => {
           </Col>
         </Row>
 
-        <Row className="align-items-center">
+        <Row className="align-items-center where-to-start-row">
           <Col lg={{ span: 6, order: "last" }} md={{ span: 12 }}>
             <img
               className="homepage-image-section-two"

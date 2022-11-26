@@ -21,10 +21,6 @@ const HomepageWelcome = (props) => {
                 changes can be daunting. I've created this website to help
                 familiarize some of these changes in a pleasing & simple way.
               </p>
-              <p>
-                This website is still very much a WIP, but should be all set up
-                by 10.0's launch on November 28th!
-              </p>
             </div>
           </Col>
 

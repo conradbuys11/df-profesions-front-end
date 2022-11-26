@@ -10,10 +10,18 @@
     /* ^ 570px */
 }
 
+.where-to-start-row{
+    padding-bottom: 1rem;
+}
+
 /* MD and below */
 @media screen and (max-width: 991px) {
     .where-to-start-text{
         margin-top: 1rem;
         text-align: center;
     }    
+
+    .where-to-start-row{
+        padding-bottom: 0;
+    }
 }
