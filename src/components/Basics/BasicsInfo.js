@@ -74,7 +74,7 @@ const BasicsInfo = (props) => {
             <span className="text-med-bold">Resourcefulness:</span> Gives you a
             chance to refund some of the materials used when crafting a recipe.
             According to the in-game tooltip, this only applies to "tradeable"
-            reagents - ie, nothing that binds on pickup!
+            reagents - e.g., nothing that binds on pickup!
           </li>
           <li>
             <span className="text-med-bold">Multicraft:</span> Gives you a
@@ -114,8 +114,8 @@ const BasicsInfo = (props) => {
       <span className="text-med">
         <p>
           {" "}
-          Each profession can wield one Tool (ie a fishing rod) and two
-          Accessories (ie a helm & chestpiece.) These equipment items are like
+          Each profession can wield one Tool (e.g. a fishing rod) and two
+          Accessories (e.g. a helm & chestpiece.) These equipment items are like
           normal gear pieces - they have stats & item level. Higher item level
           profession equipment will give more stats.
         </p>
@@ -247,9 +247,9 @@ const BasicsInfo = (props) => {
             <span className="text-med-bold">
               Profession Specific Finishing Reagents:
             </span>{" "}
-            These largely have similar effects (ie, 'increase Inspiration by 30
-            & bonus Skill granted by Inspiration by 7%', or 'increase chance of
-            improving in your profession, but increase recipe difficulty').
+            These largely have similar effects (e.g., 'increase Inspiration by
+            30 & bonus Skill granted by Inspiration by 7%', or 'increase chance
+            of improving in your profession, but increase recipe difficulty').
             However, each profession has a different type/name for them. For
             example, Tailors use "Embroidery Thread", while Jewelcrafters use
             "Polishing Cloth." Each type is crafted by a different profession.
@@ -265,9 +265,9 @@ const BasicsInfo = (props) => {
                 <span className="text-med-bold">Missives:</span> Customize the
                 secondary stats on a piece of gear. Crafted by Inscriptionists.
                 Unlike Shadowlands, there are now missives for each pair of
-                secondary stats (ie Draconic Missive of the Fireflash gives Crit
-                & Haste.) There are also missives for profession gear & their
-                secondary stats!
+                secondary stats (e.g. Draconic Missive of the Fireflash gives
+                Crit & Haste.) There are also missives for profession gear &
+                their secondary stats!
               </li>
               <li>
                 <span className="text-med-bold">

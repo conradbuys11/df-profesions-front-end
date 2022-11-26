@@ -18,8 +18,8 @@ const HomepageWelcome = (props) => {
             <div className="text-lrg">
               <p>
                 Professions are changing a LOT in 10.0, and navigating all the
-                changes can be daunting. I've created this website to help
-                familiarize some of these changes in a pleasing & simple way.
+                changes can be daunting. Our goal is to to help familiarize some
+                of these changes in a pleasing & simple way.
               </p>
             </div>
           </Col>

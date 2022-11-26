@@ -16,14 +16,20 @@ const Header = (props) => {
     <Navbar id="Header" fixed="top" expand="xl" collapseOnSelect>
       <Container>
         <Row className="align-items-center">
-          <Col lg="auto" xs={12}>
+          <Col
+            lg={{ span: "auto", offset: 0 }}
+            xs={{ span: 7, order: 1, offset: 1 }}
+          >
             <LinkContainer to="/">
               <Navbar.Brand className="header-logo">
                 DF Professions
               </Navbar.Brand>
             </LinkContainer>
           </Col>
-          <Col lg={true} xs={8}>
+          <Col
+            lg={{ order: 2, span: true, offset: 0 }}
+            xs={{ span: 10, offset: 1, order: 3 }}
+          >
             <Nav className="justify-content-center">
               <HeaderSearchBar
                 db={props.db}
@@ -31,7 +37,7 @@ const Header = (props) => {
               />
             </Nav>
           </Col>
-          <Col lg="auto" xs={4}>
+          <Col lg={{ span: "auto", order: 3 }} xs={{ span: 4, order: 2 }}>
             <Navbar.Toggle aria-controls="navbar-pages" />
             <Navbar.Collapse className="justify-content-end" id="navbar-pages">
               <Nav>
