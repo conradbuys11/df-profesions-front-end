@@ -120,21 +120,23 @@ const HeaderSearchBar = (props) => {
         onBlur={clickedOffBar}
       />
       <br />
-      <span>Show: </span>
-      <input
-        className="search-bar-item-enable"
-        type="checkbox"
-        checked={searchItems}
-        onChange={handleItemChange}
-      />{" "}
-      <span>Items </span>
-      <input
-        className="search-bar-item-enable"
-        type="checkbox"
-        checked={searchRecipes}
-        onChange={handleRecipeChange}
-      />{" "}
-      <span>Recipes</span>
+      <span>
+        <span>Search For: </span>
+        <input
+          className="search-bar-item-enable"
+          type="checkbox"
+          checked={searchItems}
+          onChange={handleItemChange}
+        />{" "}
+        <span>Items </span>
+        <input
+          className="search-bar-item-enable"
+          type="checkbox"
+          checked={searchRecipes}
+          onChange={handleRecipeChange}
+        />{" "}
+        <span>Recipes</span>
+      </span>
       <Dropdown.Menu className="search-bar-dropdown" show={text.length > 2}>
         {text.length > 2 ? createDropdownItemList() : "asdf"}
       </Dropdown.Menu>

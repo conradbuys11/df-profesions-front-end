@@ -12,6 +12,7 @@ const FakeAccordion = (props) => {
   // content (array of the stuff in each section. this is gonna be a lot of html)
   // divider (bool, puts a divider at the end of each content. true by default)
   // dropdownMenuName (string, what the dropdown menu should have as text for the button. defaults to "Sections to Show")
+  // showOnlyOne (bool, will only allow one thing to be showing at a time if true, also removes show/hide all buttons. defaults to false.)
 
   const setNumberOfSections = (number) => {
     let array = [];
@@ -24,6 +25,8 @@ const FakeAccordion = (props) => {
   const [isSectionActive, setSectionActive] = useState(
     props.sections ? setNumberOfSections(props.sections) : []
   );
+
+  const showOnlyOne = props.showOnlyOne ? props.showOnlyOne : false;
 
   // const areAllSectionsActive = () => {
   //   return isSectionActive.every((section) => section === true);
@@ -39,6 +42,14 @@ const FakeAccordion = (props) => {
     setSectionActive(
       isSectionActive.map((section, index) =>
         index === sectionId ? !curSectionActive : section
+      )
+    );
+  };
+
+  const handleSectionClickOnlyOne = (sectionId) => {
+    setSectionActive(
+      isSectionActive.map((section, index) =>
+        index === sectionId ? true : false
       )
     );
   };
@@ -86,22 +97,28 @@ const FakeAccordion = (props) => {
     <div>
       <FakeAccordionContainer
         isSectionActive={isSectionActive}
-        handleSectionClick={handleSectionClick}
+        handleSectionClick={
+          showOnlyOne ? handleSectionClickOnlyOne : handleSectionClick
+        }
         headers={props.headers}
         colSize={props.colSize ? props.colSize : 4}
         // areAllSectionsActive={areAllSectionsActive}
         // areAllSectionsInactive={areAllSectionsInactive}
         handleShowAll={handleShowAll}
         handleHideAll={handleHideAll}
+        showOnlyOne={showOnlyOne}
       />
       <FakeAccordionDropdown
         isSectionActive={isSectionActive}
-        handleSectionClick={handleSectionClick}
+        handleSectionClick={
+          showOnlyOne ? handleSectionClickOnlyOne : handleSectionClick
+        }
         headers={props.headers}
         // areAllSectionsActive={areAllSectionsActive}
         // areAllSectionsInactive={areAllSectionsInactive}
         handleShowAll={handleShowAll}
         handleHideAll={handleHideAll}
+        showOnlyOne={showOnlyOne}
         dropdownMenuName={
           props.dropdownMenuName ? props.dropdownMenuName : "Sections to Show"
         }

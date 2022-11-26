@@ -6,7 +6,7 @@ import FakeAccordionButton from "./FakeAccordionButton";
 
 const FakeAccordionContainer = (props) => {
   // props: isSectionActive, handleSectionClick, headers, colSize,
-  // (these next props are for the show all/hide all buttons) handleShowAll, handleHideAll
+  // (these next props are for the show all/hide all buttons) handleShowAll, handleHideAll, showOnlyOne
 
   const makeAccordionButtonsArray = () => {
     return props.headers.map((header, index) => (
@@ -30,14 +30,14 @@ const FakeAccordionContainer = (props) => {
   const makeShowAndHideAllButtons = () => {
     return (
       <Row xs={"auto"} className={"justify-content-center"}>
-        <Col lg={{ span: 3 }} key={`f-accordion-show-all`}>
+        <Col lg={{ span: 2 }} key={`f-accordion-show-all`}>
           <FakeAccordionButton
             header={"Show All"}
             isSectionActive={false}
             handleSectionClick={props.handleShowAll}
           />
         </Col>
-        <Col lg={{ span: 3 }} key={`f-accordion-hide-all`}>
+        <Col lg={{ span: 2 }} key={`f-accordion-hide-all`}>
           <FakeAccordionButton
             header={"Hide All"}
             isSectionActive={false}
@@ -51,7 +51,7 @@ const FakeAccordionContainer = (props) => {
   return (
     <div className="Fake-Accordion-Container">
       <Container>
-        {makeShowAndHideAllButtons()}
+        {props.showOnlyOne ? <></> : makeShowAndHideAllButtons()}
         <Row xs={"auto"} className={"justify-content-center"}>
           {makeAccordionButtons()}
         </Row>

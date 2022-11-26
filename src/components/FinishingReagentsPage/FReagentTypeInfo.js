@@ -11,42 +11,42 @@ const FReagentTypeInfo = () => {
     new FReagentType(
       "Lesser Illustrious Insight",
       "Used to gain +30 Skill when crafting lesser items.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Illustrious Insight",
       "Used to gain +30 Skill when crafting greater items.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Training Matrix",
       "Used to set the item level of Rare crafted gear pieces.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Primal Infusion",
       "Used to set the item level of Epic crafted gear pieces.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Embellishment",
       "Used to give a unique effect to crafted gear pieces. Can only wear 2 pieces of Embellished gear.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Missive - Combat",
       "Used to set the secondary stats of crafted gear pieces. Not used by Engineers.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Missive - Crafting",
       "Used to set the secondary stat of Crafting Profession Tools.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Missive - Gathering",
       "Used to set the secondary stat of Gathering Profession Tools.",
-      "All"
+      "All Professions"
     ),
     new FReagentType(
       "Polishing Cloth",
@@ -61,11 +61,6 @@ const FReagentTypeInfo = () => {
     new FReagentType(
       "Spare Parts",
       "Used to improve the crafting of Engineering items.",
-      "Engineering"
-    ),
-    new FReagentType(
-      "Tinker",
-      "Used to add a unique on-use effect to any piece of gear with a Tinker socket. Can malfunction when used.",
       "Engineering"
     ),
     new FReagentType(
@@ -126,7 +121,7 @@ const FReagentTypeInfo = () => {
   ];
 
   const professions = [
-    "All",
+    "All Professions",
     "Alchemy",
     "Blacksmithing",
     "Enchanting",

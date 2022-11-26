@@ -8,6 +8,7 @@ import Col from "react-bootstrap/esm/Col";
 import FReagentTypeInfo from "./FReagentTypeInfo";
 import FrTypeTable from "./FrTypeTable";
 import FrProfessionSection from "./FrProfessionSection";
+import FakeAccordion from "../FakeAccordion/FakeAccordion";
 
 const FinishingReagentsPage = (props) => {
   const [db, apiNavigation] = useOutletContext();
@@ -44,41 +45,18 @@ const FinishingReagentsPage = (props) => {
     }
   }, [apiNavigation, db, navigateTo]);
 
-  // const listFrTypes = (types) => {
-  //   return types.map((type, i) => (
-  //     <Col
-  //       lg="3"
-  //       md="4"
-  //       sm="6"
-  //       xs="12"
-  //       className="freagent-col"
-  //       key={`type-${i}`}
-  //     >
-  //       {type}
-  //     </Col>
-  //   ));
-  // };
-
   const handleClick = (e) => {
     setActiveProfession(e.target.innerText);
   };
 
-  const listFrProfessions = (professions) => {
-    return professions.map((profession, i) => (
-      <Col
-        lg="3"
-        md="4"
-        sm="6"
-        xs="12"
-        className="freagent-col"
-        key={`profession-expand-${i}`}
-      >
-        <span onClick={handleClick}>{profession}</span>
-      </Col>
+  const makeFrProfessionSections = (professions) => {
+    return professions.map((profession, index) => (
+      <FrProfessionSection
+        key={`fr-prof-section-${index}`}
+        professionName={profession}
+      />
     ));
   };
-
-  // const makeFrTypeTable = (frType) => {};
 
   return (
     <div className="Finishing-Reagents-Page navbar-margin">
@@ -87,13 +65,16 @@ const FinishingReagentsPage = (props) => {
       ) : (
         <div>
           {websiteLooksLikeCrapNotice()}
-          <h2 className="header-lrg">
-            Finishing Reagent Types, per Profession
-          </h2>
-          <Container>
-            {/* <Row>{listFrTypes(finishingReagentTypes.current)}</Row> */}
-            <Row>{listFrProfessions(fReagentTypeInfo.professions)}</Row>
-          </Container>
+          <h2 className="header-xl">Finishing Reagent Types</h2>
+          <h2 className="header-lrg">Used By:</h2>
+          <FakeAccordion
+            sections={10}
+            headers={fReagentTypeInfo.professions}
+            colSize={3}
+            content={makeFrProfessionSections(fReagentTypeInfo.professions)}
+            dropdownMenuName={"Used By:"}
+            showOnlyOne={true}
+          />
           <br />
           {activeProfession ? (
             <FrProfessionSection professionName={activeProfession} />

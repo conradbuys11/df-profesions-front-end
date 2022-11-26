@@ -27,7 +27,7 @@ const BasicsIntro = (props) => {
           stats.
         </li>
         <li className="text-med">
-          All professions (sans Cooking & Fishing) have{" "}
+          All professions (except Cooking & Fishing) have{" "}
           <span className="text-med-bold">Specializations</span>. These allow
           you to specialize yourself in certain aspects of your profession. You
           become more skilled in Specializations by allocating Profession{" "}

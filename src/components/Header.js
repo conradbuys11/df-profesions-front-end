@@ -17,7 +17,7 @@ const Header = (props) => {
       <Container>
         <Row className="align-items-center">
           <Col lg="auto" xs={12}>
-            <LinkContainer to="/" active={false}>
+            <LinkContainer to="/">
               <Navbar.Brand className="header-logo">
                 DF Professions
               </Navbar.Brand>
