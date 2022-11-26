@@ -52,7 +52,7 @@ const Professions = (props) => {
     <div className="Professions navbar-margin">
       <Container style={{ padding: 0 }}>
         <div className="odd-section">
-          <h2 className="header-lrg">Crafting Professions</h2>
+          <h2 className="header-lrg">Crafting Professions:</h2>
           <hr className="divider" />
           {/* justify-content-center basically centers the columns.
                   ie if the amount of rows does not fill out the entire column, they'll be centered. */}
