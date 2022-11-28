@@ -205,7 +205,20 @@ const ItemPage = (props) => {
                 ) : (
                   <></>
                 )}
-                {!isGearPiece() && item.effect ? <p>{item.effect}</p> : <></>}
+                {!isGearPiece() && item.effect ? (
+                  <p>
+                    <span className="text-lrg-bold">Effect:</span> {item.effect}
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {!isGearPiece() && item.onUse ? (
+                  <p>
+                    <span className="text-lrg-bold">Use:</span> {item.onUse}
+                  </p>
+                ) : (
+                  <></>
+                )}
 
                 {item.description ? (
                   <p>
